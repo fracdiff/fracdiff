@@ -1,10 +1,17 @@
+install:
+	@poetry install
+
 test:
-	@pytest --doctest-modules fracdiff
-	@pytest --doctest-modules tests
+	@poetry run pytest --doctest-modules fracdiff
+	@poetry run pytest --doctest-modules tests
+
+lint:
+	@poetry run python3 -m black --check --quiet .
+	@poetry run python3 -m isort --check --force-single-line-imports --quiet .
 
 format:
-	@python3 -m black --quiet .
-	@python3 -m isort --force-single-line-imports --quiet .
+	@poetry run python3 -m black --quiet .
+	@poetry run python3 -m isort --force-single-line-imports --quiet .
 
 publish:
 	@gh workflow run publish.yml

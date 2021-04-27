@@ -2,8 +2,8 @@
 
 [![python versions](https://img.shields.io/pypi/pyversions/fracdiff.svg)](https://pypi.org/project/fracdiff)
 [![version](https://img.shields.io/pypi/v/fracdiff.svg)](https://pypi.org/project/fracdiff)
-[![CI](https://github.com/simaki/fracdiff/workflows/CI/badge.svg)](https://github.com/simaki/fracdiff/actions?query=workflow%3ACI)
-[![codecov](https://codecov.io/gh/simaki/fracdiff/branch/main/graph/badge.svg)](https://codecov.io/gh/simaki/fracdiff)
+[![CI](https://github.com/fracdiff/fracdiff/actions/workflows/ci.yml/badge.svg)](https://github.com/fracdiff/fracdiff/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/fracdiff/fracdiff/branch/main/graph/badge.svg)](https://codecov.io/gh/fracdiff/fracdiff)
 [![dl](https://img.shields.io/pypi/dm/fracdiff)](https://pypi.org/project/fracdiff)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
@@ -62,7 +62,7 @@ The following tables of execution times (in unit of ms) show that *Fracdiff* can
 
 (Run on Macbook Air 2018, 1.6 GHz Dual-Core Intel Core i5, 16 GB 2133 MHz LPDDR3)
 
-## How to use [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/simaki/fracdiff/blob/master/sample/howto/howto.ipynb)
+## How to use [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/fracdiff/fracdiff/blob/master/sample/howto/howto.ipynb)
 
 ### Fractional differentiation
 

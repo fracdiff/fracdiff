@@ -29,10 +29,7 @@ if __name__ == "__main__":
     ax_d = ax_s.twinx()
     plot_s = ax_s.plot(s, color="blue", linewidth=0.6, label="S&P 500 (left)")
     plot_d = ax_d.plot(
-        d,
-        color="orange",
-        linewidth=0.6,
-        label="S&P 500, 0.5th differentiation (right)",
+        d, color="orange", linewidth=0.6, label="S&P 500, 0.5th differentiation (right)"
     )
     plots = plot_s + plot_d
     plt.title("S&P 500 and its fractional differentiation")
