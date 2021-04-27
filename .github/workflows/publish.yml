@@ -4,6 +4,9 @@ env:
   PYPI_USER_NAME: simaki
 
 on:
+  release:
+    types:
+      - created
   workflow_dispatch:
 
 jobs:
@@ -27,10 +30,7 @@ jobs:
         python-version: ${{ matrix.python-version }}
 
     - name: Install poetry
-      run: |
-        python3 -m pip install --upgrade pip
-        python3 -m pip install poetry
+      run: pip install poetry
 
     - name: Publish
-      run: |
-        python3 -m poetry publish --build --username ${PYPI_USER_NAME} --password ${{ secrets.PYPI_PASSWORD }}
+      run: poetry publish --build --username ${PYPI_USER_NAME} --password ${{ secrets.PYPI_PASSWORD }}

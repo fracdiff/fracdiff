@@ -10,9 +10,9 @@ def fdiff_coef(d, window) -> np.array:
 
     Parameters
     ----------
-    - d : float
+    d : float
         Order of differentiation.
-    - window : int
+    window : int
         Number of terms.
 
     Returns
@@ -122,7 +122,7 @@ def fdiff(
 
     a = np.asanyarray(a)
     axis = np.core.multiarray.normalize_axis_index(axis, a.ndim)
-    dtype = a.dtype if np.issubdtype(a.dtype, np.float) else np.float64
+    dtype = a.dtype if np.issubdtype(a.dtype, np.floating) else np.float64
 
     combined = []
     if prepend is not np._NoValue:
