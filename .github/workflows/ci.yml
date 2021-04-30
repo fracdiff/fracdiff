@@ -69,13 +69,11 @@ jobs:
 
     - name: Lint (black)
       uses: psf/black@stable
-      if: always()
 
     - name: Lint (isort)
       uses: jamescurtin/isort-action@master
       with:
         configuration: --check-only --diff --force-single-line
-      if: always()
   
   format:
   
