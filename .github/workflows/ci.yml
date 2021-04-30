@@ -3,7 +3,16 @@ name: CI
 env:
   PROJECT_NAME: fracdiff
 
-on: [push, pull_request, workflow_dispatch]
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
+  workflow_dispatch:
 
 jobs:
 
@@ -95,6 +104,7 @@ jobs:
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v3
       with:
+        author: GitHub <noreply@github.com>
         commit-message: format
         delete-branch: true
         branch-suffix: short-commit-hash
