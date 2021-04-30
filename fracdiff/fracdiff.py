@@ -7,7 +7,6 @@ from fracdiff.base import fdiff
 from fracdiff.base import fdiff_coef
 
 
-
 class Fracdiff(TransformerMixin):
     """
     Fractional differentiation.
