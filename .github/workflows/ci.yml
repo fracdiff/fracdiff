@@ -3,7 +3,16 @@ name: CI
 env:
   PROJECT_NAME: fracdiff
 
-on: [push, pull_request, workflow_dispatch]
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
+  workflow_dispatch:
 
 jobs:
 
@@ -58,15 +67,13 @@ jobs:
 
     - uses: actions/setup-python@v2
 
-    - name: Run black
+    - name: Lint (black)
       uses: psf/black@stable
-      if: always()
 
-    - name: Run isort
+    - name: Lint (isort)
       uses: jamescurtin/isort-action@master
       with:
         configuration: --check-only --diff --force-single-line
-      if: always()
   
   format:
   
@@ -95,6 +102,7 @@ jobs:
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v3
       with:
+        author: GitHub Actions <action@github.com>
         commit-message: format
         delete-branch: true
         branch-suffix: short-commit-hash
