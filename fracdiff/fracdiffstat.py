@@ -7,6 +7,8 @@ from sklearn.utils.validation import check_is_fitted
 from fracdiff import Fracdiff
 from fracdiff.stat import StatTester
 
+from concurrent.futures import ProcessPoolExecutor
+
 
 class FracdiffStat(TransformerMixin, BaseEstimator):
     """
@@ -50,6 +52,8 @@ class FracdiffStat(TransformerMixin, BaseEstimator):
         Upper limit of the range to search the order.
     lower : float, default 0.0
         Lower limit of the range to search the order.
+    n_jobs : int, deafult None
+        The number of jobs to run `fit` in parallel. -1 means using all processors
 
     Attributes
     ----------
@@ -84,6 +88,7 @@ class FracdiffStat(TransformerMixin, BaseEstimator):
         precision=0.01,
         upper=1.0,
         lower=0.0,
+        n_jobs=None
     ):
         self.window = window
         self.mode = mode
@@ -114,7 +119,7 @@ class FracdiffStat(TransformerMixin, BaseEstimator):
         """
         check_array(X)
 
-        self.d_ = numpy.array([self._find_d(X[:, i]) for i in range(X.shape[1])])
+        self.d_ = self._find_features_d(X)
 
         return self
 
@@ -150,6 +155,23 @@ class FracdiffStat(TransformerMixin, BaseEstimator):
 
     def _is_stat(self, x) -> bool:
         return StatTester(method=self.stattest).is_stat(x, pvalue=self.pvalue)
+    
+    def _find_features_d(self, X) -> numpy.array:
+        num_features = X.shape[1]
+        if self.n_jobs is not None and self.n_jobs != 1:
+            max_workers = self.n_jobs
+
+            # use all cpus
+            if self.n_jobs == -1:
+                max_workers = None
+                
+            with ProcessPoolExecutor(max_workers=max_workers) as exec:
+                features = [X[:, i] for i in range(num_features)]
+                d_ = list(exec.map(self._find_d, features))
+        else:
+            d_ = [self._find_d(X[:, i]) for i in range(num_features)]
+
+        return numpy.array(d_)
 
     def _find_d(self, x) -> float:
         """
