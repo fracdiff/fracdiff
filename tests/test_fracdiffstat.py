@@ -76,7 +76,9 @@ class TestFracdiffStat:
         np.random.seed(42)
         X = np.random.randn(100, 10).cumsum(0)
 
-        fs = FracdiffStat(window=window, mode=mode, precision=precision, n_jobs=n_jobs).fit(X)
+        fs = FracdiffStat(
+            window=window, mode=mode, precision=precision, n_jobs=n_jobs
+        ).fit(X)
         out = fs.transform(X)
 
         exp = np.empty_like(out[:, :0])
