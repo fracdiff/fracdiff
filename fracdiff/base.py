@@ -4,7 +4,6 @@ import numpy as np
 from scipy.special import binom
 
 
-
 def fdiff_coef(d, window) -> np.array:
     """
     Returns sequence of coefficients in fracdiff operator.
