@@ -52,7 +52,7 @@ class FracdiffStat(TransformerMixin, BaseEstimator):
         Upper limit of the range to search the order.
     lower : float, default 0.0
         Lower limit of the range to search the order.
-    n_jobs : int, deafult None
+    n_jobs : int, default None
         The number of jobs to run `fit` in parallel. -1 means using all processors
 
     Attributes
@@ -98,6 +98,7 @@ class FracdiffStat(TransformerMixin, BaseEstimator):
         self.precision = precision
         self.upper = upper
         self.lower = lower
+        self.n_jobs = n_jobs
 
     def fit(self, X, y=None):
         """
@@ -157,7 +158,7 @@ class FracdiffStat(TransformerMixin, BaseEstimator):
         return StatTester(method=self.stattest).is_stat(x, pvalue=self.pvalue)
     
     def _find_features_d(self, X) -> numpy.array:
-        num_features = X.shape[1]
+        n_features = X.shape[1]
         if self.n_jobs is not None and self.n_jobs != 1:
             max_workers = self.n_jobs
 
@@ -166,10 +167,10 @@ class FracdiffStat(TransformerMixin, BaseEstimator):
                 max_workers = None
                 
             with ProcessPoolExecutor(max_workers=max_workers) as exec:
-                features = [X[:, i] for i in range(num_features)]
+                features = [X[:, i] for i in range(n_features)]
                 d_ = list(exec.map(self._find_d, features))
         else:
-            d_ = [self._find_d(X[:, i]) for i in range(num_features)]
+            d_ = [self._find_d(X[:, i]) for i in range(n_features)]
 
         return numpy.array(d_)
 
