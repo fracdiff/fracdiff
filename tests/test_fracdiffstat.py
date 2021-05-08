@@ -19,11 +19,12 @@ class TestFracdiffStat:
     @pytest.mark.parametrize("window", [10])
     @pytest.mark.parametrize("mode", ["full", "valid"])
     @pytest.mark.parametrize("precision", [0.01])
-    def test_order(self, window, mode, precision):
+    @pytest.mark.parametrize("n_jobs", [None, -1])
+    def test_order(self, window, mode, precision, n_jobs):
         np.random.seed(42)
         X = np.random.randn(1000, 10).cumsum(0)
 
-        fs = FracdiffStat(mode=mode, window=window, precision=precision)
+        fs = FracdiffStat(mode=mode, window=window, precision=precision, n_jobs=n_jobs)
         fs.fit(X)
 
         X_st = fs.transform(X)
@@ -66,7 +67,8 @@ class TestFracdiffStat:
     @pytest.mark.parametrize("window", [10])
     @pytest.mark.parametrize("mode", ["full", "valid"])
     @pytest.mark.parametrize("precision", [0.01])
-    def test_transform(self, window, mode, precision):
+    @pytest.mark.parametrize("n_jobs", [None, -1])
+    def test_transform(self, window, mode, precision, n_jobs):
         """
         Test if `FracdiffStat.transform` works
         for array with n_features > 1.
@@ -74,7 +76,9 @@ class TestFracdiffStat:
         np.random.seed(42)
         X = np.random.randn(100, 10).cumsum(0)
 
-        fs = FracdiffStat(window=window, mode=mode, precision=precision).fit(X)
+        fs = FracdiffStat(
+            window=window, mode=mode, precision=precision, n_jobs=n_jobs
+        ).fit(X)
         out = fs.transform(X)
 
         exp = np.empty_like(out[:, :0])
