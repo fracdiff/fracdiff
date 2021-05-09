@@ -29,8 +29,7 @@ def fdiff_coef(d, window) -> np.array:
     >>> fdiff_coef(0.5, 4)
     array([ 1.    , -0.5   , -0.125 , -0.0625])
     """
-    s = np.tile([1.0, -1.0], -(-window // 2))[:window]
-    return s * binom(d, np.arange(window))
+    return (-1) ** np.arange(window) * binom(d, np.arange(window))
 
 
 def fdiff(
