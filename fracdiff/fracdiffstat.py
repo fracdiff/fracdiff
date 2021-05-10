@@ -6,8 +6,9 @@ from sklearn.base import TransformerMixin
 from sklearn.utils.validation import check_array
 from sklearn.utils.validation import check_is_fitted
 
-from fracdiff import Fracdiff
-from fracdiff.stat import StatTester
+from .base import fdiff
+from .fracdiff import Fracdiff
+from .stat import StatTester
 
 
 class FracdiffStat(TransformerMixin, BaseEstimator):
@@ -157,22 +158,18 @@ class FracdiffStat(TransformerMixin, BaseEstimator):
     def _is_stat(self, x) -> bool:
         return StatTester(method=self.stattest).is_stat(x, pvalue=self.pvalue)
 
-    def _find_features_d(self, X) -> numpy.array:
-        n_features = X.shape[1]
+    def _find_features_d(self, X) -> numpy.ndarray:
+        features = (X[:, i] for i in range(X.shape[1]))
+
         if self.n_jobs is not None and self.n_jobs != 1:
-            max_workers = self.n_jobs
-
-            # use all cpus
-            if self.n_jobs == -1:
-                max_workers = None
-
+            # If n_jobs == -1, use all CPUs
+            max_workers = self.n_jobs if self.n_jobs != -1 else None
             with ProcessPoolExecutor(max_workers=max_workers) as exec:
-                features = [X[:, i] for i in range(n_features)]
-                d_ = list(exec.map(self._find_d, features))
+                d_ = exec.map(self._find_d, features)
         else:
-            d_ = [self._find_d(X[:, i]) for i in range(n_features)]
+            d_ = map(self._find_d, features)
 
-        return numpy.array(d_)
+        return numpy.array(list(d_))
 
     def _find_d(self, x) -> float:
         """
@@ -189,8 +186,7 @@ class FracdiffStat(TransformerMixin, BaseEstimator):
         """
 
         def diff(d):
-            fracdiff = Fracdiff(d, window=self.window, mode=self.mode)
-            return fracdiff.fit_transform(x.reshape(-1, 1)).reshape(-1)
+            return fdiff(x, d, window=self.window, mode=self.mode)
 
         if not self._is_stat(diff(self.upper)):
             return numpy.nan
