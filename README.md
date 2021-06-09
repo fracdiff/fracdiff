@@ -148,6 +148,14 @@ Other examples are provided [here](sample/examples/examples.ipynb).
 
 Example solutions of exercises in Section 5 of "Advances in Financial Machine Learning" are provided [here](sample/exercise/exercise.ipynb).
 
+## Contributing
+
+Any contributions are more than welcome.
+
+The maintainer (simaki) is not making further enhancements and appreciates pull requests to make them.
+See [Issue](https://github.com/fracdiff/fracdiff/issues) for proposed features.
+Please take a look at [CONTRIBUTING.md](.github/CONTRIBUTING.md) before creating a pull request.
+
 ## References
 
 - [Marcos Lopez de Prado, "Advances in Financial Machine Learning", Wiley, (2018).][prado]
