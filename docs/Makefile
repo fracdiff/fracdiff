@@ -20,10 +20,6 @@ help:
 %: Makefile
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
-.PHONY: install
-install:
-	@pip install -r requirements.txt
-
 .PHONY: clean
 clean:
 	@echo "Removing everything under 'build' and 'source/generated'.."

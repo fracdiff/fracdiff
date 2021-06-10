@@ -22,7 +22,7 @@ jobs:
 
     - run: cd docs
 
-    - run: make install
+    - run: pip install -r requirements.txt
 
     - run: make html
 
