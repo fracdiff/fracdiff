@@ -1,13 +1,16 @@
 name: Doc
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
 
   doc:
 
-    name: Test
+    name: Doc
 
     runs-on: ubuntu-latest
 
