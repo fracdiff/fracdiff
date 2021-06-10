@@ -32,7 +32,7 @@ class Fracdiff(TransformerMixin):
             Every term in the output is evaluated using `window_` observations.
             In other words, a fracdiff operator, which is a polynominal of a backshift
             operator, is truncated up to the `window_`-th term.
-            The beginning `window_ - 1` elements in output are filled with `numpy.nan`.
+            The beginning `window_` - 1 elements in output are filled with `numpy.nan`.
         "expanding" (not available) :
             Expanding window method.
             Every term in fracdiff time-series is evaluated using at least `window_`
