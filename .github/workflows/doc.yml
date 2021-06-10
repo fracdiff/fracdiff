@@ -1,0 +1,30 @@
+name: Doc
+
+on:
+  workflow_dispatch:
+
+jobs:
+
+  doc:
+
+    name: Test
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - uses: actions/checkout@v2
+
+    - uses: actions/setup-python@v2
+
+    - run: cd docs
+
+    - run: make install
+
+    - run: make html
+
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./build
