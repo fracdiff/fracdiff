@@ -7,7 +7,7 @@
 [![dl](https://img.shields.io/pypi/dm/fracdiff)](https://pypi.org/project/fracdiff)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-[Documentation](https://simaki.github.io/fracdiff/)
+[Documentation](https://fracdiff.github.io/fracdiff/)
 
 ***Fracdiff*** performs fractional differentiation of time-series,
 a la "Advances in Financial Machine Learning" by M. Prado.
@@ -147,6 +147,14 @@ The result for Nikkei 225 index historical price looks like this:
 Other examples are provided [here](sample/examples/examples.ipynb).
 
 Example solutions of exercises in Section 5 of "Advances in Financial Machine Learning" are provided [here](sample/exercise/exercise.ipynb).
+
+## Contributing
+
+Any contributions are more than welcome.
+
+The maintainer (simaki) is not making further enhancements and appreciates pull requests to make them.
+See [Issue](https://github.com/fracdiff/fracdiff/issues) for proposed features.
+Please take a look at [CONTRIBUTING.md](.github/CONTRIBUTING.md) before creating a pull request.
 
 ## References
 
