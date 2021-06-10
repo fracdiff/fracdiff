@@ -1,0 +1,9 @@
+matplotlib
+numpy
+pandas
+pandas_datareader
+scipy
+seabon
+statsmodels
+black-nb
+papermill
