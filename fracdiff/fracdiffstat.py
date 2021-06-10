@@ -27,21 +27,21 @@ class FracdiffStat(TransformerMixin, BaseEstimator):
             At the beginning of a transformed array, boundary effects may be seen.
         "valid" :
             Return elements where all coefficients are used.
-            Output size along axis 1 is `n_features - window_`.
+            Output size along axis 1 is `n_features - window`.
             At the beginning of a time-series, boundary effects is not seen.
     window_policy : {"fixed"}, default "fixed"
         If "fixed" :
             Fixed window method.
-            Every term in the output is evaluated using `window_` observations.
+            Every term in the output is evaluated using `window` observations.
             In other words, a fracdiff operator, which is a polynominal of a backshift
-            operator, is truncated up to the `window_`-th term.
-            The beginning `window_ - 1` elements in output are filled with
+            operator, is truncated up to the `window`-th term.
+            The beginning `window - 1` elements in output are filled with
             ``numpy.nan``.
         If "expanding" (not available) :
             Expanding window method.
-            Every term in fracdiff time-series is evaluated using at least `window_`
+            Every term in fracdiff time-series is evaluated using at least `window`
             observations.
-            The beginning `window_ - 1` elements in output are filled with
+            The beginning `window - 1` elements in output are filled with
             ``numpy.nan``.
     stattest : {"ADF"}, default "ADF"
         Method of stationarity test.
@@ -133,7 +133,7 @@ class FracdiffStat(TransformerMixin, BaseEstimator):
         ----------
         X : array_like, shape (n_samples, n_series)
             Time-series to perform fractional differentiation.
-            Raises ValueError if `n_samples < self.window_`.
+            Raises ValueError if `n_samples < self.window`.
         y : array_like, optional
             Ignored.
 
