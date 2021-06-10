@@ -62,7 +62,9 @@ The following tables of execution times (in unit of ms) show that *Fracdiff* can
 
 (Run on Macbook Air 2018, 1.6 GHz Dual-Core Intel Core i5, 16 GB 2133 MHz LPDDR3)
 
-## How to use [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/fracdiff/fracdiff/blob/main/examples/example_howto.ipynb)
+## How to use 
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/fracdiff/fracdiff/blob/main/examples/example_howto.ipynb)
 
 ### Fractional differentiation
 
@@ -144,9 +146,13 @@ The result for Nikkei 225 index historical price looks like this:
 
 ![nky](./examples/fig/nky.png)
 
-Other examples are provided [here](sample/examples/examples.ipynb).
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/fracdiff/fracdiff/blob/main/examples/example_prado.ipynb)
 
-Example solutions of exercises in Section 5 of "Advances in Financial Machine Learning" are provided [here](sample/exercise/exercise.ipynb).
+Other examples are provided [here](examples/example_prado.ipynb).
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/fracdiff/fracdiff/blob/main/examples/example_exercise.ipynb)
+
+Example solutions of exercises in Section 5 of "Advances in Financial Machine Learning" are provided [here](examples/example_exercise.ipynb).
 
 ## Contributing
 
