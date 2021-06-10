@@ -1,4 +1,4 @@
-Fracdiff documentation
+Fracdiff Documentation
 ======================
 
 .. contents:: fracdiff
