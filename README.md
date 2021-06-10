@@ -14,7 +14,7 @@ a la "Advances in Financial Machine Learning" by M. Prado.
 Fractional differentiation processes time-series to a stationary one while preserving memory in the original time-series.
 Fracdiff features super-fast computation and scikit-learn compatible API.
 
-![spx](./examples/howto/spx.png)
+![spx](./examples/fig/spx.png)
 
 ## What is fractional differentiation?
 
@@ -62,7 +62,9 @@ The following tables of execution times (in unit of ms) show that *Fracdiff* can
 
 (Run on Macbook Air 2018, 1.6 GHz Dual-Core Intel Core i5, 16 GB 2133 MHz LPDDR3)
 
-## How to use [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/fracdiff/fracdiff/blob/master/sample/howto/howto.ipynb)
+## How to use 
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/fracdiff/fracdiff/blob/main/examples/example_howto.ipynb)
 
 ### Fractional differentiation
 
@@ -103,7 +105,7 @@ X = f.fit_transform(X)
 
 For example, 0.5th differentiation of S&P 500 historical price looks like this:
 
-![spx](./examples/howto/spx.png)
+![spx](./examples/fig/spx.png)
 
 `Fracdiff` is compatible with scikit-learn API.
 One can imcorporate it into a pipeline.
@@ -142,11 +144,15 @@ f.d_
 
 The result for Nikkei 225 index historical price looks like this:
 
-![nky](./examples/howto/nky.png)
+![nky](./examples/fig/nky.png)
 
-Other examples are provided [here](sample/examples/examples.ipynb).
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/fracdiff/fracdiff/blob/main/examples/example_prado.ipynb)
 
-Example solutions of exercises in Section 5 of "Advances in Financial Machine Learning" are provided [here](sample/exercise/exercise.ipynb).
+Other examples are provided [here](examples/example_prado.ipynb).
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/fracdiff/fracdiff/blob/main/examples/example_exercise.ipynb)
+
+Example solutions of exercises in Section 5 of "Advances in Financial Machine Learning" are provided [here](examples/example_exercise.ipynb).
 
 ## Contributing
 
