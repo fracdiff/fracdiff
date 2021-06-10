@@ -1,0 +1,444 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fracdiff Documentation &#8212; fracdiff  documentation</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+<a class="navbar-brand" href="#">
+<p class="title">fracdiff</p>
+</a>
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fdiff">
+   fdiff
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Fracdiff
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fracdiffstat">
+   FracdiffStat
+  </a>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <div class="section" id="fracdiff-documentation">
+<h1>Fracdiff Documentation<a class="headerlink" href="#fracdiff-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="fracdiff">
+<p class="topic-title">fracdiff</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#fdiff" id="id2">fdiff</a></p></li>
+<li><p><a class="reference internal" href="#id1" id="id3">Fracdiff</a></p></li>
+<li><p><a class="reference internal" href="#fracdiffstat" id="id4">FracdiffStat</a></p></li>
+</ul>
+</div>
+<div class="section" id="fdiff">
+<h2><a class="toc-backref" href="#fracdiff">fdiff</a><a class="headerlink" href="#fdiff" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="fracdiff.fdiff">
+<span class="sig-prename descclassname"><span class="pre">fracdiff.</span></span><span class="sig-name descname"><span class="pre">fdiff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">a</span></em>, <em class="sig-param"><span class="pre">n=1.0</span></em>, <em class="sig-param"><span class="pre">axis=-1</span></em>, <em class="sig-param"><span class="pre">prepend=&lt;no</span> <span class="pre">value&gt;</span></em>, <em class="sig-param"><span class="pre">append=&lt;no</span> <span class="pre">value&gt;</span></em>, <em class="sig-param"><span class="pre">window=10</span></em>, <em class="sig-param"><span class="pre">mode='full'</span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">numpy.array</span><a class="reference internal" href="_modules/fracdiff/base.html#fdiff"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fracdiff.fdiff" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the <cite>n</cite>-th differentiation along the given axis.</p>
+<p>Extention of <code class="docutils literal notranslate"><span class="pre">numpy.diff</span></code> to fractional differentiation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a</strong> (<em>array_like</em>) – Input array.</p></li>
+<li><p><strong>n</strong> (<em>float</em><em>, </em><em>default=1.0</em>) – The order of differentiation.
+For integer <cite>n</cite>, it returns the same output with <code class="docutils literal notranslate"><span class="pre">numpy.diff</span></code>.</p></li>
+<li><p><strong>axis</strong> (<em>int</em><em>, </em><em>default=-1</em>) – The axis along which the difference is taken, default is the last axis.</p></li>
+<li><p><strong>prepend</strong> (<em>array_like</em><em>, </em><em>optional</em>) – Values to prepend or append to <cite>a</cite> along axis prior to performing
+the difference.
+Scalar values are expanded to arrays with length 1 in the direction of axis and
+the shape of the input array in along all other axes.
+Otherwise the dimension and shape must match <cite>a</cite> except along axis.</p></li>
+<li><p><strong>append</strong> (<em>array_like</em><em>, </em><em>optional</em>) – Values to prepend or append to <cite>a</cite> along axis prior to performing
+the difference.
+Scalar values are expanded to arrays with length 1 in the direction of axis and
+the shape of the input array in along all other axes.
+Otherwise the dimension and shape must match <cite>a</cite> except along axis.</p></li>
+<li><p><strong>window</strong> (<em>int</em><em>, </em><em>default=10</em>) – Number of observations to compute each element in the output.</p></li>
+<li><p><strong>mode</strong> (<em>{&quot;full&quot;</em><em>, </em><em>&quot;valid&quot;}</em><em>, </em><em>default=&quot;full&quot;</em>) – <dl class="simple">
+<dt>“full” (default) :</dt><dd><p>Return elements where at least one coefficient is used.
+Output size along <cite>axis</cite> is <cite>M</cite> where <cite>M</cite> is the length of <cite>a</cite>
+(plus the lengths of append and prepend if these are given).
+At the beginning of a time-series, boundary effects may be seen.</p>
+</dd>
+<dt>”valid” :</dt><dd><p>Return elements where all coefficients are used.
+Output size along <cite>axis</cite> is <cite>M - window</cite> where <cite>M</cite> is the length of
+<cite>a</cite> (plus the lengths of append and prepend if these are given).
+At the beginning of a time-series, boundary effects is not seen.</p>
+</dd>
+</dl>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>fdiff</strong> – The fractional differentiation.
+The shape of the output is the same as <cite>a</cite> except along <cite>axis</cite>.
+The dimension is <cite>a.shape[axis] - window + d1 + d2</cite> with
+<cite>d1</cite> and <cite>d2</cite> being the dimension of <code class="docutils literal notranslate"><span class="pre">prepend</span></code> and <code class="docutils literal notranslate"><span class="pre">append</span></code>, respectively.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy.array</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>This returns the same result with <code class="docutils literal notranslate"><span class="pre">numpy.diff</span></code> for integer <cite>n</cite>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">==</span> <span class="n">fdiff</span><span class="p">(</span><span class="n">a</span><span class="p">))</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="n">fdiff</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>This returns fractional differentiation for noninteger <cite>n</cite>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fdiff</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">array([ 1.   ,  1.5  ,  2.875,  4.75 , -4.   ])</span>
+</pre></div>
+</div>
+<p>Mode “valid” returns elements for which all coefficients are convoluted.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fdiff</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;valid&quot;</span><span class="p">)</span>
+<span class="go">array([ 2.875,  4.75 , -4.   ])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fdiff</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;valid&quot;</span><span class="p">,</span> <span class="n">prepend</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="go">array([ 0.375,  1.375,  2.875,  4.75 , -4.   ])</span>
+</pre></div>
+</div>
+<p>Differentiation along desired axis.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span>  <span class="mi">1</span><span class="p">,</span>  <span class="mi">3</span><span class="p">,</span>  <span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span>
+<span class="gp">... </span>              <span class="p">[</span>  <span class="mi">0</span><span class="p">,</span>  <span class="mi">5</span><span class="p">,</span>  <span class="mi">6</span><span class="p">,</span>  <span class="mi">8</span><span class="p">,</span> <span class="mi">11</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fdiff</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">array([[1.   , 2.5  , 4.375, 6.625, 9.25 ],</span>
+<span class="go">       [0.   , 5.   , 3.5  , 4.375, 6.25 ]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fdiff</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="go">array([[ 1. ,  3. ,  6. , 10. , 15. ],</span>
+<span class="go">       [-0.5,  3.5,  3. ,  3. ,  3.5]])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="id1">
+<h2><a class="toc-backref" href="#fracdiff">Fracdiff</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="fracdiff.Fracdiff">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">fracdiff.</span></span><span class="sig-name descname"><span class="pre">Fracdiff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'full'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_policy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'fixed'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fracdiff/fracdiff.html#Fracdiff"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fracdiff.Fracdiff" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fractional differentiation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>d</strong> (<em>float</em><em>, </em><em>default 1.0</em>) – The order of differentiation.</p></li>
+<li><p><strong>window</strong> (<em>int &gt; 0</em><em> or </em><em>None</em><em>, </em><em>default 10</em>) – Number of observations to compute each element in the output.</p></li>
+<li><p><strong>mode</strong> (<em>{&quot;full&quot;</em><em>, </em><em>&quot;valid&quot;}</em><em>, </em><em>default &quot;full&quot;</em>) – <dl class="simple">
+<dt>“full” (default) :</dt><dd><p>Return elements where at least one coefficient is used.
+Shape of a transformed array is the same with the original array.
+At the beginning of a transformed array, boundary effects may be seen.</p>
+</dd>
+<dt>”valid” :</dt><dd><p>Return elements where all coefficients are used.
+Output size along axis 1 is <cite>n_features - window</cite>.
+At the beginning of a time-series, boundary effects is not seen.</p>
+</dd>
+</dl>
+</p></li>
+<li><p><strong>window_policy</strong> (<em>{&quot;fixed&quot;}</em><em>, </em><em>default &quot;fixed&quot;</em>) – <dl class="simple">
+<dt>“fixed” (default) :</dt><dd><p>Fixed window method.
+Every term in the output is evaluated using <cite>window</cite> observations.
+In other words, a fracdiff operator, which is a polynominal of a backshift
+operator, is truncated up to the <cite>window</cite>-th term.
+The beginning window_ - 1 elements in output are filled with <cite>numpy.nan</cite>.</p>
+</dd>
+<dt>”expanding” (not available) :</dt><dd><p>Expanding window method.
+Every term in fracdiff time-series is evaluated using at least <cite>window</cite>
+observations.
+The beginning <cite>window - 1</cite> elements in output are filled with <cite>numpy.nan</cite>.</p>
+</dd>
+</dl>
+</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fracdiff.Fracdiff.coef_">
+<span class="sig-name descname"><span class="pre">coef_</span></span><a class="headerlink" href="#fracdiff.Fracdiff.coef_" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sequence of coefficients in the fracdiff operator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.array, shape (window,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fracdiff</span> <span class="o">=</span> <span class="n">Fracdiff</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fracdiff</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="go">array([[0.   , 1.   ],</span>
+<span class="go">       [2.   , 2.5  ],</span>
+<span class="go">       [3.   , 3.375],</span>
+<span class="go">       [3.75 , 4.125],</span>
+<span class="go">       [4.5  , 4.875]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fracdiff</span><span class="o">.</span><span class="n">coef_</span>
+<span class="go">array([ 1.   , -0.5  , -0.125])</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fracdiff</span> <span class="o">=</span> <span class="n">Fracdiff</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;valid&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fracdiff</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="go">array([[3.   , 3.375],</span>
+<span class="go">       [3.75 , 4.125],</span>
+<span class="go">       [4.5  , 4.875]])</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fracdiff</span> <span class="o">=</span> <span class="n">Fracdiff</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fracdiff</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="go">array([[ 1.    ],</span>
+<span class="go">       [-0.5   ],</span>
+<span class="go">       [-0.125 ],</span>
+<span class="go">       [-0.0625]])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="fracdiffstat">
+<h2><a class="toc-backref" href="#fracdiff">FracdiffStat</a><a class="headerlink" href="#fracdiffstat" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="fracdiff.FracdiffStat">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">fracdiff.</span></span><span class="sig-name descname"><span class="pre">FracdiffStat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">window</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'full'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_policy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'fixed'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stattest</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ADF'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pvalue</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">precision</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upper</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/fracdiff/fracdiffstat.html#FracdiffStat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fracdiff.FracdiffStat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Carry out fractional derivative with the minumum order
+with which the differentiation becomes stationary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>window</strong> (<em>int &gt; 0</em><em> or </em><em>None</em><em>, </em><em>default 10</em>) – Number of observations to compute each element in the output.</p></li>
+<li><p><strong>mode</strong> (<em>{&quot;full&quot;</em><em>, </em><em>&quot;valid&quot;}</em><em>, </em><em>default &quot;full&quot;</em>) – <dl class="simple">
+<dt>“full” (default) :</dt><dd><p>Return elements where at least one coefficient is used.
+Shape of a transformed array is the same with the original array.
+At the beginning of a transformed array, boundary effects may be seen.</p>
+</dd>
+<dt>”valid” :</dt><dd><p>Return elements where all coefficients are used.
+Output size along axis 1 is <cite>n_features - window</cite>.
+At the beginning of a time-series, boundary effects is not seen.</p>
+</dd>
+</dl>
+</p></li>
+<li><p><strong>window_policy</strong> (<em>{&quot;fixed&quot;}</em><em>, </em><em>default &quot;fixed&quot;</em>) – <dl class="simple">
+<dt>If “fixed” :</dt><dd><p>Fixed window method.
+Every term in the output is evaluated using <cite>window</cite> observations.
+In other words, a fracdiff operator, which is a polynominal of a backshift
+operator, is truncated up to the <cite>window</cite>-th term.
+The beginning <cite>window - 1</cite> elements in output are filled with
+<code class="docutils literal notranslate"><span class="pre">numpy.nan</span></code>.</p>
+</dd>
+<dt>If “expanding” (not available) :</dt><dd><p>Expanding window method.
+Every term in fracdiff time-series is evaluated using at least <cite>window</cite>
+observations.
+The beginning <cite>window - 1</cite> elements in output are filled with
+<code class="docutils literal notranslate"><span class="pre">numpy.nan</span></code>.</p>
+</dd>
+</dl>
+</p></li>
+<li><p><strong>stattest</strong> (<em>{&quot;ADF&quot;}</em><em>, </em><em>default &quot;ADF&quot;</em>) – Method of stationarity test.</p></li>
+<li><p><strong>pvalue</strong> (<em>float</em><em>, </em><em>default 0.05</em>) – Threshold of p-value to judge stationarity.</p></li>
+<li><p><strong>precision</strong> (<em>float</em><em>, </em><em>default .01</em>) – Precision for the order of differentiation.</p></li>
+<li><p><strong>upper</strong> (<em>float</em><em>, </em><em>default 1.0</em>) – Upper limit of the range to search the order.</p></li>
+<li><p><strong>lower</strong> (<em>float</em><em>, </em><em>default 0.0</em>) – Lower limit of the range to search the order.</p></li>
+<li><p><strong>n_jobs</strong> (<em>int</em><em>, </em><em>default None</em>) – The number of jobs to run <cite>fit</cite> in parallel. -1 means using all processors</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="fracdiff.FracdiffStat.d_">
+<span class="sig-name descname"><span class="pre">d_</span></span><a class="headerlink" href="#fracdiff.FracdiffStat.d_" title="Permalink to this definition">¶</a></dt>
+<dd><p>Minimum order of fractional differentiation
+that makes time-series stationary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>numpy.array, shape (n_features,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If <cite>upper`th differentiation of series is still non-stationary,
+order_ is set to ``numpy.nan`</cite>.
+If <cite>lower`th differentiation of series is already stationary,
+order_ is set to `lower</cite>, but the true value may be smaller.</p>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">numpy</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="n">FracdiffStat</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">d_</span>
+<span class="go">array([0.140625 , 0.5078125, 0.3984375, 0.140625 ])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+              </div>
+              
+              
+              <div class='prev-next-bottom'>
+                
+
+              </div>
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  <footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright 2021, Shota Imaki.<br/>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.0.2.<br/>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>
