@@ -20,14 +20,12 @@ jobs:
 
     - uses: actions/setup-python@v2
 
-    - run: cd docs
+    - run: pip install -r docs/requirements.txt
 
-    - run: pip install -r requirements.txt
-
-    - run: make html
+    - run: cd docs && make html
 
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./build
+        publish_dir: ./docs/build
