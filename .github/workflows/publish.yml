@@ -15,22 +15,13 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        python-version: ['3.9']
-
     steps:
 
-    - name: Checkout
-      uses: actions/checkout@v2
+    - uses: actions/checkout@v2
 
-    - name: Setup Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v2
-      with:
-        python-version: ${{ matrix.python-version }}
+    - uses: actions/setup-python@v2
 
-    - name: Install poetry
-      run: pip install poetry
+    - run: pip install poetry
 
     - name: Publish
       run: poetry publish --build --username ${PYPI_USER_NAME} --password ${{ secrets.PYPI_PASSWORD }}
