@@ -21,8 +21,7 @@ jobs:
 
     - uses: actions/setup-python@v2
 
-    - name: Install poetry
-      run: pip install poetry
+    - run: pip install poetry
 
     - name: Bump version
       run: git branch --show-current | sed 's|release/||' | xargs poetry version | { printf '::set-output name=PR_TITLE::'; cat; }
