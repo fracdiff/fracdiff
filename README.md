@@ -146,9 +146,11 @@ The result for Nikkei 225 index historical price looks like this:
 
 ![nky](./examples/fig/nky.png)
 
+### More Examples
+
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/fracdiff/fracdiff/blob/main/examples/example_prado.ipynb)
 
-Other examples are provided [here](examples/example_prado.ipynb).
+More examples are provided [here](examples/example_prado.ipynb).
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/fracdiff/fracdiff/blob/main/examples/example_exercise.ipynb)
 
