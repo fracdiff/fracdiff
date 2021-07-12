@@ -1,3 +1,5 @@
+:github_url: https://github.com/fracdiff/fracdiff
+
 Fracdiff Documentation
 ======================
 
@@ -22,3 +24,9 @@ FracdiffStat
 ------------
 
 .. autoclass:: FracdiffStat
+
+.. toctree::
+   :caption: Development
+   :hidden:
+
+   GitHub <https://github.com/fracdiff/fracdiff>
