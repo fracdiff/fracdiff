@@ -24,3 +24,9 @@ FracdiffStat
 ------------
 
 .. autoclass:: FracdiffStat
+
+.. toctree::
+   :caption: Development
+   :hidden:
+
+   GitHub <https://github.com/fracdiff/fracdiff>
