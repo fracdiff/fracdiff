@@ -4,7 +4,7 @@ import numpy as np
 from scipy.special import binom
 
 
-def fdiff_coef(d, window) -> np.array:
+def fdiff_coef(d, window) -> np.ndarray:
     """
     Returns sequence of coefficients in fracdiff operator.
 
@@ -22,12 +22,12 @@ def fdiff_coef(d, window) -> np.array:
 
     Examples
     --------
+    >>> fdiff_coef(0.5, 4)
+    array([ 1.    , -0.5   , -0.125 , -0.0625])
     >>> fdiff_coef(1.0, 4)
     array([ 1., -1.,  0., -0.])
     >>> fdiff_coef(1.5, 4)
     array([ 1.    , -1.5   ,  0.375 ,  0.0625])
-    >>> fdiff_coef(0.5, 4)
-    array([ 1.    , -0.5   , -0.125 , -0.0625])
     """
     return (-1) ** np.arange(window) * binom(d, np.arange(window))
 
