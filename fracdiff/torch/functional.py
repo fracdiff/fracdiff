@@ -1,27 +1,13 @@
 from math import prod
 from typing import Optional
 
-import numpy as np
-
-try:
-    import torch
-    import torch.nn.functional as fn
-    from torch import Tensor
-
-    PYTORCH_IS_IMPORTED = True
-except ImportError:
-    # TODO(simaki): Lazily raise ImportError
-    Tensor = object  # For typing
-    PYTORCH_IS_IMPORTED = False
+import torch
+from torch import Tensor
 
 from .. import base
 
 
-def is_floattype(dtype: torch.dtype):
-    return dtype in (torch.float16, torch.float32, torch.float64)
-
-
-def fdiff_coef(d: float, window: int) -> Tensor:
+def fdiff_coef(d: float, window: int) -> torch.Tensor:
     """Returns sequence of coefficients in fracdiff operator.
 
     Args:
@@ -56,7 +42,8 @@ def fdiff(
     window: int = 10,
     mode: str = "same",
 ):
-    """Return the `d`-th differentiation along the given axis.
+    """Return the `n`-th differentiation along the given dimension.
+
     This is an extension of `torch.diff` to a fractional order.
 
     See :class:`fracdiff.torch.Fracdiff`.
@@ -67,6 +54,8 @@ def fdiff(
         - output: :math:`(N, *, L_{\\mathrm{out}})`, where :math:`L_{\\mathrm{out}}`
           is given by :math:`L_{\\mathrm{in}}` if `mode="same"` and
           :math:`L_{\\mathrm{in}} - \\mathrm{window} - 1` if `mode="valid"`.
+          If `prepend` and/or `append` are provided, then :math:`L_{\\mathrm{out}}`
+          increases by the number of elements in each of these tensors.
 
     Examples:
 
@@ -86,34 +75,18 @@ def fdiff(
         tensor([[0.0000, 1.0000, 1.5000, 1.8750, 2.1875],
                 [5.0000, 3.5000, 3.3750, 3.4375, 3.5547]])
     """
-    if not PYTORCH_IS_IMPORTED:
-        raise ImportError("`fracdiff.torch.fdiff` needs `torch` to be installed.")
-
     if dim != -1:
         # TODO(simaki): Implement dim != -1. PR welcomed!
         raise ValueError("Only supports dim == -1.")
 
-    if not is_floattype(input.dtype):
+    print(torch.float16, type(torch.float16))
+    if input.dtype not in (torch.float16, torch.float32, torch.float64):
         input = input.to(torch.get_default_dtype())
-
-    # Return `np.diff(...)` if d is integer
-    if isinstance(n, int) or n.is_integer():
-        if prepend is not None:
-            prepend_size = input.size()[:-1] + (-1,)
-            while prepend.ndim < input.ndim:
-                prepend = prepend.unsqueeze(0)
-            prepend = prepend.expand(prepend_size)
-        if append is not None:
-            append_size = input.size()[:-1] + (-1,)
-            while append.ndim < input.ndim:
-                append = append.unsqueeze(0)
-            append = append.expand(append_size)
-        return input.diff(int(n), dim=dim, prepend=prepend, append=append)
 
     combined = []
     if prepend is not None:
         prepend = torch.as_tensor(prepend).to(input)
-        if prepend.ndim == 0:
+        if prepend.dim() == 0:
             size = list(input.size())
             size[dim] = 1
             prepend = prepend.broadcast_to(torch.Size(size))
@@ -123,7 +96,7 @@ def fdiff(
 
     if append is not None:
         append = torch.as_tensor(append).to(input)
-        if append.ndim == 0:
+        if append.dim() == 0:
             size = list(input.size())
             size[dim] = 1
             append = append.broadcast_to(torch.Size(size))
@@ -132,14 +105,23 @@ def fdiff(
     if len(combined) > 1:
         input = torch.cat(combined, dim)
 
+    if isinstance(n, int) or n.is_integer():
+        if n < 0:
+            raise ValueError("n must be non-negative.")
+        for _ in range(int(n)):
+            # TODO(simaki): Remove for statement once
+            # PyTorch supports `diff` with n > 1.
+            input = input.diff(int(n), dim=dim)
+        return input
+
     input_size = input.size()
     input = input.reshape(prod(input_size[:-1]), 1, input_size[-1])
-    input = fn.pad(input, (window - 1, 0))
+    input = torch.nn.functional.pad(input, (window - 1, 0))
 
     # TODO(simaki): PyTorch Implementation to create weight
     weight = fdiff_coef(n, window).to(input).reshape(1, 1, -1).flip(-1)
 
-    output = fn.conv1d(input, weight)
+    output = torch.nn.functional.conv1d(input, weight)
 
     if mode == "same":
         size = input_size[-1]

@@ -8,8 +8,7 @@ from fracdiff.base import fdiff_coef
 
 
 class Fracdiff(TransformerMixin):
-    """
-    Fractional differentiation.
+    """A scikit-learn transformer to compute fractional differentiation.
 
     Parameters
     ----------
@@ -46,6 +45,7 @@ class Fracdiff(TransformerMixin):
 
     Examples
     --------
+    >>> from fracdiff import Fracdiff
     >>> X = numpy.arange(10).reshape(5, 2)
     >>> fracdiff = Fracdiff(0.5, window=3)
     >>> fracdiff.fit_transform(X)

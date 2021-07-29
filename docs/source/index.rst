@@ -1,24 +1,60 @@
 Fracdiff Documentation
 ======================
 
-.. currentmodule:: .
+Compute fractional differentiation super-fast.
+
+Install
+-------
+
+.. code-block:: none
+
+    pip install fracdiff
 
 NumPy API
 ---------
 
-.. autofunction:: fracdiff.fdiff
+.. currentmodule:: fracdiff
+
+.. autosummary::
+    :toctree: generated
+    :nosignatures:
+
+    fdiff
 
 Scikit-learn API
 ----------------
 
-.. autoclass:: fracdiff.Fracdiff
-.. autoclass:: fracdiff.FracdiffStat
+.. currentmodule:: fracdiff
+
+.. autosummary::
+    :toctree: generated
+    :nosignatures:
+    :template: classtemplate.rst
+
+    Fracdiff
+    FracdiffStat
 
 PyTorch API
 -----------
 
-.. autofunction:: fracdiff.torch.fdiff
-.. autoclass:: fracdiff.torch.Fracdiff
+.. currentmodule:: fracdiff
+
+Functional:
+
+.. autosummary::
+    :toctree: generated
+    :nosignatures:
+
+    torch.fdiff
+
+Module:
+
+.. autosummary::
+    :toctree: generated
+    :nosignatures:
+    :template: classtemplate.rst
+
+    torch.Fracdiff
 
 .. toctree::
    :caption: Development

@@ -79,6 +79,7 @@ def fdiff(
     --------
     This returns the same result with ``numpy.diff`` for integer `n`.
 
+    >>> from fracdiff import fdiff
     >>> a = np.array([1, 2, 4, 7, 0])
     >>> (np.diff(a) == fdiff(a)).all()
     True
@@ -108,12 +109,9 @@ def fdiff(
     array([[ 1. ,  3. ,  6. , 10. , 15. ],
            [-0.5,  3.5,  3. ,  3. ,  3.5]])
     """
-    # Return `np.diff(...)` if n is integer
     if isinstance(n, int) or n.is_integer():
         return np.diff(a, n=int(n), axis=axis, prepend=prepend, append=append)
 
-    # if n < 0:
-    #     raise ValueError("order must be non-negative but got {}".format(n))
     if a.ndim == 0:
         raise ValueError("diff requires input that is at least one dimensional")
 

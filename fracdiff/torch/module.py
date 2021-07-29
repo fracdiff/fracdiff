@@ -4,7 +4,7 @@ import torch
 from torch import Tensor
 from torch.nn import Module
 
-from .functional import fdiff
+from . import functional
 
 
 class Fracdiff(Module):
@@ -71,7 +71,20 @@ class Fracdiff(Module):
         prepend: Optional[Tensor] = None,
         append: Optional[Tensor] = None,
     ) -> Tensor:
-        return fdiff(
+        """Apply fractional differentiation.
+
+        Args:
+            input (torch.Tensor): The input tensor.
+            prepend (torch.Tensor, optional): The tensor to prepend
+                to `input` along `self.dim` before computing the differentiation.
+                Their dimensions must be equivalent to that of `input`,
+                and their shapes must match `input`'s shape except on `dim`.
+            append (torch.Tensor, optional): The tensor to append.
+
+        Returns:
+            torch.Tensor
+        """
+        return functional.fdiff(
             input,
             self.d,
             dim=self.dim,

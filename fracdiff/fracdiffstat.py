@@ -12,9 +12,8 @@ from .stat import StatTester
 
 
 class FracdiffStat(TransformerMixin, BaseEstimator):
-    """
-    Carry out fractional derivative with the minumum order
-    with which the differentiation becomes stationary.
+    """A scikit-learn transformer to compute fractional differentiation,
+    where the order is chosen as the minumum order that makes fracdiff stationary.
 
     Parameters
     ----------
@@ -71,6 +70,7 @@ class FracdiffStat(TransformerMixin, BaseEstimator):
 
     Examples
     --------
+    >>> from fracdiff import FracdiffStat
     >>> numpy.random.seed(42)
     >>> X = numpy.random.randn(100, 4).cumsum(0)
     >>> f = FracdiffStat().fit(X)
