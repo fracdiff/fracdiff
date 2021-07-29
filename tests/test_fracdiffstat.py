@@ -22,7 +22,7 @@ class TestFracdiffStat:
     @pytest.mark.parametrize("n_jobs", [None, -1])
     def test_order(self, window, mode, precision, n_jobs):
         np.random.seed(42)
-        X = np.random.randn(1000, 10).cumsum(0)
+        X = np.random.randn(100, 2).cumsum(0)
 
         fs = FracdiffStat(mode=mode, window=window, precision=precision, n_jobs=n_jobs)
         fs.fit(X)
@@ -74,7 +74,7 @@ class TestFracdiffStat:
         for array with n_features > 1.
         """
         np.random.seed(42)
-        X = np.random.randn(100, 10).cumsum(0)
+        X = np.random.randn(100, 2).cumsum(0)
 
         fs = FracdiffStat(
             window=window, mode=mode, precision=precision, n_jobs=n_jobs

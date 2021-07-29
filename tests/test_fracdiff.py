@@ -21,7 +21,7 @@ class TestFracdiff:
     @pytest.mark.parametrize("mode", ["full", "valid"])
     def test_transform(self, d, window, mode):
         np.random.seed(42)
-        X = np.random.randn(100, 200)
+        X = np.random.randn(50, 100)
         fracdiff = Fracdiff(d=d, window=window, mode=mode)
         out = fdiff(X, n=d, axis=0, window=window, mode=mode)
         assert_array_equal(fracdiff.fit_transform(X), out)

@@ -40,7 +40,7 @@ class TestFdiff:
         f = np.array([math.factorial(ii) for ii in i])
         return s * p / f
 
-    @pytest.mark.parametrize("n", np.linspace(0.0, 3.0, 10))
+    @pytest.mark.parametrize("n", [0.0, 0.1, 0.5, 1.0, 2.0])
     @pytest.mark.parametrize("window", [1, 2, 10])
     def test_coef(self, n, window):
         out = self._coef(n, window)
