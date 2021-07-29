@@ -1,4 +1,3 @@
-from math import prod
 from typing import Optional
 
 import torch
@@ -79,7 +78,6 @@ def fdiff(
         # TODO(simaki): Implement dim != -1. PR welcomed!
         raise ValueError("Only supports dim == -1.")
 
-    print(torch.float16, type(torch.float16))
     if input.dtype not in (torch.float16, torch.float32, torch.float64):
         input = input.to(torch.get_default_dtype())
 
@@ -115,7 +113,7 @@ def fdiff(
         return input
 
     input_size = input.size()
-    input = input.reshape(prod(input_size[:-1]), 1, input_size[-1])
+    input = input.reshape(input[..., 0].numel(), 1, input_size[-1])
     input = torch.nn.functional.pad(input, (window - 1, 0))
 
     # TODO(simaki): PyTorch Implementation to create weight
