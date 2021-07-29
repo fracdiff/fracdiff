@@ -30,11 +30,11 @@ $ pip install fracdiff
 
 ### Functionalities
 
-- [`fdiff`](https://fracdiff.github.io/fracdiff/#fdiff): A function that extends [`numpy.diff`](https://numpy.org/doc/stable/reference/generated/numpy.diff.html) to fractional differentiation.
-- [`Fracdiff`](https://fracdiff.github.io/fracdiff/#id1): A scikit-learn [transformer](https://scikit-learn.org/stable/modules/generated/sklearn.base.TransformerMixin.html) to compute fractional differentiation.
-- [`FracdiffStat`](https://fracdiff.github.io/fracdiff/#fracdiffstat): `Fracdiff` plus automatic choice of differentiation order that makes time-series stationary.
-- [`torch.fdiff`](https://fracdiff.github.io/fracdiff/): A functional that extends [`torch.diff`](https://pytorch.org/docs/stable/generated/torch.diff.html) to fractional differentiation.
-- [`torch.Fracdiff`](https://fracdiff.github.io/fracdiff/): A module that computes fractional differentiation.
+- [`fdiff`](https://fracdiff.github.io/fracdiff/generated/fracdiff.fdiff.html): A function that extends [`numpy.diff`](https://numpy.org/doc/stable/reference/generated/numpy.diff.html) to fractional differentiation.
+- [`Fracdiff`](https://fracdiff.github.io/fracdiff/generated/fracdiff.Fracdiff.html): A scikit-learn [transformer](https://scikit-learn.org/stable/modules/generated/sklearn.base.TransformerMixin.html) to compute fractional differentiation.
+- [`FracdiffStat`](https://fracdiff.github.io/fracdiff/generated/fracdiff.FracdiffStat.html): `Fracdiff` plus automatic choice of differentiation order that makes time-series stationary.
+- [`torch.fdiff`](https://fracdiff.github.io/fracdiff/generated/fracdiff.torch.fdiff.html): A functional that extends [`torch.diff`](https://pytorch.org/docs/stable/generated/torch.diff.html) to fractional differentiation.
+- [`torch.Fracdiff`](https://fracdiff.github.io/fracdiff/generated/fracdiff.torch.Fracdiff.html): A module that computes fractional differentiation.
 
 ### Speed
 
