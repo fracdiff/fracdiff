@@ -3,27 +3,55 @@
 Fracdiff Documentation
 ======================
 
-.. contents:: fracdiff
-    :depth: 2
-    :local:
-    :backlinks: top
+Compute fractional differentiation super-fast.
 
-.. currentmodule:: fracdiff
+Install
+-------
 
-fdiff
------
+.. code-block:: none
 
-.. autofunction:: fdiff
+    pip install fracdiff
 
-Fracdiff
---------
 
-.. autoclass:: Fracdiff
+NumPy API
+---------
 
-FracdiffStat
-------------
+.. autosummary::
+    :toctree: generated
+    :nosignatures:
 
-.. autoclass:: FracdiffStat
+    fracdiff.fdiff
+
+Scikit-learn API
+----------------
+
+.. autosummary::
+    :toctree: generated
+    :nosignatures:
+    :template: classtemplate.rst
+
+    fracdiff.Fracdiff
+    fracdiff.FracdiffStat
+
+PyTorch API
+-----------
+
+Functional:
+
+.. autosummary::
+    :toctree: generated
+    :nosignatures:
+
+    fracdiff.torch.fdiff
+
+Module:
+
+.. autosummary::
+    :toctree: generated
+    :nosignatures:
+    :template: classtemplate.rst
+
+    fracdiff.torch.Fracdiff
 
 .. toctree::
    :caption: Development

@@ -30,9 +30,11 @@ $ pip install fracdiff
 
 ### Functionalities
 
-- [`fdiff`](https://fracdiff.github.io/fracdiff/#fdiff): A function which extends [`numpy.diff`](https://numpy.org/doc/stable/reference/generated/numpy.diff.html) to fractional orders.
-- [`Fracdiff`](https://fracdiff.github.io/fracdiff/#id1): Perform fracdiff of a set of time-series. Compatible with scikit-learn API.
-- [`FracdiffStat`](https://fracdiff.github.io/fracdiff/#fracdiffstat): Automatically fracdiff which makes a set of time-series stationary while preserving their maximum memory. Compatible with scikit-learn API.
+- [`fdiff`](https://fracdiff.github.io/fracdiff/#fdiff): A function that extends [`numpy.diff`](https://numpy.org/doc/stable/reference/generated/numpy.diff.html) to fractional differentiation.
+- [`Fracdiff`](https://fracdiff.github.io/fracdiff/#id1): A scikit-learn [transformer](https://scikit-learn.org/stable/modules/generated/sklearn.base.TransformerMixin.html) to compute fractional differentiation.
+- [`FracdiffStat`](https://fracdiff.github.io/fracdiff/#fracdiffstat): `Fracdiff` plus automatic choice of differentiation order that makes time-series stationary.
+- [`torch.fdiff`](https://fracdiff.github.io/fracdiff/): A functional that extends [`torch.diff`](https://pytorch.org/docs/stable/generated/torch.diff.html) to fractional differentiation.
+- [`torch.Fracdiff`](https://fracdiff.github.io/fracdiff/): A module that computes fractional differentiation.
 
 ### Speed
 
@@ -62,7 +64,7 @@ The following tables of execution times (in unit of ms) show that *Fracdiff* can
 
 (Run on Macbook Air 2018, 1.6 GHz Dual-Core Intel Core i5, 16 GB 2133 MHz LPDDR3)
 
-## How to use 
+## How to use
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/fracdiff/fracdiff/blob/main/examples/example_howto.ipynb)
 
@@ -76,16 +78,16 @@ import numpy as np
 from fracdiff import fdiff
 
 a = np.array([1, 2, 4, 7, 0])
-fdiff(a, n=0.5)
+fdiff(a, 0.5)
 # array([ 1.       ,  1.5      ,  2.875    ,  4.6875   , -4.1640625])
 np.array_equal(fdiff(a, n=1), np.diff(a, n=1))
 # True
 
 a = np.array([[1, 3, 6, 10], [0, 5, 6, 8]])
-fdiff(a, n=0.5, axis=0)
+fdiff(a, 0.5, axis=0)
 # array([[ 1. ,  3. ,  6. , 10. ],
 #        [-0.5,  3.5,  3. ,  3. ]])
-fdiff(a, n=0.5, axis=-1)
+fdiff(a, 0.5, axis=-1)
 # array([[1.    , 2.5   , 4.375 , 6.5625],
 #        [0.    , 5.    , 3.5   , 4.375 ]])
 ```
@@ -145,6 +147,29 @@ f.d_
 The result for Nikkei 225 index historical price looks like this:
 
 ![nky](./examples/fig/nky.png)
+
+
+### PyTorch API
+
+One can fracdiff a PyTorch tensor. One can enjoy strong GPU acceleration.
+
+```py
+from fracdiff.torch import fdiff
+
+input = torch.tensor(...)
+output = fdiff(input, 0.5)
+```
+
+```py
+from fracdiff.torch import Fracdiff
+
+module = Fracdiff
+module
+# Fracdiff(0.5, dim=-1, window=10, mode='same')
+
+input = torch.tensor(...)
+output = module(input)
+```
 
 ### More Examples
 

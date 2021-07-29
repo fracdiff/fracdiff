@@ -48,12 +48,21 @@ templates_path = ["_templates"]
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = []
 
+# Enable overriding of function signatures in the first line of the docstring.
+autodoc_docstring_signature = True
+
+# Disable docstring inheritance
+autodoc_inherit_docstrings = False
+
+# Disable displaying type annotations, these can be very verbose
+autodoc_typehints = "none"
 
 # -- Options for HTML output -------------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = "pydata_sphinx_theme"
+# html_theme = "pydata_sphinx_theme"
+html_theme = "furo"
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
