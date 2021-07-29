@@ -5,8 +5,7 @@ from scipy.special import binom
 
 
 def fdiff_coef(d, window) -> np.ndarray:
-    """
-    Returns sequence of coefficients in fracdiff operator.
+    """Returns sequence of coefficients in fracdiff operator.
 
     Parameters
     ----------
@@ -34,9 +33,8 @@ def fdiff_coef(d, window) -> np.ndarray:
 
 def fdiff(
     a, n=1.0, axis=-1, prepend=np._NoValue, append=np._NoValue, window=10, mode="full"
-) -> np.array:
-    """
-    Calculate the `n`-th differentiation along the given axis.
+) -> np.ndarray:
+    """Calculate the `n`-th differentiation along the given axis.
 
     Extention of ``numpy.diff`` to fractional differentiation.
 

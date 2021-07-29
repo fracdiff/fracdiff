@@ -1,3 +1,5 @@
+from typing import Optional
+
 import torch
 from torch import Tensor
 from torch.nn import Module
@@ -11,8 +13,20 @@ class Fracdiff(Module):
     Args:
         d (float): The order of differentiation.
         dim (int, default=-1): The dimension to differentiate.
+            Currently, only the last dimension is supported.
         window (int, default=10): The window size for fractional differentiation.
-        mode (str, default='same'): The mode to use for fractional differentiation.
+        mode (str, default="same"): "same" or "valid".
+
+            "same" (default):
+                Return elements where at least one coefficient is used.
+                Output size along `axis` is `M` where `M` is the length of `input`
+                (plus the lengths of append and prepend if these are given).
+                At the beginning of a time-series, boundary effects may be seen.
+            "valid":
+                Return elements where all coefficients are used.
+                Output size along `axis` is `M - window` where `M` is the length of
+                `input` (plus the lengths of append and prepend if these are given).
+                At the beginning of a time-series, boundary effects is not seen.
 
     Shape:
         - input: :math:`(N, *, L_{\\mathrm{in}})`, where where :math:`*` means any
@@ -43,7 +57,26 @@ class Fracdiff(Module):
         self.mode = mode
 
     def extra_repr(self) -> str:
-        return ", ".join((str(self.d), f"dim={self.dim}", f"window={self.window}", f"mode='{self.mode}'" ))
+        params = (
+            str(self.d),
+            f"dim={self.dim}",
+            f"window={self.window}",
+            f"mode='{self.mode}'",
+        )
+        return ", ".join(params)
 
-    def forward(self, input: Tensor) -> Tensor:
-        return fdiff(input, d=self.d, dim=self.dim, window=self.window, mode=self.mode)
+    def forward(
+        self,
+        input: Tensor,
+        prepend: Optional[Tensor] = None,
+        append: Optional[Tensor] = None,
+    ) -> Tensor:
+        return fdiff(
+            input,
+            self.d,
+            dim=self.dim,
+            window=self.window,
+            mode=self.mode,
+            prepend=prepend,
+            append=append,
+        )

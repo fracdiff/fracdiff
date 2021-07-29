@@ -1,24 +1,27 @@
 Fracdiff Documentation
 ======================
 
-.. contents:: fracdiff
-    :depth: 2
-    :local:
-    :backlinks: top
+.. currentmodule:: .
 
-.. currentmodule:: fracdiff
+NumPy API
+---------
 
-fdiff
------
+.. autofunction:: fracdiff.fdiff
 
-.. autofunction:: fdiff
+Scikit-learn API
+----------------
 
-Fracdiff
---------
+.. autoclass:: fracdiff.Fracdiff
+.. autoclass:: fracdiff.FracdiffStat
 
-.. autoclass:: Fracdiff
+PyTorch API
+-----------
 
-FracdiffStat
-------------
+.. autofunction:: fracdiff.torch.fdiff
+.. autoclass:: fracdiff.torch.Fracdiff
 
-.. autoclass:: FracdiffStat
+.. toctree::
+   :caption: Development
+   :hidden:
+
+   GitHub <https://github.com/fracdiff/fracdiff>

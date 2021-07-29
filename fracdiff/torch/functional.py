@@ -34,6 +34,9 @@ def fdiff_coef(d: float, window: int) -> Tensor:
         torch.Tensor
 
     Examples:
+
+        >>> from fracdiff.torch import fdiff_coef
+        >>>
         >>> fdiff_coef(0.5, 4)
         tensor([ 1.0000, -0.5000, -0.1250, -0.0625], dtype=torch.float64)
         >>> fdiff_coef(1.0, 4)
@@ -46,7 +49,7 @@ def fdiff_coef(d: float, window: int) -> Tensor:
 
 def fdiff(
     input: Tensor,
-    d: float,
+    n: float,
     dim: int = -1,
     prepend: Optional[Tensor] = None,
     append: Optional[Tensor] = None,
@@ -54,19 +57,16 @@ def fdiff(
     mode: str = "same",
 ):
     """Return the `d`-th differentiation along the given axis.
+    This is an extension of `torch.diff` to a fractional order.
 
-    Args:
-        input (torch.Tensor): The input tensor.
-        d (float):
-        dim (int, default=-1): ...
-        mode (str, default="same"): "same" or "valid".
-
-    Returns:
-        torch.Tensor
+    See :class:`fracdiff.torch.Fracdiff`.
 
     Shape:
-        - input: :math:`(N, *, L_{\\mathrm{in}})` where :math:`N` is ...
-        - output: :math:`(N, *, L_{\\mathrm{out}})` where ...
+        - input: :math:`(N, *, L_{\\mathrm{in}})`, where where :math:`*` means any
+          number of additional dimensions.
+        - output: :math:`(N, *, L_{\\mathrm{out}})`, where :math:`L_{\\mathrm{out}}`
+          is given by :math:`L_{\\mathrm{in}}` if `mode="same"` and
+          :math:`L_{\\mathrm{in}} - \\mathrm{window} - 1` if `mode="valid"`.
 
     Examples:
 
@@ -97,11 +97,18 @@ def fdiff(
         input = input.to(torch.get_default_dtype())
 
     # Return `np.diff(...)` if d is integer
-    if isinstance(d, int) or d.is_integer():
-        # TODO(simaki): PyTorch implementation of diff
-        return torch.as_tensor(
-            np.diff(input, n=int(n), axis=dim, prepend=prepend, append=append)
-        )
+    if isinstance(n, int) or n.is_integer():
+        if prepend is not None:
+            prepend_size = input.size()[:-1] + (-1,)
+            while prepend.ndim < input.ndim:
+                prepend = prepend.unsqueeze(0)
+            prepend = prepend.expand(prepend_size)
+        if append is not None:
+            append_size = input.size()[:-1] + (-1,)
+            while append.ndim < input.ndim:
+                append = append.unsqueeze(0)
+            append = append.expand(append_size)
+        return input.diff(int(n), dim=dim, prepend=prepend, append=append)
 
     combined = []
     if prepend is not None:
@@ -130,7 +137,7 @@ def fdiff(
     input = fn.pad(input, (window - 1, 0))
 
     # TODO(simaki): PyTorch Implementation to create weight
-    weight = fdiff_coef(d, window).to(input).reshape(1, 1, -1).flip(-1)
+    weight = fdiff_coef(n, window).to(input).reshape(1, 1, -1).flip(-1)
 
     output = fn.conv1d(input, weight)
 
