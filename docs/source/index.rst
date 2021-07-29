@@ -1,3 +1,5 @@
+:github_url: https://github.com/fracdiff/fracdiff
+
 Fracdiff Documentation
 ======================
 
