@@ -12,34 +12,29 @@ Install
 
     pip install fracdiff
 
+
 NumPy API
 ---------
-
-.. currentmodule:: fracdiff
 
 .. autosummary::
     :toctree: generated
     :nosignatures:
 
-    fdiff
+    fracdiff.fdiff
 
 Scikit-learn API
 ----------------
-
-.. currentmodule:: fracdiff
 
 .. autosummary::
     :toctree: generated
     :nosignatures:
     :template: classtemplate.rst
 
-    Fracdiff
-    FracdiffStat
+    fracdiff.Fracdiff
+    fracdiff.FracdiffStat
 
 PyTorch API
 -----------
-
-.. currentmodule:: fracdiff
 
 Functional:
 
@@ -47,7 +42,7 @@ Functional:
     :toctree: generated
     :nosignatures:
 
-    torch.fdiff
+    fracdiff.torch.fdiff
 
 Module:
 
@@ -56,7 +51,7 @@ Module:
     :nosignatures:
     :template: classtemplate.rst
 
-    torch.Fracdiff
+    fracdiff.torch.Fracdiff
 
 .. toctree::
    :caption: Development
