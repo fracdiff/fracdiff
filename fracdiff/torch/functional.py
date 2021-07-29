@@ -78,7 +78,7 @@ def fdiff(
         # TODO(simaki): Implement dim != -1. PR welcomed!
         raise ValueError("Only supports dim == -1.")
 
-    if input.dtype not in (torch.float16, torch.float32, torch.float64):
+    if input.dtype not in (torch.float16, torch.float32, torch.float64, torch.bfloat16):
         input = input.to(torch.get_default_dtype())
 
     combined = []
