@@ -186,8 +186,10 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="fracdiff.torch.fdiff">
 <span class="sig-prename descclassname"><span class="pre">fracdiff.torch.</span></span><span class="sig-name descname"><span class="pre">fdiff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prepend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">append</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'same'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/fracdiff/torch/functional.html#fdiff"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fracdiff.torch.fdiff" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the <cite>n</cite>-th differentiation along the given dimension.</p>
-<p>This is an extension of <cite>torch.diff</cite> to a fractional order.</p>
+<dd><p>Computes the <cite>n</cite>-th differentiation along the given dimension.</p>
+<p>This is an extension of
+<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.diff.html">torch.diff</a>
+to fractional differentiation.</p>
 <p>See <a class="reference internal" href="fracdiff.torch.Fracdiff.html#fracdiff.torch.Fracdiff" title="fracdiff.torch.Fracdiff"><code class="xref py py-class docutils literal notranslate"><span class="pre">fracdiff.torch.Fracdiff</span></code></a>.</p>
 <dl class="simple">
 <dt>Shape:</dt><dd><ul class="simple">

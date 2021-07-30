@@ -190,7 +190,7 @@
 <span class="kn">from</span> <span class="nn">sklearn.utils.validation</span> <span class="kn">import</span> <span class="n">check_array</span>
 <span class="kn">from</span> <span class="nn">sklearn.utils.validation</span> <span class="kn">import</span> <span class="n">check_is_fitted</span>
 
-<span class="kn">from</span> <span class="nn">.base</span> <span class="kn">import</span> <span class="n">fdiff</span>
+<span class="kn">from</span> <span class="nn">.fdiff</span> <span class="kn">import</span> <span class="n">fdiff</span>
 <span class="kn">from</span> <span class="nn">.fracdiff</span> <span class="kn">import</span> <span class="n">Fracdiff</span>
 <span class="kn">from</span> <span class="nn">.stat</span> <span class="kn">import</span> <span class="n">StatTester</span>
 
@@ -204,14 +204,7 @@
 <span class="sd">    window : int &gt; 0 or None, default 10</span>
 <span class="sd">        Number of observations to compute each element in the output.</span>
 <span class="sd">    mode : {"full", "valid"}, default "full"</span>
-<span class="sd">        "full" (default) :</span>
-<span class="sd">            Return elements where at least one coefficient is used.</span>
-<span class="sd">            Shape of a transformed array is the same with the original array.</span>
-<span class="sd">            At the beginning of a transformed array, boundary effects may be seen.</span>
-<span class="sd">        "valid" :</span>
-<span class="sd">            Return elements where all coefficients are used.</span>
-<span class="sd">            Output size along axis 1 is `n_features - window`.</span>
-<span class="sd">            At the beginning of a time-series, boundary effects is not seen.</span>
+<span class="sd">        See :func:`fracdiff.fdiff` for details.</span>
 <span class="sd">    window_policy : {"fixed"}, default "fixed"</span>
 <span class="sd">        If "fixed" :</span>
 <span class="sd">            Fixed window method.</span>
@@ -247,10 +240,10 @@
 
 <span class="sd">    Note</span>
 <span class="sd">    ----</span>
-<span class="sd">    If `upper`th differentiation of series is still non-stationary,</span>
-<span class="sd">    order_ is set to ``numpy.nan``.</span>
-<span class="sd">    If `lower`th differentiation of series is already stationary,</span>
-<span class="sd">    order_ is set to `lower`, but the true value may be smaller.</span>
+<span class="sd">    If ``upper`` th differentiation of series is still non-stationary,</span>
+<span class="sd">    ``order_`` is set to ``numpy.nan``.</span>
+<span class="sd">    If ``lower`` th differentiation of series is already stationary,</span>
+<span class="sd">    ``order_`` is set to ``lower``, but the true value may be smaller.</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>

@@ -192,7 +192,7 @@
 
 
 <div class="viewcode-block" id="Fracdiff"><a class="viewcode-back" href="../../../generated/fracdiff.torch.Fracdiff.html#fracdiff.torch.Fracdiff">[docs]</a><span class="k">class</span> <span class="nc">Fracdiff</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sd">"""A `torch.nn.Module` to apply fractional differentiation.</span>
+    <span class="sd">"""A ``torch.nn.Module`` to compute fractional differentiation.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        d (float): The order of differentiation.</span>
@@ -217,7 +217,7 @@
 <span class="sd">          number of additional dimensions.</span>
 <span class="sd">        - output: :math:`(N, *, L_{\\mathrm{out}})`, where :math:`L_{\\mathrm{out}}`</span>
 <span class="sd">          is given by :math:`L_{\\mathrm{in}}` if `mode="same"` and</span>
-<span class="sd">          :math:`L_{\\mathrm{in}} - \\mathrm{window} - 1` if `mode="valid"`.</span>
+<span class="sd">          :math:`L_{\\mathrm{in}} - \\mathrm{window} + 1` if `mode="valid"`.</span>
 
 <span class="sd">    Examples:</span>
 

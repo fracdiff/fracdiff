@@ -186,7 +186,7 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="fracdiff.torch.Fracdiff">
 <em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">fracdiff.torch.</span></span><span class="sig-name descname"><span class="pre">Fracdiff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'same'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/fracdiff/torch/module.html#Fracdiff"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fracdiff.torch.Fracdiff" title="Permalink to this definition">¶</a></dt>
-<dd><p>A <cite>torch.nn.Module</cite> to apply fractional differentiation.</p>
+<dd><p>A <code class="docutils literal notranslate"><span class="pre">torch.nn.Module</span></code> to compute fractional differentiation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -217,7 +217,7 @@ At the beginning of a time-series, boundary effects is not seen.</p>
 number of additional dimensions.</p></li>
 <li><p>output: <span class="math notranslate nohighlight">\((N, *, L_{\mathrm{out}})\)</span>, where <span class="math notranslate nohighlight">\(L_{\mathrm{out}}\)</span>
 is given by <span class="math notranslate nohighlight">\(L_{\mathrm{in}}\)</span> if <cite>mode=”same”</cite> and
-<span class="math notranslate nohighlight">\(L_{\mathrm{in}} - \mathrm{window} - 1\)</span> if <cite>mode=”valid”</cite>.</p></li>
+<span class="math notranslate nohighlight">\(L_{\mathrm{in}} - \mathrm{window} + 1\)</span> if <cite>mode=”valid”</cite>.</p></li>
 </ul>
 </dd>
 </dl>

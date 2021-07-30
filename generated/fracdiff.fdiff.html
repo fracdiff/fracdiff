@@ -185,37 +185,35 @@
 <h1>fracdiff.fdiff<a class="headerlink" href="#fracdiff-fdiff" title="Permalink to this headline">¶</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="fracdiff.fdiff">
-<span class="sig-prename descclassname"><span class="pre">fracdiff.</span></span><span class="sig-name descname"><span class="pre">fdiff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">a</span></em>, <em class="sig-param"><span class="pre">n=1.0</span></em>, <em class="sig-param"><span class="pre">axis=-1</span></em>, <em class="sig-param"><span class="pre">prepend=&lt;no</span> <span class="pre">value&gt;</span></em>, <em class="sig-param"><span class="pre">append=&lt;no</span> <span class="pre">value&gt;</span></em>, <em class="sig-param"><span class="pre">window=10</span></em>, <em class="sig-param"><span class="pre">mode='full'</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/fracdiff/base.html#fdiff"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fracdiff.fdiff" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">fracdiff.</span></span><span class="sig-name descname"><span class="pre">fdiff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">a</span></em>, <em class="sig-param"><span class="pre">n=1.0</span></em>, <em class="sig-param"><span class="pre">axis=-1</span></em>, <em class="sig-param"><span class="pre">prepend=&lt;no</span> <span class="pre">value&gt;</span></em>, <em class="sig-param"><span class="pre">append=&lt;no</span> <span class="pre">value&gt;</span></em>, <em class="sig-param"><span class="pre">window=10</span></em>, <em class="sig-param"><span class="pre">mode='full'</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/fracdiff/fdiff.html#fdiff"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fracdiff.fdiff" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the <cite>n</cite>-th differentiation along the given axis.</p>
 <p>Extention of <code class="docutils literal notranslate"><span class="pre">numpy.diff</span></code> to fractional differentiation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>a</strong> (<em>array_like</em>) – Input array.</p></li>
+<li><p><strong>a</strong> (<em>array_like</em>) – The input array.</p></li>
 <li><p><strong>n</strong> (<em>float</em><em>, </em><em>default=1.0</em>) – The order of differentiation.
-For integer <cite>n</cite>, it returns the same output with <code class="docutils literal notranslate"><span class="pre">numpy.diff</span></code>.</p></li>
-<li><p><strong>axis</strong> (<em>int</em><em>, </em><em>default=-1</em>) – The axis along which the difference is taken, default is the last axis.</p></li>
-<li><p><strong>prepend</strong> (<em>array_like</em><em>, </em><em>optional</em>) – Values to prepend or append to <cite>a</cite> along axis prior to performing
-the difference.
+If <code class="docutils literal notranslate"><span class="pre">n</span></code> is an integer, returns the same output with <code class="docutils literal notranslate"><span class="pre">numpy.diff</span></code>.</p></li>
+<li><p><strong>axis</strong> (<em>int</em><em>, </em><em>default=-1</em>) – The axis along which differentiation is performed, default is the last axis.</p></li>
+<li><p><strong>prepend</strong> (<em>array_like</em><em>, </em><em>optional</em>) – Values to prepend to <code class="docutils literal notranslate"><span class="pre">a</span></code> along axis prior to performing the differentiation.
 Scalar values are expanded to arrays with length 1 in the direction of axis and
 the shape of the input array in along all other axes.
-Otherwise the dimension and shape must match <cite>a</cite> except along axis.</p></li>
-<li><p><strong>append</strong> (<em>array_like</em><em>, </em><em>optional</em>) – Values to prepend or append to <cite>a</cite> along axis prior to performing
-the difference.
-Scalar values are expanded to arrays with length 1 in the direction of axis and
-the shape of the input array in along all other axes.
-Otherwise the dimension and shape must match <cite>a</cite> except along axis.</p></li>
+Otherwise the dimension and shape must match <code class="docutils literal notranslate"><span class="pre">a</span></code> except along axis.</p></li>
+<li><p><strong>append</strong> (<em>array_like</em><em>, </em><em>optional</em>) – Values to append.</p></li>
 <li><p><strong>window</strong> (<em>int</em><em>, </em><em>default=10</em>) – Number of observations to compute each element in the output.</p></li>
 <li><p><strong>mode</strong> (<em>{"full"</em><em>, </em><em>"valid"}</em><em>, </em><em>default="full"</em>) – <dl class="simple">
-<dt>“full” (default) :</dt><dd><p>Return elements where at least one coefficient is used.
-Output size along <cite>axis</cite> is <cite>M</cite> where <cite>M</cite> is the length of <cite>a</cite>
-(plus the lengths of append and prepend if these are given).
-At the beginning of a time-series, boundary effects may be seen.</p>
+<dt>“full” (default) :</dt><dd><p>Return elements where at least one coefficient of fracdiff is used.
+Output size along <code class="docutils literal notranslate"><span class="pre">axis</span></code> is <span class="math notranslate nohighlight">\(L_{\mathrm{in}}\)</span>
+where <span class="math notranslate nohighlight">\(L_{\mathrm{in}}\)</span> is the length of <code class="docutils literal notranslate"><span class="pre">a</span></code> along <code class="docutils literal notranslate"><span class="pre">axis</span></code>
+(plus the lengths of <code class="docutils literal notranslate"><span class="pre">append</span></code> and <code class="docutils literal notranslate"><span class="pre">prepend</span></code>).
+Boundary effects may be seen at the At the beginning of a time-series.</p>
 </dd>
-<dt>”valid” :</dt><dd><p>Return elements where all coefficients are used.
-Output size along <cite>axis</cite> is <cite>M - window</cite> where <cite>M</cite> is the length of
-<cite>a</cite> (plus the lengths of append and prepend if these are given).
-At the beginning of a time-series, boundary effects is not seen.</p>
+<dt>”valid” :</dt><dd><p>Return elements where all coefficients of fracdiff are used.
+Output size along <code class="docutils literal notranslate"><span class="pre">axis</span></code> is
+<span class="math notranslate nohighlight">\(L_{\mathrm{in}} - \mathrm{window} + 1\)</span> where
+where <span class="math notranslate nohighlight">\(L_{\mathrm{in}}\)</span> is the length of <code class="docutils literal notranslate"><span class="pre">a</span></code> along <code class="docutils literal notranslate"><span class="pre">axis</span></code>
+(plus the lengths of <code class="docutils literal notranslate"><span class="pre">append</span></code> and <code class="docutils literal notranslate"><span class="pre">prepend</span></code>).
+Boundary effects are not seen.</p>
 </dd>
 </dl>
 </p></li>
@@ -223,12 +221,10 @@ At the beginning of a time-series, boundary effects is not seen.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><strong>fdiff</strong> – The fractional differentiation.
-The shape of the output is the same as <cite>a</cite> except along <cite>axis</cite>.
-The dimension is <cite>a.shape[axis] - window + d1 + d2</cite> with
-<cite>d1</cite> and <cite>d2</cite> being the dimension of <code class="docutils literal notranslate"><span class="pre">prepend</span></code> and <code class="docutils literal notranslate"><span class="pre">append</span></code>, respectively.</p>
+The shape of the output is the same as <code class="docutils literal notranslate"><span class="pre">a</span></code> except along <code class="docutils literal notranslate"><span class="pre">axis</span></code>.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>numpy.array</p>
+<dd class="field-odd"><p>numpy.ndarray</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -320,5 +316,6 @@ The dimension is <cite>a.shape[axis] - window + d1 + d2</cite> with
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/scripts/main.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     </body>
 </html>

@@ -192,17 +192,7 @@
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>d</strong> (<em>float</em><em>, </em><em>default 1.0</em>) – The order of differentiation.</p></li>
 <li><p><strong>window</strong> (<em>int &gt; 0</em><em> or </em><em>None</em><em>, </em><em>default 10</em>) – Number of observations to compute each element in the output.</p></li>
-<li><p><strong>mode</strong> (<em>{"full"</em><em>, </em><em>"valid"}</em><em>, </em><em>default "full"</em>) – <dl class="simple">
-<dt>“full” (default) :</dt><dd><p>Return elements where at least one coefficient is used.
-Shape of a transformed array is the same with the original array.
-At the beginning of a transformed array, boundary effects may be seen.</p>
-</dd>
-<dt>”valid” :</dt><dd><p>Return elements where all coefficients are used.
-Output size along axis 1 is <cite>n_features - window</cite>.
-At the beginning of a time-series, boundary effects is not seen.</p>
-</dd>
-</dl>
-</p></li>
+<li><p><strong>mode</strong> (<em>{"full"</em><em>, </em><em>"valid"}</em><em>, </em><em>default "full"</em>) – See <a class="reference internal" href="fracdiff.fdiff.html#fracdiff.fdiff" title="fracdiff.fdiff"><code class="xref py py-func docutils literal notranslate"><span class="pre">fracdiff.fdiff()</span></code></a> for details.</p></li>
 <li><p><strong>window_policy</strong> (<em>{"fixed"}</em><em>, </em><em>default "fixed"</em>) – <dl class="simple">
 <dt>“fixed” (default) :</dt><dd><p>Fixed window method.
 Every term in the output is evaluated using <cite>window</cite> observations.
