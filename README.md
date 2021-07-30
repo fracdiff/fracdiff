@@ -163,7 +163,7 @@ output = fdiff(input, 0.5)
 ```py
 from fracdiff.torch import Fracdiff
 
-module = Fracdiff
+module = Fracdiff(0.5)
 module
 # Fracdiff(0.5, dim=-1, window=10, mode='same')
 
