@@ -41,39 +41,41 @@ def fdiff(
     Parameters
     ----------
     a : array_like
-        Input array.
+        The input array.
     n : float, default=1.0
         The order of differentiation.
-        For integer `n`, it returns the same output with ``numpy.diff``.
+        If ``n`` is an integer, returns the same output with ``numpy.diff``.
     axis : int, default=-1
-        The axis along which the difference is taken, default is the last axis.
-    prepend, append : array_like, optional
-        Values to prepend or append to `a` along axis prior to performing
-        the difference.
+        The axis along which differentiation is performed, default is the last axis.
+    prepend : array_like, optional
+        Values to prepend to ``a`` along axis prior to performing the differentiation.
         Scalar values are expanded to arrays with length 1 in the direction of axis and
         the shape of the input array in along all other axes.
-        Otherwise the dimension and shape must match `a` except along axis.
+        Otherwise the dimension and shape must match ``a`` except along axis.
+    append : array_like, optional
+        Values to append.
     window : int, default=10
         Number of observations to compute each element in the output.
     mode : {"full", "valid"}, default="full"
         "full" (default) :
-            Return elements where at least one coefficient is used.
-            Output size along `axis` is `M` where `M` is the length of `a`
-            (plus the lengths of append and prepend if these are given).
-            At the beginning of a time-series, boundary effects may be seen.
+            Return elements where at least one coefficient of fracdiff is used.
+            Output size along ``axis`` is :math:`L_{\\mathrm{in}}`
+            where :math:`L_{\\mathrm{in}}` is the length of ``a`` along ``axis``
+            (plus the lengths of ``append`` and ``prepend``).
+            Boundary effects may be seen at the At the beginning of a time-series.
         "valid" :
-            Return elements where all coefficients are used.
-            Output size along `axis` is `M - window` where `M` is the length of
-            `a` (plus the lengths of append and prepend if these are given).
-            At the beginning of a time-series, boundary effects is not seen.
+            Return elements where all coefficients of fracdiff are used.
+            Output size along ``axis`` is
+            :math:`L_{\\mathrm{in}} - \\mathrm{window} + 1` where
+            where :math:`L_{\\mathrm{in}}` is the length of ``a`` along ``axis``
+            (plus the lengths of ``append`` and ``prepend``).
+            Boundary effects are not seen.
 
     Returns
     -------
-    fdiff : numpy.array
+    fdiff : numpy.ndarray
         The fractional differentiation.
-        The shape of the output is the same as `a` except along `axis`.
-        The dimension is `a.shape[axis] - window + d1 + d2` with
-        `d1` and `d2` being the dimension of ``prepend`` and ``append``, respectively.
+        The shape of the output is the same as ``a`` except along ``axis``.
 
     Examples
     --------

@@ -8,7 +8,7 @@ from . import functional
 
 
 class Fracdiff(Module):
-    """A `torch.nn.Module` to apply fractional differentiation.
+    """A ``torch.nn.Module`` to compute fractional differentiation.
 
     Args:
         d (float): The order of differentiation.
@@ -33,7 +33,7 @@ class Fracdiff(Module):
           number of additional dimensions.
         - output: :math:`(N, *, L_{\\mathrm{out}})`, where :math:`L_{\\mathrm{out}}`
           is given by :math:`L_{\\mathrm{in}}` if `mode="same"` and
-          :math:`L_{\\mathrm{in}} - \\mathrm{window} - 1` if `mode="valid"`.
+          :math:`L_{\\mathrm{in}} - \\mathrm{window} + 1` if `mode="valid"`.
 
     Examples:
 
