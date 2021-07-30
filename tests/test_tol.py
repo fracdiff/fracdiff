@@ -1,7 +1,7 @@
 import numpy as np
 import pytest
 
-from fracdiff.base import fdiff_coef
+from fracdiff.fdiff import fdiff_coef
 from fracdiff.tol import window_from_tol_coef
 from fracdiff.tol import window_from_tol_memory
 

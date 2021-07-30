@@ -3,7 +3,7 @@ from typing import Optional
 import torch
 from torch import Tensor
 
-from .. import base
+from ..fdiff import fdiff_coef as fdiff_coef_numpy
 
 
 def fdiff_coef(d: float, window: int) -> torch.Tensor:
@@ -29,7 +29,7 @@ def fdiff_coef(d: float, window: int) -> torch.Tensor:
         >>> fdiff_coef(1.5, 4)
         tensor([ 1.0000, -1.5000,  0.3750,  0.0625], dtype=torch.float64)
     """
-    return torch.as_tensor(base.fdiff_coef(d, window))
+    return torch.as_tensor(fdiff_coef_numpy(d, window))
 
 
 def fdiff(
@@ -41,9 +41,11 @@ def fdiff(
     window: int = 10,
     mode: str = "same",
 ):
-    """Return the `n`-th differentiation along the given dimension.
+    """Computes the `n`-th differentiation along the given dimension.
 
-    This is an extension of `torch.diff` to a fractional order.
+    This is an extension of
+    `torch.diff <https://pytorch.org/docs/stable/generated/torch.diff.html>`_
+    to fractional differentiation.
 
     See :class:`fracdiff.torch.Fracdiff`.
 

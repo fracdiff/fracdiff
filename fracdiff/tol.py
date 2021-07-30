@@ -1,6 +1,6 @@
 import numpy as np
 
-from fracdiff.base import fdiff_coef
+from fracdiff.fdiff import fdiff_coef
 
 
 def window_from_tol_coef(n, tol_coef, max_window=2 ** 12) -> int:

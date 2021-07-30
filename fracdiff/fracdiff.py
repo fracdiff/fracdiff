@@ -3,8 +3,8 @@ from sklearn.base import TransformerMixin
 from sklearn.utils.validation import check_array
 from sklearn.utils.validation import check_is_fitted
 
-from fracdiff.base import fdiff
-from fracdiff.base import fdiff_coef
+from fracdiff.fdiff import fdiff
+from fracdiff.fdiff import fdiff_coef
 
 
 class Fracdiff(TransformerMixin):
@@ -17,14 +17,7 @@ class Fracdiff(TransformerMixin):
     window : int > 0 or None, default 10
         Number of observations to compute each element in the output.
     mode : {"full", "valid"}, default "full"
-        "full" (default) :
-            Return elements where at least one coefficient is used.
-            Shape of a transformed array is the same with the original array.
-            At the beginning of a transformed array, boundary effects may be seen.
-        "valid" :
-            Return elements where all coefficients are used.
-            Output size along axis 1 is `n_features - window`.
-            At the beginning of a time-series, boundary effects is not seen.
+        See :func:`fracdiff.fdiff` for details.
     window_policy : {"fixed"}, default "fixed"
         "fixed" (default) :
             Fixed window method.
