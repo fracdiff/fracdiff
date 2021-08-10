@@ -44,25 +44,25 @@ The following graphs show that *Fracdiff* computes fractional differentiation mu
 
 It is especially noteworthy that execution time does not increase significantly as the number of time-steps (`n_samples`) increases, thanks to NumPy engine.
 
-![time](https://user-images.githubusercontent.com/24503967/103437530-0a6c9800-4c6c-11eb-8119-48ef9e58ee63.png)
+![time](https://user-images.githubusercontent.com/24503967/128821902-d38c2f46-989c-44e7-bd71-899f95553696.png)
 
 The following tables of execution times (in unit of ms) show that *Fracdiff* can be ~10000 times faster than the "official" implementation.
 
-|   n_samples | fracdiff       | official             |
-|------------:|:---------------|:---------------------|
-|         100 | 0.164 +- 0.088 | 20.725 +- 5.323      |
-|        1000 | 0.162 +- 0.055 | 108.049 +- 3.612     |
-|       10000 | 0.268 +- 0.085 | 1074.970 +- 89.375   |
-|      100000 | 0.779 +- 0.241 | 12418.813 +- 453.551 |
+|   n_samples | fracdiff        | official            |
+|------------:|:----------------|:--------------------|
+|         100 | 0.675 +-0.086   | 20.008 +-1.472      |
+|        1000 | 5.081 +-0.426   | 135.613 +-3.415     |
+|       10000 | 50.644 +-0.574  | 1310.033 +-17.708   |
+|      100000 | 519.969 +-8.166 | 13113.457 +-105.274 |
 
-|   n_features | fracdiff        | official                |
-|-------------:|:----------------|:------------------------|
-|            1 | 0.162 +- 0.055  | 108.049 +- 3.612        |
-|           10 | 0.229 +- 0.036  | 1395.027 +- 172.948     |
-|          100 | 1.745 +- 0.196  | 13820.834 +- 821.352    |
-|         1000 | 19.438 +- 2.093 | 154178.162 +- 11141.337 |
+|   n_features | fracdiff       | official             |
+|-------------:|:---------------|:---------------------|
+|            1 | 5.081 +-0.426  | 135.613 +-3.415      |
+|           10 | 6.146 +-0.247  | 1350.161 +-15.195    |
+|          100 | 6.903 +-0.654  | 13675.023 +-193.960  |
+|         1000 | 13.783 +-0.700 | 136610.030 +-540.572 |
 
-(Run on Macbook Air 2018, 1.6 GHz Dual-Core Intel Core i5, 16 GB 2133 MHz LPDDR3)
+(Run on Ubuntu 20.04, Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz. See [fracdiff/benchmark](https://github.com/fracdiff/benchmark/releases/tag/1115171075) for details.)
 
 ## How to use
 
