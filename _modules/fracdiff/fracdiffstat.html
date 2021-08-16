@@ -4,11 +4,12 @@
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
 
-    <meta name="generator" content="sphinx-4.1.2, furo 2021.07.28.beta40"/>
+    <meta name="generator" content="sphinx-4.1.2, furo 2021.08.11.beta42"/>
         <title>fracdiff.fracdiffstat - fracdiff documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=197f00461d56902ea7ca048ec6e6ba026f62c97b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?digest=93475b62d1c3bc01323a0eefdc14a62d77b12690" />
+    
     
 
 
@@ -30,7 +31,8 @@
   
     }
   }
-</style><link media="(prefers-color-scheme: dark)" rel="stylesheet" href="../../_static/pygments_dark.css"></head>
+</style>
+    <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="../../_static/pygments_dark.css"></head>
   <body>
     
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -100,8 +102,12 @@
 
 <input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
 <input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
-<label class="overlay sidebar-overlay" for="__navigation"></label>
-<label class="overlay toc-overlay" for="__toc"></label>
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
 
 
 
@@ -109,6 +115,7 @@
   <header class="mobile-header">
     <div class="header-left">
       <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
         <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
       </label>
     </div>
@@ -118,12 +125,14 @@
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
         <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
           <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
           <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
       <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
     </div>
@@ -136,8 +145,8 @@
   
   <span class="sidebar-brand-text">fracdiff  documentation</span>
   
-</a><form class="sidebar-search-container" method="get" action="../../search.html">
-  <input class="sidebar-search" placeholder=Search name="q">
+</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
+  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
   <input type="hidden" name="check_keywords" value="yes">
   <input type="hidden" name="area" value="default">
 </form>
@@ -166,25 +175,27 @@
       
     </div>
   </aside>
-  <main class="main">
+  <div class="main">
     <div class="content">
       <article role="main">
         <div class="content-icon-container">
           <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
               <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
           <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <h1>Source code for fracdiff.fracdiffstat</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">concurrent.futures</span> <span class="kn">import</span> <span class="n">ProcessPoolExecutor</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">sklearn.base</span> <span class="kn">import</span> <span class="n">BaseEstimator</span>
 <span class="kn">from</span> <span class="nn">sklearn.base</span> <span class="kn">import</span> <span class="n">TransformerMixin</span>
 <span class="kn">from</span> <span class="nn">sklearn.utils.validation</span> <span class="kn">import</span> <span class="n">check_array</span>
@@ -248,8 +259,8 @@
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
 <span class="sd">    &gt;&gt;&gt; from fracdiff import FracdiffStat</span>
-<span class="sd">    &gt;&gt;&gt; numpy.random.seed(42)</span>
-<span class="sd">    &gt;&gt;&gt; X = numpy.random.randn(100, 4).cumsum(0)</span>
+<span class="sd">    &gt;&gt;&gt; np.random.seed(42)</span>
+<span class="sd">    &gt;&gt;&gt; X = np.random.randn(100, 4).cumsum(0)</span>
 <span class="sd">    &gt;&gt;&gt; f = FracdiffStat().fit(X)</span>
 <span class="sd">    &gt;&gt;&gt; f.d_</span>
 <span class="sd">    array([0.140625 , 0.5078125, 0.3984375, 0.140625 ])</span>
@@ -297,12 +308,10 @@
 <span class="sd">            Returns the instance itself.</span>
 <span class="sd">        """</span>
         <span class="n">check_array</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">d_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_find_features_d</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-
+        <span class="bp">self</span><span class="o">.</span><span class="n">d_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_find_features_d</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
         <span class="k">return</span> <span class="bp">self</span></div>
 
-<div class="viewcode-block" id="FracdiffStat.transform"><a class="viewcode-back" href="../../generated/fracdiff.FracdiffStat.html#fracdiff.FracdiffStat.transform">[docs]</a>    <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">:</span>
+<div class="viewcode-block" id="FracdiffStat.transform"><a class="viewcode-back" href="../../generated/fracdiff.FracdiffStat.html#fracdiff.FracdiffStat.transform">[docs]</a>    <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
         <span class="sd">"""</span>
 <span class="sd">        Return the fractional differentiation of `X`.</span>
 
@@ -316,26 +325,28 @@
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        fdiff : ``numpy.array``, shape (n_samples, n_series)</span>
+<span class="sd">        fdiff : ``numpy.ndarray``, shape (n_samples, n_series)</span>
 <span class="sd">            The fractional differentiation of `X`.</span>
 <span class="sd">        """</span>
         <span class="n">check_is_fitted</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="p">[</span><span class="s2">"d_"</span><span class="p">])</span>
         <span class="n">check_array</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 
+        <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
         <span class="n">prototype</span> <span class="o">=</span> <span class="n">Fracdiff</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">window</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mode</span><span class="p">)</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-        <span class="n">out</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">prototype</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">prototype</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">0</span><span class="p">])</span>
 
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
             <span class="n">f</span> <span class="o">=</span> <span class="n">Fracdiff</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">d_</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">window</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">window</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mode</span><span class="p">)</span>
             <span class="n">d</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="p">[</span><span class="n">i</span><span class="p">]])[</span><span class="o">-</span><span class="n">out</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">:]</span>
-            <span class="n">out</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">out</span><span class="p">,</span> <span class="n">d</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">out</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">out</span><span class="p">,</span> <span class="n">d</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">out</span></div>
 
     <span class="k">def</span> <span class="nf">_is_stat</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">StatTester</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">stattest</span><span class="p">)</span><span class="o">.</span><span class="n">is_stat</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">pvalue</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">pvalue</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_find_features_d</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">_find_features_d</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
         <span class="n">features</span> <span class="o">=</span> <span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_jobs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_jobs</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
@@ -346,7 +357,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">d_</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_find_d</span><span class="p">,</span> <span class="n">features</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">d_</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">d_</span><span class="p">))</span>
 
     <span class="k">def</span> <span class="nf">_find_d</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
         <span class="sd">"""</span>
@@ -366,7 +377,7 @@
             <span class="k">return</span> <span class="n">fdiff</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">window</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mode</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_stat</span><span class="p">(</span><span class="n">diff</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">upper</span><span class="p">)):</span>
-            <span class="k">return</span> <span class="n">numpy</span><span class="o">.</span><span class="n">nan</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_stat</span><span class="p">(</span><span class="n">diff</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lower</span><span class="p">)):</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">lower</span>
 
@@ -404,7 +415,7 @@
       
       
     </aside>
-  </main>
+  </div>
 </div><script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
