@@ -1,6 +1,6 @@
 from concurrent.futures import ProcessPoolExecutor
 
-import numpy
+import numpy as np
 from sklearn.base import BaseEstimator
 from sklearn.base import TransformerMixin
 from sklearn.utils.validation import check_array
@@ -64,8 +64,8 @@ class FracdiffStat(TransformerMixin, BaseEstimator):
     Examples
     --------
     >>> from fracdiff import FracdiffStat
-    >>> numpy.random.seed(42)
-    >>> X = numpy.random.randn(100, 4).cumsum(0)
+    >>> np.random.seed(42)
+    >>> X = np.random.randn(100, 4).cumsum(0)
     >>> f = FracdiffStat().fit(X)
     >>> f.d_
     array([0.140625 , 0.5078125, 0.3984375, 0.140625 ])
@@ -113,12 +113,10 @@ class FracdiffStat(TransformerMixin, BaseEstimator):
             Returns the instance itself.
         """
         check_array(X)
-
-        self.d_ = self._find_features_d(X)
-
+        self.d_ = self._find_features_d(np.asarray(X))
         return self
 
-    def transform(self, X, y=None) -> numpy.array:
+    def transform(self, X, y=None) -> np.ndarray:
         """
         Return the fractional differentiation of `X`.
 
@@ -132,26 +130,28 @@ class FracdiffStat(TransformerMixin, BaseEstimator):
 
         Returns
         -------
-        fdiff : ``numpy.array``, shape (n_samples, n_series)
+        fdiff : ``numpy.ndarray``, shape (n_samples, n_series)
             The fractional differentiation of `X`.
         """
         check_is_fitted(self, ["d_"])
         check_array(X)
 
+        X = np.asarray(X)
+
         prototype = Fracdiff(0.5, window=self.window, mode=self.mode).fit_transform(X)
-        out = numpy.empty_like(prototype[:, :0])
+        out = np.empty_like(prototype[:, :0])
 
         for i in range(X.shape[1]):
             f = Fracdiff(self.d_[i], window=self.window, mode=self.mode)
             d = f.fit_transform(X[:, [i]])[-out.shape[0] :]
-            out = numpy.concatenate((out, d), 1)
+            out = np.concatenate((out, d), 1)
 
         return out
 
     def _is_stat(self, x) -> bool:
         return StatTester(method=self.stattest).is_stat(x, pvalue=self.pvalue)
 
-    def _find_features_d(self, X) -> numpy.ndarray:
+    def _find_features_d(self, X) -> np.ndarray:
         features = (X[:, i] for i in range(X.shape[1]))
 
         if self.n_jobs is not None and self.n_jobs != 1:
@@ -162,7 +162,7 @@ class FracdiffStat(TransformerMixin, BaseEstimator):
         else:
             d_ = map(self._find_d, features)
 
-        return numpy.array(list(d_))
+        return np.array(list(d_))
 
     def _find_d(self, x) -> float:
         """
@@ -182,7 +182,7 @@ class FracdiffStat(TransformerMixin, BaseEstimator):
             return fdiff(x, d, window=self.window, mode=self.mode)
 
         if not self._is_stat(diff(self.upper)):
-            return numpy.nan
+            return np.nan
         if self._is_stat(diff(self.lower)):
             return self.lower
 

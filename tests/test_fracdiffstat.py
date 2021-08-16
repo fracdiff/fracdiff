@@ -1,4 +1,5 @@
 import numpy as np
+import pandas as pd
 import pytest
 from numpy.testing import assert_allclose
 
@@ -87,3 +88,14 @@ class TestFracdiffStat:
             exp = np.concatenate((exp, f.fit_transform(X[:, [i]])), 1)
 
         assert_allclose(out, exp)
+
+    def test_transform_pandas_dataframe(self):
+        np.random.seed(42)
+
+        X_np = np.random.randn(100, 2).cumsum(0)
+        X_pd = pd.DataFrame(X_np).copy()
+
+        output_np = FracdiffStat().fit_transform(X_np)
+        output_pd = FracdiffStat().fit_transform(X_pd)
+
+        assert_allclose(output_np, output_pd)
