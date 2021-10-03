@@ -47,6 +47,22 @@ jobs:
     - uses: codecov/codecov-action@v1
       if: ${{ matrix.python-version == '3.9' }}
 
+  type:
+
+    name: Type
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - uses: actions/checkout@v2
+
+    - uses: actions/setup-python@v2
+
+    - run: pip install poetry && poetry install --extras torch
+
+    - run: make typecheck
+
   lint:
 
     name: Lint

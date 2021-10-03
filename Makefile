@@ -44,6 +44,9 @@ format-isort:
 doc:
 	@cd docs && make html
 
+.PHONY: typecheck
+	@poetry run mypy $(PROJECT_NAME)
+
 .PHONY: publish
 publish:
 	@gh workflow run publish.yml
