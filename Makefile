@@ -17,6 +17,9 @@ format:
 	@poetry run python3 -m black --quiet .
 	@poetry run python3 -m isort --force-single-line-imports --quiet .
 
+.PHONY: typecheck
+	@poetry run mypy $(PROJECT_NAME)
+
 .PHONY: publish
 publish:
 	@gh workflow run publish.yml
