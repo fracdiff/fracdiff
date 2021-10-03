@@ -1,7 +1,7 @@
 ﻿  .. role:: hidden
     :class: hidden-section
 
-.. currentmodule:: fracdiff
+.. currentmodule:: fracdiff.sklearn
 
 
 Fracdiff

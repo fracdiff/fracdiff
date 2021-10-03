@@ -2,13 +2,14 @@
 <html class="no-js">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="fracdiff.fdiff" href="generated/fracdiff.fdiff.html" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="fracdiff.fdiff" href="generated/fracdiff.fdiff.html" />
 
-    <meta name="generator" content="sphinx-4.1.2, furo 2021.08.11.beta42"/>
+    <meta name="generator" content="sphinx-4.2.0, furo 2021.09.22"/>
         <title>fracdiff documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=197f00461d56902ea7ca048ec6e6ba026f62c97b" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=93475b62d1c3bc01323a0eefdc14a62d77b12690" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=150e365fa939648e89c22f6d7d13c72a1657915a" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=16fb25fabf47304eee183a5e9af80b1ba98259b1" />
     
     
 
@@ -31,9 +32,11 @@
   
     }
   }
-</style>
-    <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="_static/pygments_dark.css"></head>
+</style></head>
   <body>
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
     
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
   <symbol id="svg-toc" viewBox="0 0 24 24">
@@ -155,8 +158,8 @@
 <li class="toctree-l1"><a class="reference internal" href="generated/fracdiff.fdiff.html">fracdiff.fdiff</a></li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="generated/fracdiff.Fracdiff.html">Fracdiff</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generated/fracdiff.FracdiffStat.html">FracdiffStat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/fracdiff.sklearn.Fracdiff.html">Fracdiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generated/fracdiff.sklearn.FracdiffStat.html">FracdiffStat</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="generated/fracdiff.torch.fdiff.html">fracdiff.torch.fdiff</a></li>
@@ -177,7 +180,7 @@
   </aside>
   <div class="main">
     <div class="content">
-      <article role="main">
+      <div class="article-container">
         <div class="content-icon-container">
           <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
@@ -192,16 +195,17 @@
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
-        <div class="section" id="fracdiff-documentation">
+        <article role="main">
+          <section id="fracdiff-documentation">
 <h1>Fracdiff Documentation<a class="headerlink" href="#fracdiff-documentation" title="Permalink to this headline">¶</a></h1>
 <p>Compute fractional differentiation super-fast.</p>
-<div class="section" id="install">
+<section id="install">
 <h2>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pip install fracdiff
 </pre></div>
 </div>
-</div>
-<div class="section" id="numpy-api">
+</section>
+<section id="numpy-api">
 <h2>NumPy API<a class="headerlink" href="#numpy-api" title="Permalink to this headline">¶</a></h2>
 <div class="table-wrapper"><table class="longtable docutils align-default">
 <colgroup>
@@ -214,8 +218,8 @@
 </tr>
 </tbody>
 </table></div>
-</div>
-<div class="section" id="scikit-learn-api">
+</section>
+<section id="scikit-learn-api">
 <h2>Scikit-learn API<a class="headerlink" href="#scikit-learn-api" title="Permalink to this headline">¶</a></h2>
 <div class="table-wrapper"><table class="longtable docutils align-default">
 <colgroup>
@@ -223,18 +227,17 @@
 <col style="width: 90%"/>
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/fracdiff.Fracdiff.html#fracdiff.Fracdiff" title="fracdiff.Fracdiff"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fracdiff.Fracdiff</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/fracdiff.sklearn.Fracdiff.html#fracdiff.sklearn.Fracdiff" title="fracdiff.sklearn.Fracdiff"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fracdiff.sklearn.Fracdiff</span></code></a></p></td>
 <td><p>A scikit-learn transformer to compute fractional differentiation.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/fracdiff.FracdiffStat.html#fracdiff.FracdiffStat" title="fracdiff.FracdiffStat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fracdiff.FracdiffStat</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/fracdiff.sklearn.FracdiffStat.html#fracdiff.sklearn.FracdiffStat" title="fracdiff.sklearn.FracdiffStat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fracdiff.sklearn.FracdiffStat</span></code></a></p></td>
 <td><p>A scikit-learn transformer to compute fractional differentiation, where the order is chosen as the minumum order that makes fracdiff stationary.</p></td>
 </tr>
 </tbody>
 </table></div>
-</div>
-<div class="section" id="pytorch-api">
+</section>
+<section id="pytorch-api">
 <h2>PyTorch API<a class="headerlink" href="#pytorch-api" title="Permalink to this headline">¶</a></h2>
-<p>Functional:</p>
 <div class="table-wrapper"><table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%"/>
@@ -246,7 +249,6 @@
 </tr>
 </tbody>
 </table></div>
-<p>Module:</p>
 <div class="table-wrapper"><table class="longtable docutils align-default">
 <colgroup>
 <col style="width: 10%"/>
@@ -260,10 +262,11 @@
 </table></div>
 <div class="toctree-wrapper compound">
 </div>
-</div>
-</div>
+</section>
+</section>
 
-      </article>
+        </article>
+      </div>
       <footer>
         
         <div class="related-pages">
@@ -280,13 +283,11 @@
         </div>
 
         <div class="related-information">
-              Copyright &#169; 2021, Shota Imaki
-            |
+              Copyright &#169; 2021, Shota Imaki |
             Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
               and
               <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
-              <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
-            |
+              <a href="https://github.com/pradyunsg/furo">Furo theme</a>. |
             <a class="muted-link" href="_sources/index.rst.txt"
                rel="nofollow">
               Show Source
