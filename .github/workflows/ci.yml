@@ -37,14 +37,10 @@ jobs:
         python-version: ${{ matrix.python-version }}
 
     - name: Install
-      run: pip install . && pip install torch && pip install pytest pytest-cov codecov
+      run: pip install . --extras torch
 
     - name: Run doctest
-      run: python3 -m pytest --doctest-modules ${PROJECT_NAME}
-      if: always()
-
-    - name: Run pytest
-      run: python3 -m pytest --cov=${PROJECT_NAME} tests
+      run: make test
       if: always()
 
     - uses: codecov/codecov-action@v1
