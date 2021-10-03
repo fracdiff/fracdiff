@@ -1,4 +1,4 @@
-import statsmodels.tsa.stattools as stattools # type: ignore
+import statsmodels.tsa.stattools as stattools  # type: ignore
 
 
 class StatTester:

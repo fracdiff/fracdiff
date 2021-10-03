@@ -1,10 +1,10 @@
 from functools import partial
 
+# found module but no type hints or library stubs
+import numpy as np  # type: ignore
 
 # found module but no type hints or library stubs
-import numpy as np # type: ignore
-# found module but no type hints or library stubs
-from scipy.special import binom # type: ignore
+from scipy.special import binom  # type: ignore
 
 
 def fdiff_coef(d, window) -> np.ndarray:
