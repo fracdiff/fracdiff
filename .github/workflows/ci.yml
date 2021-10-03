@@ -38,7 +38,7 @@ jobs:
 
     - run: pip install poetry
 
-    - run: poetry install . --extras torch
+    - run: poetry install --extras torch
 
     - name: Run doctest
       run: make test
@@ -64,7 +64,7 @@ jobs:
 
     - uses: psf/black@stable
       with:
-        options: '--check --diff --skip-magic-trailing-comma'
+        options: --check --diff --skip-magic-trailing-comma
 
     - uses: jamescurtin/isort-action@master
       with:
