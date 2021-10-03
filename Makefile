@@ -16,7 +16,7 @@ test-doctest:
 
 .PHONY: test-pytest
 test-pytest:
-	@poetry run pytest --doctest-modules tests
+	@poetry run pytest --doctest-modules --cov=$(PROJECT_NAME) tests
 
 .PHONY: lint
 lint: lint-black lint-isort
