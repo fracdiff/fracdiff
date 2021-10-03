@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "fracdiff"
-version = "0.5.2"
+version = "0.6.0"
 description = "Super-fast fractional differentiation."
 authors = ["Shota Imaki <shota.imaki.0801@gmail.com>"]
 license = "BSD-3-Clause"
