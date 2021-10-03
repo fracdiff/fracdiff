@@ -27,9 +27,9 @@ jobs:
 
     - uses: actions/setup-python@v2
 
-    - run: pip install . && pip install torch
+    - run: pip install poetry
 
-    - run: pip install -r docs/requirements.txt
+    - run: poetry install --extras torch
 
     - run: cd docs && make html
 
