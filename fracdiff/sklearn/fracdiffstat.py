@@ -7,6 +7,7 @@ from sklearn.utils.validation import check_array
 from sklearn.utils.validation import check_is_fitted
 
 from fracdiff.fdiff import fdiff
+
 from .fracdiff import Fracdiff
 from .stat import StatTester
 

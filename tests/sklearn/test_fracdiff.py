@@ -2,8 +2,8 @@ import numpy as np
 import pytest
 from numpy.testing import assert_array_equal
 
-from fracdiff.sklearn import Fracdiff
 from fracdiff import fdiff
+from fracdiff.sklearn import Fracdiff
 
 
 class TestFracdiff:

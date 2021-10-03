@@ -9,7 +9,6 @@ from fracdiff.sklearn.stat import StatTester
 
 
 class TestFracdiffStat:
-
     @staticmethod
     def _is_stat(x):
         return StatTester().is_stat(x)
