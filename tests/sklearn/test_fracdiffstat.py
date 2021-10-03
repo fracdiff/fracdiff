@@ -3,15 +3,12 @@ import pandas as pd
 import pytest
 from numpy.testing import assert_allclose
 
-from fracdiff import Fracdiff
-from fracdiff import FracdiffStat
-from fracdiff.stat import StatTester
+from fracdiff.sklearn import Fracdiff
+from fracdiff.sklearn import FracdiffStat
+from fracdiff.sklearn.stat import StatTester
 
 
 class TestFracdiffStat:
-    """
-    Test `FracdiffStat`.
-    """
 
     @staticmethod
     def _is_stat(x):
@@ -99,3 +96,9 @@ class TestFracdiffStat:
         output_pd = FracdiffStat().fit_transform(X_pd)
 
         assert_allclose(output_np, output_pd)
+
+    def test_import_deprecation(self):
+        with pytest.raises(DeprecationWarning):
+            from fracdiff import FracdiffStat
+
+            _ = FracdiffStat()

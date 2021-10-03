@@ -19,7 +19,7 @@ def test_torch_importerror():
     with patch("builtins.__import__", import_except_torch):
         # one can use fdiff and Fracdiff since torch is optional
         import fracdiff
-        from fracdiff import Fracdiff
+        from fracdiff.sklearn import Fracdiff
         from fracdiff import fdiff
 
         a = np.random.randn(10, 100)

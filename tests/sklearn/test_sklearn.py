@@ -4,7 +4,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 
-from fracdiff import Fracdiff
+from fracdiff.sklearn import Fracdiff
 
 
 class TestScikitLearn:

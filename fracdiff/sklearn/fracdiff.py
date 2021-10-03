@@ -38,7 +38,7 @@ class Fracdiff(TransformerMixin):
 
     Examples
     --------
-    >>> from fracdiff import Fracdiff
+    >>> from fracdiff.sklearn import Fracdiff
     >>> X = numpy.arange(10).reshape(5, 2)
     >>> fracdiff = Fracdiff(0.5, window=3)
     >>> fracdiff.fit_transform(X)
