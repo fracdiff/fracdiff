@@ -36,8 +36,9 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
 
-    - name: Install
-      run: poetry install . --extras torch
+    - run: pip install poetry
+
+    - run: poetry install . --extras torch
 
     - name: Run doctest
       run: make test
