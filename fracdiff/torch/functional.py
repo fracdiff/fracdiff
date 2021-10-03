@@ -3,7 +3,7 @@ from typing import Optional
 import torch
 from torch import Tensor
 
-from ..fdiff import fdiff_coef as fdiff_coef_numpy
+from fracdiff.fdiff import fdiff_coef as fdiff_coef_numpy
 
 
 def fdiff_coef(d: float, window: int) -> torch.Tensor:
@@ -124,12 +124,12 @@ def fdiff(
     output = torch.nn.functional.conv1d(input, weight)
 
     if mode == "same":
-        size = input_size[-1]
+        size_lastdim = input_size[-1]
     elif mode == "valid":
-        size = input_size[-1] - window + 1
+        size_lastdim = input_size[-1] - window + 1
     else:
         raise ValueError("Invalid mode: " + str(mode))
 
-    output_size = input_size[:-1] + (size,)
+    output_size = input_size[:-1] + (size_lastdim,)
 
-    return output[..., -size:].reshape(output_size)
+    return output[..., -size_lastdim:].reshape(output_size)

@@ -21,7 +21,7 @@ class TestHowto:
            [0.    , 5.    , 3.5   , 4.375 ]])
 
     Fracdiff
-    >>> from fracdiff import Fracdiff
+    >>> from fracdiff.sklearn import Fracdiff
     >>>
     >>> np.random.seed(42)
     >>> X = np.random.randn(100, 1)
@@ -41,7 +41,7 @@ class TestHowto:
     >>> pipeline = pipeline.fit(X, y)
 
     FracdiffStat
-    >>> from fracdiff import FracdiffStat
+    >>> from fracdiff.sklearn import FracdiffStat
     >>>
     >>> np.random.seed(42)
     >>> X = np.random.randn(100, 3).cumsum(0)

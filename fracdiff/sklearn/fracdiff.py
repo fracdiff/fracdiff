@@ -1,7 +1,7 @@
-import numpy
-from sklearn.base import TransformerMixin
-from sklearn.utils.validation import check_array
-from sklearn.utils.validation import check_is_fitted
+import numpy  # type: ignore
+from sklearn.base import TransformerMixin  # type: ignore
+from sklearn.utils.validation import check_array  # type: ignore
+from sklearn.utils.validation import check_is_fitted  # type: ignore
 
 from fracdiff.fdiff import fdiff
 from fracdiff.fdiff import fdiff_coef
@@ -38,7 +38,7 @@ class Fracdiff(TransformerMixin):
 
     Examples
     --------
-    >>> from fracdiff import Fracdiff
+    >>> from fracdiff.sklearn import Fracdiff
     >>> X = numpy.arange(10).reshape(5, 2)
     >>> fracdiff = Fracdiff(0.5, window=3)
     >>> fracdiff.fit_transform(X)

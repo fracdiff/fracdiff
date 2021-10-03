@@ -1,6 +1,6 @@
 import numpy as np
 
-from fracdiff import FracdiffStat
+from fracdiff.sklearn import FracdiffStat
 
 
 def test_32():

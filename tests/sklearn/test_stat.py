@@ -1,7 +1,7 @@
 import numpy as np
 import pytest
 
-from fracdiff.stat import StatTester
+from fracdiff.sklearn.stat import StatTester
 
 
 class TestStat:
@@ -32,3 +32,11 @@ class TestStat:
 
         assert StatTester().pvalue(X) > 0.1
         assert not StatTester().is_stat(X)
+
+    def test_method_valueerror(self):
+        tester = StatTester(method="nonexistent")
+
+        with pytest.raises(ValueError):
+            _ = tester.null_hypothesis
+        with pytest.raises(ValueError):
+            _ = tester.pvalue(np.ones(100))

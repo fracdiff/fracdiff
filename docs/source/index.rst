@@ -30,21 +30,17 @@ Scikit-learn API
     :nosignatures:
     :template: classtemplate.rst
 
-    fracdiff.Fracdiff
-    fracdiff.FracdiffStat
+    fracdiff.sklearn.Fracdiff
+    fracdiff.sklearn.FracdiffStat
 
 PyTorch API
 -----------
-
-Functional:
 
 .. autosummary::
     :toctree: generated
     :nosignatures:
 
     fracdiff.torch.fdiff
-
-Module:
 
 .. autosummary::
     :toctree: generated
