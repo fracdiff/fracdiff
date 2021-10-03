@@ -36,7 +36,6 @@ class Fracdiff(Module):
           :math:`L_{\\mathrm{in}} - \\mathrm{window} + 1` if `mode="valid"`.
 
     Examples:
-
         >>> from fracdiff.torch import Fracdiff
         >>> m = Fracdiff(0.5)
         >>> m
