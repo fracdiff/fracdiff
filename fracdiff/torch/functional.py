@@ -3,7 +3,7 @@ from typing import Optional
 import torch
 from torch import Tensor
 
-from ..fdiff import fdiff_coef as fdiff_coef_numpy
+from fracdiff.fdiff import fdiff_coef as fdiff_coef_numpy
 
 
 def fdiff_coef(d: float, window: int) -> torch.Tensor:

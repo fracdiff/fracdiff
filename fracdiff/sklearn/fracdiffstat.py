@@ -6,7 +6,8 @@ from sklearn.base import TransformerMixin  # type:ignore
 from sklearn.utils.validation import check_array  # type:ignore
 from sklearn.utils.validation import check_is_fitted  # type:ignore
 
-from .fdiff import fdiff
+from fracdiff.fdiff import fdiff
+
 from .fracdiff import Fracdiff
 from .stat import StatTester
 
@@ -63,7 +64,7 @@ class FracdiffStat(TransformerMixin, BaseEstimator):
 
     Examples
     --------
-    >>> from fracdiff import FracdiffStat
+    >>> from fracdiff.sklearn import FracdiffStat
     >>> np.random.seed(42)
     >>> X = np.random.randn(100, 4).cumsum(0)
     >>> f = FracdiffStat().fit(X)

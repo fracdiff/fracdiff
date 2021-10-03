@@ -2,8 +2,7 @@ import statsmodels.tsa.stattools as stattools  # type: ignore
 
 
 class StatTester:
-    """
-    Carry out stationarity test of time-series.
+    """Carry out stationarity test of time-series.
 
     Parameters
     ----------
