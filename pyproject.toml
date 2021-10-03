@@ -23,6 +23,8 @@ pytest-cov = "^2.8.1"
 codecov = "^2.1.11"
 black = "^21.4b0"
 isort = "^5.8.0"
+Sphinx = "^4.2.0"
+furo = "^2021.9.22"
 sphinx-autobuild = "^2021.3.14"
 sphinx-copybutton = "^0.4.0"
 
