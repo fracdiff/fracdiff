@@ -4,7 +4,8 @@
 # You can set these variables from the command line, and also
 # from the environment for the first two.
 SPHINXOPTS    ?= -j auto -WT --keep-going
-SPHINXBUILD   ?= sphinx-build
+SPHINXBUILD   ?= poetry run sphinx-build
+SPHINXAUTOBUILD   ?= poetry run sphinx-autobuild
 SPHINXPROJ    ?= Fracdiff
 SOURCEDIR     = source
 BUILDDIR      = build
@@ -24,3 +25,7 @@ help:
 clean:
 	@echo "Removing everything under 'build' and 'source/generated'.."
 	@rm -rf $(BUILDDIR)/html/ $(BUILDDIR)/doctrees $(SOURCEDIR)/generated
+
+.PHONY: livehtml
+livehtml:
+	$(SPHINXAUTOBUILD) "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)

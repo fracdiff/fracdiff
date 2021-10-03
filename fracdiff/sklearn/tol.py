@@ -1,4 +1,5 @@
-import numpy as np
+# found module but no type hints or library stubs
+import numpy as np  # type:ignore
 
 from fracdiff.fdiff import fdiff_coef
 

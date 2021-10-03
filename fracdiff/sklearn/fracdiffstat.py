@@ -1,13 +1,12 @@
 from concurrent.futures import ProcessPoolExecutor
 
-import numpy as np
-from sklearn.base import BaseEstimator
-from sklearn.base import TransformerMixin
-from sklearn.utils.validation import check_array
-from sklearn.utils.validation import check_is_fitted
+import numpy as np  # type:ignore
+from sklearn.base import BaseEstimator  # type:ignore
+from sklearn.base import TransformerMixin  # type:ignore
+from sklearn.utils.validation import check_array  # type:ignore
+from sklearn.utils.validation import check_is_fitted  # type:ignore
 
 from fracdiff.fdiff import fdiff
-
 from .fracdiff import Fracdiff
 from .stat import StatTester
 
