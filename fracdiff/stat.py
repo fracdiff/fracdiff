@@ -1,4 +1,4 @@
-import statsmodels.tsa.stattools as stattools
+import statsmodels.tsa.stattools as stattools # type: ignore
 
 
 class StatTester:
@@ -39,6 +39,8 @@ class StatTester:
     def null_hypothesis(self) -> str:
         if self.method == "ADF":
             return "unit-root"
+        else:
+            raise ValueError(f"Unknown method: {self.method}")
 
     def pvalue(self, x) -> float:
         """
@@ -57,6 +59,8 @@ class StatTester:
         if self.method == "ADF":
             _, pvalue, _, _, _, _ = stattools.adfuller(x)
             return pvalue
+        else:
+            raise ValueError(f"Unknown method: {self.method}")
 
     def is_stat(self, x, pvalue=0.05) -> bool:
         """
@@ -81,5 +85,6 @@ class StatTester:
         is_stat : bool
             True may imply the stationarity.
         """
-        if self.null_hypothesis == "unit-root":
-            return self.pvalue(x) < pvalue
+        assert self.null_hypothesis == "unit-root", "not supported"
+
+        return self.pvalue(x) < pvalue

@@ -1,7 +1,7 @@
-import numpy
-from sklearn.base import TransformerMixin
-from sklearn.utils.validation import check_array
-from sklearn.utils.validation import check_is_fitted
+import numpy#type: ignore
+from sklearn.base import TransformerMixin  # type: ignore
+from sklearn.utils.validation import check_array  # type: ignore
+from sklearn.utils.validation import check_is_fitted  # type: ignore
 
 from fracdiff.fdiff import fdiff
 from fracdiff.fdiff import fdiff_coef
