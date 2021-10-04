@@ -7,7 +7,7 @@ import numpy as np  # type: ignore
 from scipy.special import binom  # type: ignore
 
 
-def fdiff_coef(d, window) -> np.ndarray:
+def fdiff_coef(d: float, window: int) -> np.ndarray:
     """Returns sequence of coefficients in fracdiff operator.
 
     Parameters
@@ -35,7 +35,13 @@ def fdiff_coef(d, window) -> np.ndarray:
 
 
 def fdiff(
-    a, n=1.0, axis=-1, prepend=np._NoValue, append=np._NoValue, window=10, mode="full"
+    a: np.ndarray,
+    n: float = 1.0,
+    axis: int = -1,
+    prepend=np._NoValue,
+    append=np._NoValue,
+    window: int = 10,
+    mode: str = "full",
 ) -> np.ndarray:
     """Calculate the `n`-th differentiation along the given axis.
 
