@@ -31,12 +31,12 @@ pip install fracdiff
 ### Functionalities
 
 - [`fdiff`][doc-fdiff]: A function that extends [`numpy.diff`](https://numpy.org/doc/stable/reference/generated/numpy.diff.html) to fractional differentiation.
-- [`sklearn.Fracdiff`](https://fracdiff.github.io/fracdiff/generated/fracdiff.Fracdiff.html): A scikit-learn [transformer](https://scikit-learn.org/stable/modules/generated/sklearn.base.TransformerMixin.html) to compute fractional differentiation.
+- [`sklearn.Fracdiff`][doc-sklearn.Fracdiff]: A scikit-learn [transformer](https://scikit-learn.org/stable/modules/generated/sklearn.base.TransformerMixin.html) to compute fractional differentiation.
 - [`sklearn.FracdiffStat`][doc-sklearn.FracdiffStat]: `Fracdiff` plus automatic choice of differentiation order that makes time-series stationary.
 - [`torch.fdiff`][doc-sklearn.FracdiffStat]: A functional that extends [`torch.diff`](https://pytorch.org/docs/stable/generated/torch.diff.html) to fractional differentiation.
 - [`torch.Fracdiff`][doc-torch.Fracdiff]: A module that computes fractional differentiation.
 
-[doc-fdiff]: https://fracdiff.github.io/fracdiff/generated/fracdiff.torch.fdiff.html
+[doc-fdiff]: https://fracdiff.github.io/fracdiff/generated/fracdiff.fdiff.html
 [doc-sklearn.Fracdiff]: https://fracdiff.github.io/fracdiff/generated/fracdiff.sklearn.Fracdiff.html
 [doc-sklearn.FracdiffStat]: https://fracdiff.github.io/fracdiff/generated/fracdiff.sklearn.FracdiffStat.html
 [doc-torch.fdiff]: https://fracdiff.github.io/fracdiff/generated/fracdiff.torch.fdiff.html
