@@ -59,7 +59,6 @@ def fdiff(
           increases by the number of elements in each of these tensors.
 
     Examples:
-
         >>> from fracdiff.torch import fdiff
         >>> input = torch.tensor([1, 2, 4, 7, 0])
         >>> fdiff(input, 0.5, mode="same", window=3)
