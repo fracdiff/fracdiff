@@ -23,7 +23,7 @@ See [M. L. Prado, "Advances in Financial Machine Learning"][prado].
 ## Installation
 
 ```sh
-$ pip install fracdiff
+pip install fracdiff
 ```
 
 ## Features
