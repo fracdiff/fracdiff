@@ -15,17 +15,12 @@ class TestTorchFracdiff:
         torch.manual_seed(42)
         input = torch.randn(10, 100)
 
-        if mode == "same":
-            numpy_mode = "full"
-        elif mode == "valid":
-            numpy_mode = "valid"
-
         result = fdiff(input, d, mode=mode)
-        expect = torch.from_numpy(fracdiff.fdiff(input, d, mode=numpy_mode))
+        expect = torch.from_numpy(fracdiff.fdiff(input, d, mode=mode))
         assert_close(result, expect, check_stride=False)
 
         result = Fracdiff(d, mode=mode)(input)
-        expect = torch.from_numpy(fracdiff.fdiff(input, d, mode=numpy_mode))
+        expect = torch.from_numpy(fracdiff.fdiff(input, d, mode=mode))
         assert_close(result, expect, check_stride=False)
 
     @pytest.mark.parametrize("d", [0.1, 0.5, 1])
@@ -34,17 +29,12 @@ class TestTorchFracdiff:
         torch.manual_seed(42)
         input = torch.randint(5, size=(10, 100))
 
-        if mode == "same":
-            numpy_mode = "full"
-        elif mode == "valid":
-            numpy_mode = "valid"
-
         result = fdiff(input, d, mode=mode)
-        expect = torch.from_numpy(fracdiff.fdiff(np.array(input), d, mode=numpy_mode))
+        expect = torch.from_numpy(fracdiff.fdiff(np.array(input), d, mode=mode))
         assert_close(result, expect, check_stride=False, check_dtype=False)
 
         result = Fracdiff(d, mode=mode)(input)
-        expect = torch.from_numpy(fracdiff.fdiff(np.array(input), d, mode=numpy_mode))
+        expect = torch.from_numpy(fracdiff.fdiff(np.array(input), d, mode=mode))
         assert_close(result, expect, check_stride=False, check_dtype=False)
 
     @pytest.mark.parametrize("d", [0.1, 0.5, 1])
@@ -55,19 +45,14 @@ class TestTorchFracdiff:
         prepend = torch.randn(10, 50)
         append = torch.randn(10, 50)
 
-        if mode == "same":
-            numpy_mode = "full"
-        elif mode == "valid":
-            numpy_mode = "valid"
-
         expect = torch.from_numpy(
-            fracdiff.fdiff(input, d, mode=numpy_mode, prepend=prepend, append=append)
+            fracdiff.fdiff(input, d, mode=mode, prepend=prepend, append=append)
         )
         result = fdiff(input, d, mode=mode, prepend=prepend, append=append)
         assert_close(result, expect, check_stride=False)
 
         expect = torch.from_numpy(
-            fracdiff.fdiff(input, d, mode=numpy_mode, prepend=prepend, append=append)
+            fracdiff.fdiff(input, d, mode=mode, prepend=prepend, append=append)
         )
         result = Fracdiff(d, mode=mode)(input, prepend=prepend, append=append)
         assert_close(result, expect, check_stride=False)
@@ -80,19 +65,14 @@ class TestTorchFracdiff:
         prepend = 1
         append = 2
 
-        if mode == "same":
-            numpy_mode = "full"
-        elif mode == "valid":
-            numpy_mode = "valid"
-
         expect = torch.from_numpy(
-            fracdiff.fdiff(input, d, mode=numpy_mode, prepend=prepend, append=append)
+            fracdiff.fdiff(input, d, mode=mode, prepend=prepend, append=append)
         )
         result = fdiff(input, d, mode=mode, prepend=prepend, append=append)
         assert_close(result, expect, check_stride=False, check_dtype=False)
 
         expect = torch.from_numpy(
-            fracdiff.fdiff(input, d, mode=numpy_mode, prepend=prepend, append=append)
+            fracdiff.fdiff(input, d, mode=mode, prepend=prepend, append=append)
         )
         result = Fracdiff(d, mode=mode)(input, prepend=prepend, append=append)
         assert_close(result, expect, check_stride=False, check_dtype=False)

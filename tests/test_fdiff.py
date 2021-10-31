@@ -110,17 +110,17 @@ class TestFdiff:
         np.random.seed(42)
         a = np.random.randn(10, 20)
 
-        out_f = fdiff(a, n, axis=0, window=window, mode="full")
+        out_s = fdiff(a, n, axis=0, window=window, mode="same")
         out_v = fdiff(a, n, axis=0, window=window, mode="valid")
-        assert_array_equal(out_f[window - 1 :, :], out_v)
+        assert_array_equal(out_s[window - 1 :, :], out_v)
 
-        out_f = fdiff(a, n, axis=1, window=window, mode="full")
+        out_s = fdiff(a, n, axis=1, window=window, mode="same")
         out_v = fdiff(a, n, axis=1, window=window, mode="valid")
-        assert_array_equal(out_f[:, window - 1 :], out_v)
+        assert_array_equal(out_s[:, window - 1 :], out_v)
 
     @pytest.mark.parametrize("n", [0.5, 1.5])
     @pytest.mark.parametrize("window", [2])
-    @pytest.mark.parametrize("mode", ["full", "valid"])
+    @pytest.mark.parametrize("mode", ["same", "valid"])
     def test_prepend(self, n, window, mode):
         a = np.random.randn(10, 20)
 
@@ -148,7 +148,7 @@ class TestFdiff:
 
     @pytest.mark.parametrize("n", [0.5, 1.5])
     @pytest.mark.parametrize("window", [2])
-    @pytest.mark.parametrize("mode", ["full", "valid"])
+    @pytest.mark.parametrize("mode", ["same", "valid"])
     def test_append(self, n, window, mode):
         a = np.random.randn(10, 20)
 
@@ -176,7 +176,7 @@ class TestFdiff:
 
     @pytest.mark.parametrize("n", [0.5, 1.5])
     @pytest.mark.parametrize("window", [2])
-    @pytest.mark.parametrize("mode", ["full", "valid"])
+    @pytest.mark.parametrize("mode", ["same", "valid"])
     def test_linearity_add(self, n, window, mode):
         np.random.seed(42)
         a0 = np.random.randn(10, 20)
@@ -189,7 +189,7 @@ class TestFdiff:
 
     @pytest.mark.parametrize("n", [0.5, 1.5])
     @pytest.mark.parametrize("window", [2])
-    @pytest.mark.parametrize("mode", ["full", "valid"])
+    @pytest.mark.parametrize("mode", ["same", "valid"])
     @pytest.mark.parametrize("const", [2, 0.5, -1])
     def test_linearity_mul(self, n, window, mode, const):
         np.random.seed(42)
@@ -198,3 +198,9 @@ class TestFdiff:
         diff0 = fdiff(a0, n, window=window, mode=mode)
         diff1 = fdiff(a1, n, window=window, mode=mode)
         assert_allclose(const * diff0, diff1)
+
+    def test_full_deprecated(self):
+        np.random.seed(42)
+        X = np.random.randn(10, 10)
+        with pytest.raises(DeprecationWarning):
+            _ = fdiff(X, 0.5, mode="full")

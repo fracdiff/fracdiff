@@ -20,7 +20,7 @@ class FracdiffStat(TransformerMixin, BaseEstimator):
     ----------
     window : int > 0 or None, default 10
         Number of observations to compute each element in the output.
-    mode : {"full", "valid"}, default "full"
+    mode : {"same", "valid"}, default "same"
         See :func:`fracdiff.fdiff` for details.
     window_policy : {"fixed"}, default "fixed"
         If "fixed" :
@@ -76,7 +76,7 @@ class FracdiffStat(TransformerMixin, BaseEstimator):
     def __init__(
         self,
         window=10,
-        mode="full",
+        mode="same",
         window_policy="fixed",
         stattest="ADF",
         pvalue=0.05,

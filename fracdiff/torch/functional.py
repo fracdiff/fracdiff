@@ -6,7 +6,7 @@ from torch import Tensor
 from fracdiff.fdiff import fdiff_coef as fdiff_coef_numpy
 
 
-def fdiff_coef(d: float, window: int) -> torch.Tensor:
+def fdiff_coef(d: float, window: int) -> Tensor:
     """Returns sequence of coefficients in fracdiff operator.
 
     Args:
@@ -59,7 +59,6 @@ def fdiff(
           increases by the number of elements in each of these tensors.
 
     Examples:
-
         >>> from fracdiff.torch import fdiff
         >>> input = torch.tensor([1, 2, 4, 7, 0])
         >>> fdiff(input, 0.5, mode="same", window=3)
