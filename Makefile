@@ -1,7 +1,8 @@
 PROJECT_NAME := fracdiff
+RUN := poetry run
 
 .PHONY: check
-check: test lint typecheck
+check: test lint type
 
 .PHONY: install
 install:
@@ -12,41 +13,41 @@ test: test-doctest test-pytest
 
 .PHONY: test-doctest
 test-doctest:
-	@poetry run pytest --doctest-modules $(PROJECT_NAME)
+	$(RUN) pytest --doctest-modules $(PROJECT_NAME)
 
 .PHONY: test-pytest
 test-pytest:
-	@poetry run pytest --doctest-modules --cov=$(PROJECT_NAME) tests
+	$(RUN) pytest --doctest-modules --cov=$(PROJECT_NAME) tests
 
 .PHONY: lint
 lint: lint-black lint-isort
 
 .PHONY: lint-black
 lint-black:
-	@poetry run python3 -m black --check --quiet .
+	$(RUN) python3 -m black --check --quiet .
 
 .PHONY: lint-isort
 lint-isort:
-	@poetry run python3 -m isort --check --force-single-line-imports --quiet .
+	$(RUN) run python3 -m isort --check --force-single-line-imports --quiet .
 
 .PHONY: format
 format: format-black format-isort
 
 .PHONY: format-black
 format-black:
-	@poetry run python3 -m black --quiet .
+	$(RUN) python3 -m black --quiet .
 
 .PHONY: format-isort
 format-isort:
-	@poetry run python3 -m isort --force-single-line-imports --quiet .
+	$(RUN) python3 -m isort --force-single-line-imports --quiet .
 
 .PHONY: doc
 doc:
 	@cd docs && make html
 
-.PHONY: typecheck
-typecheck:
-	@poetry run mypy $(PROJECT_NAME)
+.PHONY: type
+type:
+	$(RUN) mypy $(PROJECT_NAME)
 
 .PHONY: publish
 publish:

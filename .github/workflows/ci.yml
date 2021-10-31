@@ -63,7 +63,7 @@ jobs:
 
     - run: pip install poetry && poetry install --extras torch
 
-    - run: make typecheck
+    - run: make type
 
   lint:
 
