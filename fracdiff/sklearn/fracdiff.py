@@ -104,7 +104,7 @@ class Fracdiff(TransformerMixin):
         self.coef_ = fdiff_coef(self.d, self.window)
         return self
 
-    def transform(self, X, y=None) -> numpy.array:
+    def transform(self, X, y=None) -> numpy.ndarray:
         """
         Return the fractional differentiation of `X`.
 

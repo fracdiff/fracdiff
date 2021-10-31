@@ -1,4 +1,5 @@
 from functools import partial
+from typing import Optional
 
 # found module but no type hints or library stubs
 import numpy as np  # type: ignore
@@ -38,8 +39,8 @@ def fdiff(
     a: np.ndarray,
     n: float = 1.0,
     axis: int = -1,
-    prepend=np._NoValue,
-    append=np._NoValue,
+    prepend: Optional[np.ndarray] = None,
+    append: Optional[np.ndarray] = None,
     window: int = 10,
     mode: str = "same",
 ) -> np.ndarray:
@@ -126,17 +127,21 @@ def fdiff(
         raise DeprecationWarning("mode 'full' was renamed to 'same'.")
 
     if isinstance(n, int) or n.is_integer():
+        prepend = np._NoValue if prepend is None else prepend  # type: ignore
+        append = np._NoValue if append is None else append  # type: ignore
         return np.diff(a, n=int(n), axis=axis, prepend=prepend, append=append)
 
     if a.ndim == 0:
         raise ValueError("diff requires input that is at least one dimensional")
 
     a = np.asanyarray(a)
-    axis = np.core.multiarray.normalize_axis_index(axis, a.ndim)
+    # Mypy complains:
+    # fracdiff/fdiff.py:135: error: Module has no attribute "normalize_axis_index"
+    axis = np.core.multiarray.normalize_axis_index(axis, a.ndim)  # type: ignore
     dtype = a.dtype if np.issubdtype(a.dtype, np.floating) else np.float64
 
     combined = []
-    if prepend is not np._NoValue:
+    if prepend is not None:
         prepend = np.asanyarray(prepend)
         if prepend.ndim == 0:
             shape = list(a.shape)
@@ -146,7 +151,7 @@ def fdiff(
 
     combined.append(a)
 
-    if append is not np._NoValue:
+    if append is not None:
         append = np.asanyarray(append)
         if append.ndim == 0:
             shape = list(a.shape)
