@@ -14,7 +14,7 @@ class TestFracdiffStat:
         return StatTester().is_stat(x)
 
     @pytest.mark.parametrize("window", [10])
-    @pytest.mark.parametrize("mode", ["full", "valid"])
+    @pytest.mark.parametrize("mode", ["same", "valid"])
     @pytest.mark.parametrize("precision", [0.01])
     @pytest.mark.parametrize("n_jobs", [None, -1])
     def test_order(self, window, mode, precision, n_jobs):
@@ -62,7 +62,7 @@ class TestFracdiffStat:
         assert np.isnan(f.d_[0])
 
     @pytest.mark.parametrize("window", [10])
-    @pytest.mark.parametrize("mode", ["full", "valid"])
+    @pytest.mark.parametrize("mode", ["same", "valid"])
     @pytest.mark.parametrize("precision", [0.01])
     @pytest.mark.parametrize("n_jobs", [None, -1])
     def test_transform(self, window, mode, precision, n_jobs):
@@ -101,3 +101,9 @@ class TestFracdiffStat:
             from fracdiff import FracdiffStat
 
             _ = FracdiffStat()
+
+    def test_full_deprecated(self):
+        np.random.seed(42)
+        X = np.random.randn(10, 10)
+        with pytest.raises(DeprecationWarning):
+            _ = Fracdiff(0.5, mode="full").fit_transform(X)

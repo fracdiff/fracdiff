@@ -23,11 +23,11 @@ lint: lint-black lint-isort
 
 .PHONY: lint-black
 lint-black:
-	@poetry run python3 -m black --check .
+	@poetry run python3 -m black --check --quiet .
 
 .PHONY: lint-isort
 lint-isort:
-	@poetry run python3 -m isort --check --force-single-line-imports .
+	@poetry run python3 -m isort --check --force-single-line-imports --quiet .
 
 .PHONY: format
 format: format-black format-isort

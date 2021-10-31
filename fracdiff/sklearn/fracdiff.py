@@ -16,7 +16,7 @@ class Fracdiff(TransformerMixin):
         The order of differentiation.
     window : int > 0 or None, default 10
         Number of observations to compute each element in the output.
-    mode : {"full", "valid"}, default "full"
+    mode : {"same", "valid"}, default "same"
         See :func:`fracdiff.fdiff` for details.
     window_policy : {"fixed"}, default "fixed"
         "fixed" (default) :
@@ -65,7 +65,7 @@ class Fracdiff(TransformerMixin):
            [-0.0625]])
     """
 
-    def __init__(self, d=1.0, window=10, mode="full", window_policy="fixed"):
+    def __init__(self, d=1.0, window=10, mode="same", window_policy="fixed"):
         self.d = d
         self.window = window
         self.mode = mode
@@ -76,7 +76,7 @@ class Fracdiff(TransformerMixin):
         Examples
         --------
         >>> Fracdiff(0.5)
-        Fracdiff(d=0.5, window=10, mode=full, window_policy=fixed)
+        Fracdiff(d=0.5, window=10, mode=same, window_policy=fixed)
         """
         name = self.__class__.__name__
         attrs = ["d", "window", "mode", "window_policy"]
@@ -116,7 +116,7 @@ class Fracdiff(TransformerMixin):
         y : array_like, optional
             Ignored.
 
-        Returns
+        Returnsg
         -------
         fdiff : ``numpy.array``, shape (n_samples, n_series)
             The fractional differentiation of `X`.
