@@ -98,7 +98,9 @@ fdiff(a, 0.5, axis=-1)
 #        [0.    , 5.    , 3.5   , 4.375 ]])
 ```
 
-### Preprocessing by fractional differentiation
+### Scikit-learn API
+
+#### Preprocessing by fractional differentiation
 
 A transformer class [`Fracdiff`](https://fracdiff.github.io/fracdiff/#id1) performs fractional differentiation by its method `transform`.
 
@@ -133,7 +135,7 @@ pipeline = Pipeline([
 pipeline.fit(X, y)
 ```
 
-### Fractional differentiation while preserving memory
+#### Fractional differentiation while preserving memory
 
 A transformer class [`FracdiffStat`](https://fracdiff.github.io/fracdiff/#fracdiffstat) finds the minumum order of fractional differentiation that makes time-series stationary.
 Differentiated time-series with this order is obtained by subsequently applying `transform` method.
