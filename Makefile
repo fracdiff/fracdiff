@@ -1,7 +1,7 @@
 PROJECT_NAME := fracdiff
 
 .PHONY: check
-check: test lint
+check: test lint typecheck
 
 .PHONY: install
 install:
@@ -45,6 +45,7 @@ doc:
 	@cd docs && make html
 
 .PHONY: typecheck
+typecheck:
 	@poetry run mypy $(PROJECT_NAME)
 
 .PHONY: publish
