@@ -23,18 +23,24 @@ See [M. L. Prado, "Advances in Financial Machine Learning"][prado].
 ## Installation
 
 ```sh
-$ pip install fracdiff
+pip install fracdiff
 ```
 
 ## Features
 
 ### Functionalities
 
-- [`fdiff`](https://fracdiff.github.io/fracdiff/generated/fracdiff.fdiff.html): A function that extends [`numpy.diff`](https://numpy.org/doc/stable/reference/generated/numpy.diff.html) to fractional differentiation.
-- [`Fracdiff`](https://fracdiff.github.io/fracdiff/generated/fracdiff.Fracdiff.html): A scikit-learn [transformer](https://scikit-learn.org/stable/modules/generated/sklearn.base.TransformerMixin.html) to compute fractional differentiation.
-- [`FracdiffStat`](https://fracdiff.github.io/fracdiff/generated/fracdiff.FracdiffStat.html): `Fracdiff` plus automatic choice of differentiation order that makes time-series stationary.
-- [`torch.fdiff`](https://fracdiff.github.io/fracdiff/generated/fracdiff.torch.fdiff.html): A functional that extends [`torch.diff`](https://pytorch.org/docs/stable/generated/torch.diff.html) to fractional differentiation.
-- [`torch.Fracdiff`](https://fracdiff.github.io/fracdiff/generated/fracdiff.torch.Fracdiff.html): A module that computes fractional differentiation.
+- [`fdiff`][doc-fdiff]: A function that extends [`numpy.diff`](https://numpy.org/doc/stable/reference/generated/numpy.diff.html) to fractional differentiation.
+- [`sklearn.Fracdiff`][doc-sklearn.Fracdiff]: A scikit-learn [transformer](https://scikit-learn.org/stable/modules/generated/sklearn.base.TransformerMixin.html) to compute fractional differentiation.
+- [`sklearn.FracdiffStat`][doc-sklearn.FracdiffStat]: `Fracdiff` plus automatic choice of differentiation order that makes time-series stationary.
+- [`torch.fdiff`][doc-torch.fdiff]: A functional that extends [`torch.diff`](https://pytorch.org/docs/stable/generated/torch.diff.html) to fractional differentiation.
+- [`torch.Fracdiff`][doc-torch.Fracdiff]: A module that computes fractional differentiation.
+
+[doc-fdiff]: https://fracdiff.github.io/fracdiff/generated/fracdiff.fdiff.html
+[doc-sklearn.Fracdiff]: https://fracdiff.github.io/fracdiff/generated/fracdiff.sklearn.Fracdiff.html
+[doc-sklearn.FracdiffStat]: https://fracdiff.github.io/fracdiff/generated/fracdiff.sklearn.FracdiffStat.html
+[doc-torch.fdiff]: https://fracdiff.github.io/fracdiff/generated/fracdiff.torch.fdiff.html
+[doc-torch.Fracdiff]: https://fracdiff.github.io/fracdiff/generated/fracdiff.torch.Fracdiff.html
 
 ### Speed
 
@@ -92,12 +98,14 @@ fdiff(a, 0.5, axis=-1)
 #        [0.    , 5.    , 3.5   , 4.375 ]])
 ```
 
-### Preprocessing by fractional differentiation
+### Scikit-learn API
+
+#### Preprocessing by fractional differentiation
 
 A transformer class [`Fracdiff`](https://fracdiff.github.io/fracdiff/#id1) performs fractional differentiation by its method `transform`.
 
 ```python
-from fracdiff import Fracdiff
+from fracdiff.sklearn import Fracdiff
 
 X = ...  # 2d time-series with shape (n_samples, n_features)
 
@@ -127,14 +135,14 @@ pipeline = Pipeline([
 pipeline.fit(X, y)
 ```
 
-### Fractional differentiation while preserving memory
+#### Fractional differentiation while preserving memory
 
 A transformer class [`FracdiffStat`](https://fracdiff.github.io/fracdiff/#fracdiffstat) finds the minumum order of fractional differentiation that makes time-series stationary.
 Differentiated time-series with this order is obtained by subsequently applying `transform` method.
 This series is interpreted as a stationary time-series keeping the maximum memory of the original time-series.
 
 ```python
-from fracdiff import FracdiffStat
+from fracdiff.sklearn import FracdiffStat
 
 X = ...  # 2d time-series with shape (n_samples, n_features)
 

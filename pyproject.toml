@@ -1,25 +1,25 @@
 [tool.poetry]
 name = "fracdiff"
-version = "0.6.0"
+version = "0.7.0"
 description = "Super-fast fractional differentiation."
 authors = ["Shota Imaki <shota.imaki.0801@gmail.com>"]
 license = "BSD-3-Clause"
 repository = "https://github.com/fracdiff/fracdiff"
 
 [tool.poetry.dependencies]
-python = "^3.6.13"
-numpy = "^1.18.0"
-scikit-learn = "^0.24.0"
-statsmodels = "^0.12.0"
-scipy = "^1.4.1"
+python = ">=3.7.12,<3.10"
 torch = {version = "^1.9.0", optional = true}
+numpy = "^1.21.3"
+scikit-learn = "^1.0.1"
+scipy = "^1.7.1"
+statsmodels = "^0.13.0"
 
 [tool.poetry.extras]
 torch = ["torch"]
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.2"
-pytest-cov = "^2.8.1"
+pytest-cov = "^3.0.0"
 codecov = "^2.1.11"
 black = "^21.4b0"
 isort = "^5.8.0"
@@ -27,6 +27,8 @@ Sphinx = "^4.2.0"
 furo = "^2021.9.22"
 sphinx-autobuild = "^2021.3.14"
 sphinx-copybutton = "^0.4.0"
+mypy = "^0.910"
+pylint = "^2.11.1"
 
 [build-system]
 requires = ["poetry>=0.12"]

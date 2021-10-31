@@ -1,4 +1,5 @@
 from functools import partial
+from typing import Optional
 
 # found module but no type hints or library stubs
 import numpy as np  # type: ignore
@@ -7,7 +8,7 @@ import numpy as np  # type: ignore
 from scipy.special import binom  # type: ignore
 
 
-def fdiff_coef(d, window) -> np.ndarray:
+def fdiff_coef(d: float, window: int) -> np.ndarray:
     """Returns sequence of coefficients in fracdiff operator.
 
     Parameters
@@ -35,7 +36,13 @@ def fdiff_coef(d, window) -> np.ndarray:
 
 
 def fdiff(
-    a, n=1.0, axis=-1, prepend=np._NoValue, append=np._NoValue, window=10, mode="full"
+    a: np.ndarray,
+    n: float = 1.0,
+    axis: int = -1,
+    prepend: Optional[np.ndarray] = None,
+    append: Optional[np.ndarray] = None,
+    window: int = 10,
+    mode: str = "same",
 ) -> np.ndarray:
     """Calculate the `n`-th differentiation along the given axis.
 
@@ -59,13 +66,14 @@ def fdiff(
         Values to append.
     window : int, default=10
         Number of observations to compute each element in the output.
-    mode : {"full", "valid"}, default="full"
-        "full" (default) :
-            Return elements where at least one coefficient of fracdiff is used.
+    mode : {"same", "valid"}, default="same"
+        "same" (default) :
+            At the beginning of the time series,
+            return elements where at least one coefficient of fracdiff is used.
             Output size along ``axis`` is :math:`L_{\\mathrm{in}}`
             where :math:`L_{\\mathrm{in}}` is the length of ``a`` along ``axis``
             (plus the lengths of ``append`` and ``prepend``).
-            Boundary effects may be seen at the At the beginning of a time-series.
+            Boundary effects may be seen at the at the beginning of a time-series.
         "valid" :
             Return elements where all coefficients of fracdiff are used.
             Output size along ``axis`` is
@@ -114,18 +122,26 @@ def fdiff(
     array([[ 1. ,  3. ,  6. , 10. , 15. ],
            [-0.5,  3.5,  3. ,  3. ,  3.5]])
     """
+    if mode == "full":
+        mode = "same"
+        raise DeprecationWarning("mode 'full' was renamed to 'same'.")
+
     if isinstance(n, int) or n.is_integer():
+        prepend = np._NoValue if prepend is None else prepend  # type: ignore
+        append = np._NoValue if append is None else append  # type: ignore
         return np.diff(a, n=int(n), axis=axis, prepend=prepend, append=append)
 
     if a.ndim == 0:
         raise ValueError("diff requires input that is at least one dimensional")
 
     a = np.asanyarray(a)
-    axis = np.core.multiarray.normalize_axis_index(axis, a.ndim)
+    # Mypy complains:
+    # fracdiff/fdiff.py:135: error: Module has no attribute "normalize_axis_index"
+    axis = np.core.multiarray.normalize_axis_index(axis, a.ndim)  # type: ignore
     dtype = a.dtype if np.issubdtype(a.dtype, np.floating) else np.float64
 
     combined = []
-    if prepend is not np._NoValue:
+    if prepend is not None:
         prepend = np.asanyarray(prepend)
         if prepend.ndim == 0:
             shape = list(a.shape)
@@ -135,7 +151,7 @@ def fdiff(
 
     combined.append(a)
 
-    if append is not np._NoValue:
+    if append is not None:
         append = np.asanyarray(append)
         if append.ndim == 0:
             shape = list(a.shape)
@@ -149,7 +165,8 @@ def fdiff(
     if mode == "valid":
         D = partial(np.convolve, fdiff_coef(n, window).astype(dtype), mode="valid")
         a = np.apply_along_axis(D, axis, a)
-    elif mode == "full":
+    elif mode == "same":
+        # Convolve with the mode 'full' and cut last
         D = partial(np.convolve, fdiff_coef(n, window).astype(dtype), mode="full")
         s = tuple(
             slice(a.shape[axis]) if i == axis else slice(None) for i in range(a.ndim)

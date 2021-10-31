@@ -1,3 +1,4 @@
+import numpy as np
 import statsmodels.tsa.stattools as stattools  # type: ignore
 
 
@@ -31,7 +32,7 @@ class StatTester:
     False
     """
 
-    def __init__(self, method="ADF"):
+    def __init__(self, method: str = "ADF"):
         self.method = method
 
     @property
@@ -41,7 +42,7 @@ class StatTester:
         else:
             raise ValueError(f"Unknown method: {self.method}")
 
-    def pvalue(self, x) -> float:
+    def pvalue(self, x: np.ndarray) -> float:
         """
         Return p-value of the stationarity test.
 
@@ -61,7 +62,7 @@ class StatTester:
         else:
             raise ValueError(f"Unknown method: {self.method}")
 
-    def is_stat(self, x, pvalue=0.05) -> bool:
+    def is_stat(self, x: np.ndarray, pvalue: float = 0.05) -> bool:
         """
         Return whether stationarity test implies stationarity.
 
