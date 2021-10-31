@@ -116,7 +116,7 @@ class Fracdiff(TransformerMixin):
         y : array_like, optional
             Ignored.
 
-        Returnsg
+        Returns
         -------
         fdiff : ``numpy.array``, shape (n_samples, n_series)
             The fractional differentiation of `X`.
