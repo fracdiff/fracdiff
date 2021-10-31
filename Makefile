@@ -2,7 +2,7 @@ PROJECT_NAME := fracdiff
 RUN := poetry run
 
 .PHONY: check
-check: test lint typecheck
+check: test lint type
 
 .PHONY: install
 install:
@@ -45,8 +45,8 @@ format-isort:
 doc:
 	@cd docs && make html
 
-.PHONY: typecheck
-typecheck:
+.PHONY: type
+type:
 	$(RUN) mypy $(PROJECT_NAME)
 
 .PHONY: publish
