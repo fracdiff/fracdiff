@@ -4,10 +4,10 @@
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
 
-    <meta name="generator" content="sphinx-4.2.0, furo 2021.09.22"/>
+    <meta name="generator" content="sphinx-4.2.0, furo 2021.10.09"/>
         <title>fracdiff.torch.module - fracdiff documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=150e365fa939648e89c22f6d7d13c72a1657915a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=0254c309f5cadf746f1a613e7677379ac9c8cdcd" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=16fb25fabf47304eee183a5e9af80b1ba98259b1" />
     
     
@@ -214,17 +214,7 @@
 <span class="sd">            Currently, only the last dimension is supported.</span>
 <span class="sd">        window (int, default=10): The window size for fractional differentiation.</span>
 <span class="sd">        mode (str, default="same"): "same" or "valid".</span>
-
-<span class="sd">            "same" (default):</span>
-<span class="sd">                Return elements where at least one coefficient is used.</span>
-<span class="sd">                Output size along `axis` is `M` where `M` is the length of `input`</span>
-<span class="sd">                (plus the lengths of append and prepend if these are given).</span>
-<span class="sd">                At the beginning of a time-series, boundary effects may be seen.</span>
-<span class="sd">            "valid":</span>
-<span class="sd">                Return elements where all coefficients are used.</span>
-<span class="sd">                Output size along `axis` is `M - window` where `M` is the length of</span>
-<span class="sd">                `input` (plus the lengths of append and prepend if these are given).</span>
-<span class="sd">                At the beginning of a time-series, boundary effects is not seen.</span>
+<span class="sd">            See :func:`fracdiff.fdiff` for details.</span>
 
 <span class="sd">    Shape:</span>
 <span class="sd">        - input: :math:`(N, *, L_{\\mathrm{in}})`, where where :math:`*` means any</span>
@@ -234,7 +224,6 @@
 <span class="sd">          :math:`L_{\\mathrm{in}} - \\mathrm{window} + 1` if `mode="valid"`.</span>
 
 <span class="sd">    Examples:</span>
-
 <span class="sd">        &gt;&gt;&gt; from fracdiff.torch import Fracdiff</span>
 <span class="sd">        &gt;&gt;&gt; m = Fracdiff(0.5)</span>
 <span class="sd">        &gt;&gt;&gt; m</span>

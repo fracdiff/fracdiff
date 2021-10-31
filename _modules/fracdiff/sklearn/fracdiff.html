@@ -4,10 +4,10 @@
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
 
-    <meta name="generator" content="sphinx-4.2.0, furo 2021.09.22"/>
+    <meta name="generator" content="sphinx-4.2.0, furo 2021.10.09"/>
         <title>fracdiff.sklearn.fracdiff - fracdiff documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=150e365fa939648e89c22f6d7d13c72a1657915a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=0254c309f5cadf746f1a613e7677379ac9c8cdcd" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=16fb25fabf47304eee183a5e9af80b1ba98259b1" />
     
     
@@ -214,7 +214,7 @@
 <span class="sd">        The order of differentiation.</span>
 <span class="sd">    window : int &gt; 0 or None, default 10</span>
 <span class="sd">        Number of observations to compute each element in the output.</span>
-<span class="sd">    mode : {"full", "valid"}, default "full"</span>
+<span class="sd">    mode : {"same", "valid"}, default "same"</span>
 <span class="sd">        See :func:`fracdiff.fdiff` for details.</span>
 <span class="sd">    window_policy : {"fixed"}, default "fixed"</span>
 <span class="sd">        "fixed" (default) :</span>
@@ -263,7 +263,7 @@
 <span class="sd">           [-0.0625]])</span>
 <span class="sd">    """</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">"full"</span><span class="p">,</span> <span class="n">window_policy</span><span class="o">=</span><span class="s2">"fixed"</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">"same"</span><span class="p">,</span> <span class="n">window_policy</span><span class="o">=</span><span class="s2">"fixed"</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">d</span> <span class="o">=</span> <span class="n">d</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">window</span> <span class="o">=</span> <span class="n">window</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="n">mode</span>
@@ -274,7 +274,7 @@
 <span class="sd">        Examples</span>
 <span class="sd">        --------</span>
 <span class="sd">        &gt;&gt;&gt; Fracdiff(0.5)</span>
-<span class="sd">        Fracdiff(d=0.5, window=10, mode=full, window_policy=fixed)</span>
+<span class="sd">        Fracdiff(d=0.5, window=10, mode=same, window_policy=fixed)</span>
 <span class="sd">        """</span>
         <span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span>
         <span class="n">attrs</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"d"</span><span class="p">,</span> <span class="s2">"window"</span><span class="p">,</span> <span class="s2">"mode"</span><span class="p">,</span> <span class="s2">"window_policy"</span><span class="p">]</span>
@@ -302,7 +302,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">coef_</span> <span class="o">=</span> <span class="n">fdiff_coef</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">d</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">window</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span></div>
 
-<div class="viewcode-block" id="Fracdiff.transform"><a class="viewcode-back" href="../../../generated/fracdiff.sklearn.Fracdiff.html#fracdiff.sklearn.Fracdiff.transform">[docs]</a>    <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">:</span>
+<div class="viewcode-block" id="Fracdiff.transform"><a class="viewcode-back" href="../../../generated/fracdiff.sklearn.Fracdiff.html#fracdiff.sklearn.Fracdiff.transform">[docs]</a>    <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">numpy</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
         <span class="sd">"""</span>
 <span class="sd">        Return the fractional differentiation of `X`.</span>
 

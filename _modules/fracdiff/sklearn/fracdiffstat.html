@@ -4,10 +4,10 @@
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
 
-    <meta name="generator" content="sphinx-4.2.0, furo 2021.09.22"/>
+    <meta name="generator" content="sphinx-4.2.0, furo 2021.10.09"/>
         <title>fracdiff.sklearn.fracdiffstat - fracdiff documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=150e365fa939648e89c22f6d7d13c72a1657915a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=0254c309f5cadf746f1a613e7677379ac9c8cdcd" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=16fb25fabf47304eee183a5e9af80b1ba98259b1" />
     
     
@@ -218,7 +218,7 @@
 <span class="sd">    ----------</span>
 <span class="sd">    window : int &gt; 0 or None, default 10</span>
 <span class="sd">        Number of observations to compute each element in the output.</span>
-<span class="sd">    mode : {"full", "valid"}, default "full"</span>
+<span class="sd">    mode : {"same", "valid"}, default "same"</span>
 <span class="sd">        See :func:`fracdiff.fdiff` for details.</span>
 <span class="sd">    window_policy : {"fixed"}, default "fixed"</span>
 <span class="sd">        If "fixed" :</span>
@@ -274,7 +274,7 @@
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">window</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-        <span class="n">mode</span><span class="o">=</span><span class="s2">"full"</span><span class="p">,</span>
+        <span class="n">mode</span><span class="o">=</span><span class="s2">"same"</span><span class="p">,</span>
         <span class="n">window_policy</span><span class="o">=</span><span class="s2">"fixed"</span><span class="p">,</span>
         <span class="n">stattest</span><span class="o">=</span><span class="s2">"ADF"</span><span class="p">,</span>
         <span class="n">pvalue</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span>

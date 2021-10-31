@@ -5,10 +5,10 @@
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Fracdiff" href="fracdiff.sklearn.Fracdiff.html" /><link rel="prev" title="Fracdiff Documentation" href="../index.html" />
 
-    <meta name="generator" content="sphinx-4.2.0, furo 2021.09.22"/>
+    <meta name="generator" content="sphinx-4.2.0, furo 2021.10.09"/>
         <title>fracdiff.fdiff - fracdiff documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=150e365fa939648e89c22f6d7d13c72a1657915a" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=0254c309f5cadf746f1a613e7677379ac9c8cdcd" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=16fb25fabf47304eee183a5e9af80b1ba98259b1" />
     
     
@@ -200,7 +200,7 @@
 <h1>fracdiff.fdiff<a class="headerlink" href="#fracdiff-fdiff" title="Permalink to this headline">¶</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="fracdiff.fdiff">
-<span class="sig-prename descclassname"><span class="pre">fracdiff.</span></span><span class="sig-name descname"><span class="pre">fdiff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">a</span></em>, <em class="sig-param"><span class="pre">n=1.0</span></em>, <em class="sig-param"><span class="pre">axis=-1</span></em>, <em class="sig-param"><span class="pre">prepend=&lt;no</span> <span class="pre">value&gt;</span></em>, <em class="sig-param"><span class="pre">append=&lt;no</span> <span class="pre">value&gt;</span></em>, <em class="sig-param"><span class="pre">window=10</span></em>, <em class="sig-param"><span class="pre">mode='full'</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/fracdiff/fdiff.html#fdiff"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fracdiff.fdiff" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">fracdiff.</span></span><span class="sig-name descname"><span class="pre">fdiff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prepend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">append</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'same'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/fracdiff/fdiff.html#fdiff"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fracdiff.fdiff" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the <cite>n</cite>-th differentiation along the given axis.</p>
 <p>Extention of <code class="docutils literal notranslate"><span class="pre">numpy.diff</span></code> to fractional differentiation.</p>
 <dl class="field-list simple">
@@ -216,12 +216,13 @@ the shape of the input array in along all other axes.
 Otherwise the dimension and shape must match <code class="docutils literal notranslate"><span class="pre">a</span></code> except along axis.</p></li>
 <li><p><strong>append</strong> (<em>array_like</em><em>, </em><em>optional</em>) – Values to append.</p></li>
 <li><p><strong>window</strong> (<em>int</em><em>, </em><em>default=10</em>) – Number of observations to compute each element in the output.</p></li>
-<li><p><strong>mode</strong> (<em>{"full"</em><em>, </em><em>"valid"}</em><em>, </em><em>default="full"</em>) – <dl class="simple">
-<dt>“full” (default) :</dt><dd><p>Return elements where at least one coefficient of fracdiff is used.
+<li><p><strong>mode</strong> (<em>{"same"</em><em>, </em><em>"valid"}</em><em>, </em><em>default="same"</em>) – <dl class="simple">
+<dt>“same” (default) :</dt><dd><p>At the beginning of the time series,
+return elements where at least one coefficient of fracdiff is used.
 Output size along <code class="docutils literal notranslate"><span class="pre">axis</span></code> is <span class="math notranslate nohighlight">\(L_{\mathrm{in}}\)</span>
 where <span class="math notranslate nohighlight">\(L_{\mathrm{in}}\)</span> is the length of <code class="docutils literal notranslate"><span class="pre">a</span></code> along <code class="docutils literal notranslate"><span class="pre">axis</span></code>
 (plus the lengths of <code class="docutils literal notranslate"><span class="pre">append</span></code> and <code class="docutils literal notranslate"><span class="pre">prepend</span></code>).
-Boundary effects may be seen at the At the beginning of a time-series.</p>
+Boundary effects may be seen at the at the beginning of a time-series.</p>
 </dd>
 <dt>”valid” :</dt><dd><p>Return elements where all coefficients of fracdiff are used.
 Output size along <code class="docutils literal notranslate"><span class="pre">axis</span></code> is
