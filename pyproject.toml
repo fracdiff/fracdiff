@@ -16,7 +16,7 @@ statsmodels = "^0.13.0"
 
 [tool.poetry.extras]
 torch = ["torch"]
-sklearn = ["scikit-learn"]
+scikit-learn = ["scikit-learn"]
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.2"

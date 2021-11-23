@@ -38,7 +38,7 @@ jobs:
 
     - run: pip install poetry
 
-    - run: poetry install --extras torch scikit-learn
+    - run: poetry install --extras torch --extras scikit-learn
 
     - name: Run doctest
       run: make test
@@ -61,7 +61,7 @@ jobs:
       with:
         python-version: '3.9'
 
-    - run: pip install poetry && poetry install --extras torch scikit-learn
+    - run: pip install poetry && poetry install --extras torch --extras scikit-learn
 
     - run: make type
 
