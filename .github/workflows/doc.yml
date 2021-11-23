@@ -29,7 +29,7 @@ jobs:
       with:
         python-version: '3.9'
 
-    - run: pip install poetry && poetry install --extras torch
+    - run: pip install poetry && poetry install --extras torch scikit-learn
 
     - run: cd docs && make html
 
