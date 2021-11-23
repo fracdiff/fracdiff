@@ -10,12 +10,13 @@ repository = "https://github.com/fracdiff/fracdiff"
 python = ">=3.7.12,<3.10"
 torch = {version = "^1.9.0", optional = true}
 numpy = "^1.21.3"
-scikit-learn = "^1.0.1"
+scikit-learn = {version = "^1.0.1", optional = true}
 scipy = "^1.7.1"
 statsmodels = "^0.13.0"
 
 [tool.poetry.extras]
 torch = ["torch"]
+sklearn = ["scikit-learn"]
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.2"
