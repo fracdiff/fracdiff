@@ -4,7 +4,7 @@ import numpy as np  # type:ignore
 from fracdiff.fdiff import fdiff_coef
 
 
-def window_from_tol_coef(n: float, tol_coef: float, max_window: int = 2 ** 12) -> int:
+def window_from_tol_coef(n: float, tol_coef: float, max_window: int = 2**12) -> int:
     """
     Return length of window determined from tolerance to memory loss.
 
@@ -44,7 +44,7 @@ def window_from_tol_coef(n: float, tol_coef: float, max_window: int = 2 ** 12) -
 
 
 def window_from_tol_memory(
-    n: float, tol_memory: float, max_window: int = 2 ** 12
+    n: float, tol_memory: float, max_window: int = 2**12
 ) -> int:
     """
     Return length of window determined from tolerance to memory loss.
