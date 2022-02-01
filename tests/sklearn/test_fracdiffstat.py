@@ -57,7 +57,9 @@ class TestFracdiffStat:
         np.random.seed(42)
         X = np.random.randn(100, 1).cumsum(0)
 
-        f = FracdiffStat(window=window, upper=0.0, lower=-1.0).fit(X)
+        f = FracdiffStat(window=window, upper=0.0, lower=-1.0)
+        with pytest.raises(RuntimeWarning):
+            f.fit(X)
 
         assert np.isnan(f.d_[0])
 

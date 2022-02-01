@@ -6,7 +6,7 @@ check: test lint type
 
 .PHONY: install
 install:
-	@poetry install --extras torch
+	@poetry install --extras torch scikit-learn
 
 .PHONY: test
 test: test-doctest test-pytest
@@ -28,18 +28,18 @@ lint-black:
 
 .PHONY: lint-isort
 lint-isort:
-	$(RUN) run python3 -m isort --check --force-single-line-imports --quiet .
+	$(RUN) isort --check --force-single-line-imports --quiet .
 
 .PHONY: format
 format: format-black format-isort
 
 .PHONY: format-black
 format-black:
-	$(RUN) python3 -m black --quiet .
+	$(RUN) black --quiet .
 
 .PHONY: format-isort
 format-isort:
-	$(RUN) python3 -m isort --force-single-line-imports --quiet .
+	$(RUN) isort --force-single-line-imports --quiet .
 
 .PHONY: doc
 doc:

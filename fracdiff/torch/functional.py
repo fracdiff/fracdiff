@@ -19,7 +19,6 @@ def fdiff_coef(d: float, window: int) -> Tensor:
         torch.Tensor
 
     Examples:
-
         >>> from fracdiff.torch import fdiff_coef
         >>>
         >>> fdiff_coef(0.5, 4)
@@ -75,11 +74,7 @@ def fdiff(
         tensor([[0.0000, 1.0000, 1.5000, 1.8750, 2.1875],
                 [5.0000, 3.5000, 3.3750, 3.4375, 3.5547]])
     """
-    if dim != -1:
-        # TODO(simaki): Implement dim != -1. PR welcomed!
-        raise ValueError("Only supports dim == -1.")
-
-    if input.dtype not in (torch.float16, torch.float32, torch.float64, torch.bfloat16):
+    if not torch.is_floating_point(input):
         input = input.to(torch.get_default_dtype())
 
     combined = []
@@ -102,7 +97,7 @@ def fdiff(
         combined.append(append)
 
     if len(combined) > 1:
-        input = torch.cat(combined, dim)
+        input = torch.cat(combined, dim=dim)
 
     if isinstance(n, int) or n.is_integer():
         if n < 0:
@@ -112,6 +107,8 @@ def fdiff(
             # PyTorch supports `diff` with n > 1.
             input = input.diff(int(n), dim=dim)
         return input
+
+    input = input.transpose(dim, -1)
 
     input_size = input.size()
     input = input.reshape(input[..., 0].numel(), 1, input_size[-1])
@@ -130,5 +127,8 @@ def fdiff(
         raise ValueError("Invalid mode: " + str(mode))
 
     output_size = input_size[:-1] + (size_lastdim,)
+    output = output[..., -size_lastdim:].reshape(output_size)
 
-    return output[..., -size_lastdim:].reshape(output_size)
+    output = output.transpose(dim, -1)
+
+    return output
