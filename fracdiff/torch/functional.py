@@ -105,7 +105,7 @@ def fdiff(
         combined.append(append)
 
     if len(combined) > 1:
-        input = torch.cat(combined, dim)
+        input = torch.cat(combined, dim=dim)
 
     input_size = input.size()
     input = input.reshape(input[..., 0].numel(), 1, input_size[-1])
@@ -124,5 +124,8 @@ def fdiff(
         raise ValueError("Invalid mode: " + str(mode))
 
     output_size = input_size[:-1] + (size_lastdim,)
+    output = output[..., -size_lastdim:].reshape(output_size)
 
-    return output[..., -size_lastdim:].reshape(output_size)
+    output = output.transpose(dim, -1)
+
+    return output
