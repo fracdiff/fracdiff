@@ -76,7 +76,7 @@ def fdiff(
     """
     # Calls torch.diff if n is an integer
     if isinstance(n, int) or n.is_integer():
-        return input.diff(n=n, dim=dim, prepend=prepend, append=append)
+        return input.diff(n=int(n), dim=dim, prepend=prepend, append=append)
 
     if dim != -1:
         # TODO(simaki): Implement dim != -1. PR welcomed!
