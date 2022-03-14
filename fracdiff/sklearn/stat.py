@@ -19,15 +19,15 @@ class StatTester:
     Stationary time-series:
     >>> x = np.random.randn(100)
     >>> tester = StatTester(method='ADF')
-    >>> tester.pvalue(x)
-    1.1655044784188669e-17
+    >>> tester.pvalue(x) < 0.01
+    True
     >>> tester.is_stat(x)
     True
 
     Non-stationary time-series:
     >>> x = np.cumsum(x)
-    >>> tester.pvalue(x)
-    0.6020814791099098
+    >>> tester.pvalue(x) < 0.01
+    False
     >>> tester.is_stat(x)
     False
     """

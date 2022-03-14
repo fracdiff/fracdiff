@@ -10,10 +10,8 @@ def fdiff_coef(d: float, window: int) -> Tensor:
     """Returns sequence of coefficients in fracdiff operator.
 
     Args:
-        d : float
-            Order of differentiation.
-        window : int
-            Number of terms.
+        d (float): Order of differentiation.
+        window (int): Number of terms.
 
     Returns:
         torch.Tensor
@@ -39,26 +37,28 @@ def fdiff(
     append: Optional[Tensor] = None,
     window: int = 10,
     mode: str = "same",
-):
-    """Computes the `n`-th differentiation along the given dimension.
+) -> Tensor:
+    r"""Computes the ``n``-th differentiation along the given dimension.
 
-    This is an extension of
-    `torch.diff <https://pytorch.org/docs/stable/generated/torch.diff.html>`_
-    to fractional differentiation.
+    This is an extension of :func:`torch.diff` to fractional differentiation.
+    See :class:`fracdiff.torch.Fracdiff` for details.
 
-    See :class:`fracdiff.torch.Fracdiff`.
+    Note:
+        For integer ``n``, the output is the same as :func:`torch.diff`
+        and the parameters ``window`` and ``mode`` are ignored.
 
     Shape:
-        - input: :math:`(N, *, L_{\\mathrm{in}})`, where where :math:`*` means any
+        - input: :math:`(N, *, L_{\mathrm{in}})`, where where :math:`*` means any
           number of additional dimensions.
-        - output: :math:`(N, *, L_{\\mathrm{out}})`, where :math:`L_{\\mathrm{out}}`
-          is given by :math:`L_{\\mathrm{in}}` if `mode="same"` and
-          :math:`L_{\\mathrm{in}} - \\mathrm{window} - 1` if `mode="valid"`.
-          If `prepend` and/or `append` are provided, then :math:`L_{\\mathrm{out}}`
+        - output: :math:`(N, *, L_{\mathrm{out}})`, where :math:`L_{\mathrm{out}}`
+          is given by :math:`L_{\mathrm{in}}` if `mode="same"` and
+          :math:`L_{\mathrm{in}} - \mathrm{window} - 1` if `mode="valid"`.
+          If `prepend` and/or `append` are provided, then :math:`L_{\mathrm{out}}`
           increases by the number of elements in each of these tensors.
 
     Examples:
         >>> from fracdiff.torch import fdiff
+        ...
         >>> input = torch.tensor([1, 2, 4, 7, 0])
         >>> fdiff(input, 0.5, mode="same", window=3)
         tensor([ 1.0000,  1.5000,  2.8750,  4.7500, -4.0000])
@@ -74,7 +74,15 @@ def fdiff(
         tensor([[0.0000, 1.0000, 1.5000, 1.8750, 2.1875],
                 [5.0000, 3.5000, 3.3750, 3.4375, 3.5547]])
     """
-    if not torch.is_floating_point(input):
+    # Calls torch.diff if n is an integer
+    if isinstance(n, int) or n.is_integer():
+        return input.diff(n=int(n), dim=dim, prepend=prepend, append=append)
+
+    if dim != -1:
+        # TODO(simaki): Implement dim != -1. PR welcomed!
+        raise ValueError("Only supports dim == -1.")
+
+    if not input.is_floating_point():
         input = input.to(torch.get_default_dtype())
 
     combined = []
@@ -98,17 +106,6 @@ def fdiff(
 
     if len(combined) > 1:
         input = torch.cat(combined, dim=dim)
-
-    if isinstance(n, int) or n.is_integer():
-        if n < 0:
-            raise ValueError("n must be non-negative.")
-        for _ in range(int(n)):
-            # TODO(simaki): Remove for statement once
-            # PyTorch supports `diff` with n > 1.
-            input = input.diff(int(n), dim=dim)
-        return input
-
-    input = input.transpose(dim, -1)
 
     input_size = input.size()
     input = input.reshape(input[..., 0].numel(), 1, input_size[-1])
