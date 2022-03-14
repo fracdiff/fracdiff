@@ -4,10 +4,10 @@
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
 
-    <meta name="generator" content="sphinx-4.4.0, furo 2022.02.14.1"/>
+    <meta name="generator" content="sphinx-4.4.0, furo 2022.03.04"/>
         <title>fracdiff.sklearn.fracdiffstat - fracdiff documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=a8f031f701c6af50c9919b48f173a5785af06fac" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=935aa2abcc5c1da4283d1dc201fb1f0add16d23a" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=25ceb02ed1c46dc30f2321ff83e92799f69dfdb9" />
     
     
@@ -19,16 +19,18 @@
   --color-code-foreground: black;
   
   }
-  body[data-theme="dark"] {
-    --color-code-background: #202020;
-  --color-code-foreground: #d0d0d0;
-  
-  }
-  @media (prefers-color-scheme: dark) {
-    body:not([data-theme="light"]) {
+  @media not print {
+    body[data-theme="dark"] {
       --color-code-background: #202020;
   --color-code-foreground: #d0d0d0;
   
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
     }
   }
 </style></head>
@@ -177,6 +179,12 @@
   <div class="main">
     <div class="content">
       <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
         <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
@@ -193,17 +201,21 @@
         <article role="main">
           <h1>Source code for fracdiff.sklearn.fracdiffstat</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">concurrent.futures</span> <span class="kn">import</span> <span class="n">ProcessPoolExecutor</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TypeVar</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>  <span class="c1"># type:ignore</span>
-<span class="kn">from</span> <span class="nn">sklearn.base</span> <span class="kn">import</span> <span class="n">BaseEstimator</span>  <span class="c1"># type:ignore</span>
-<span class="kn">from</span> <span class="nn">sklearn.base</span> <span class="kn">import</span> <span class="n">TransformerMixin</span>  <span class="c1"># type:ignore</span>
-<span class="kn">from</span> <span class="nn">sklearn.utils.validation</span> <span class="kn">import</span> <span class="n">check_array</span>  <span class="c1"># type:ignore</span>
-<span class="kn">from</span> <span class="nn">sklearn.utils.validation</span> <span class="kn">import</span> <span class="n">check_is_fitted</span>  <span class="c1"># type:ignore</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.base</span> <span class="kn">import</span> <span class="n">BaseEstimator</span>  <span class="c1"># type: ignore</span>
+<span class="kn">from</span> <span class="nn">sklearn.base</span> <span class="kn">import</span> <span class="n">TransformerMixin</span>  <span class="c1"># type: ignore</span>
+<span class="kn">from</span> <span class="nn">sklearn.utils.validation</span> <span class="kn">import</span> <span class="n">check_array</span>  <span class="c1"># type: ignore</span>
+<span class="kn">from</span> <span class="nn">sklearn.utils.validation</span> <span class="kn">import</span> <span class="n">check_is_fitted</span>  <span class="c1"># type: ignore</span>
 
 <span class="kn">from</span> <span class="nn">fracdiff.fdiff</span> <span class="kn">import</span> <span class="n">fdiff</span>
 
 <span class="kn">from</span> <span class="nn">.fracdiff</span> <span class="kn">import</span> <span class="n">Fracdiff</span>
 <span class="kn">from</span> <span class="nn">.stat</span> <span class="kn">import</span> <span class="n">StatTester</span>
+
+<span class="n">T</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">"T"</span><span class="p">,</span> <span class="n">bound</span><span class="o">=</span><span class="s2">"FracdiffStat"</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="FracdiffStat"><a class="viewcode-back" href="../../../generated/fracdiff.sklearn.FracdiffStat.html#fracdiff.sklearn.FracdiffStat">[docs]</a><span class="k">class</span> <span class="nc">FracdiffStat</span><span class="p">(</span><span class="n">TransformerMixin</span><span class="p">,</span> <span class="n">BaseEstimator</span><span class="p">):</span>
@@ -269,16 +281,16 @@
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">window</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-        <span class="n">mode</span><span class="o">=</span><span class="s2">"same"</span><span class="p">,</span>
-        <span class="n">window_policy</span><span class="o">=</span><span class="s2">"fixed"</span><span class="p">,</span>
-        <span class="n">stattest</span><span class="o">=</span><span class="s2">"ADF"</span><span class="p">,</span>
-        <span class="n">pvalue</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span>
-        <span class="n">precision</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>
-        <span class="n">upper</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
-        <span class="n">lower</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
-        <span class="n">n_jobs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="p">):</span>
+        <span class="n">window</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"same"</span><span class="p">,</span>
+        <span class="n">window_policy</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"fixed"</span><span class="p">,</span>
+        <span class="n">stattest</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"ADF"</span><span class="p">,</span>
+        <span class="n">pvalue</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.05</span><span class="p">,</span>
+        <span class="n">precision</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.01</span><span class="p">,</span>
+        <span class="n">upper</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">lower</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="n">n_jobs</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">window</span> <span class="o">=</span> <span class="n">window</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="n">mode</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">window_policy</span> <span class="o">=</span> <span class="n">window_policy</span>
@@ -289,7 +301,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">lower</span> <span class="o">=</span> <span class="n">lower</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">n_jobs</span> <span class="o">=</span> <span class="n">n_jobs</span>
 
-<div class="viewcode-block" id="FracdiffStat.fit"><a class="viewcode-back" href="../../../generated/fracdiff.sklearn.FracdiffStat.html#fracdiff.sklearn.FracdiffStat.fit">[docs]</a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="FracdiffStat.fit"><a class="viewcode-back" href="../../../generated/fracdiff.sklearn.FracdiffStat.html#fracdiff.sklearn.FracdiffStat.fit">[docs]</a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">:</span> <span class="n">T</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span><span class="p">:</span>
         <span class="sd">"""</span>
 <span class="sd">        Fit the model with `X`.</span>
 
@@ -313,7 +325,7 @@
             <span class="k">raise</span> <span class="ne">RuntimeWarning</span><span class="p">(</span><span class="s2">"d_ has nan. You may want to increase `upper`."</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span></div>
 
-<div class="viewcode-block" id="FracdiffStat.transform"><a class="viewcode-back" href="../../../generated/fracdiff.sklearn.FracdiffStat.html#fracdiff.sklearn.FracdiffStat.transform">[docs]</a>    <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<div class="viewcode-block" id="FracdiffStat.transform"><a class="viewcode-back" href="../../../generated/fracdiff.sklearn.FracdiffStat.html#fracdiff.sklearn.FracdiffStat.transform">[docs]</a>    <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
         <span class="sd">"""</span>
 <span class="sd">        Return the fractional differentiation of `X`.</span>
 
@@ -345,10 +357,10 @@
 
         <span class="k">return</span> <span class="n">out</span></div>
 
-    <span class="k">def</span> <span class="nf">_is_stat</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">_is_stat</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">StatTester</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">stattest</span><span class="p">)</span><span class="o">.</span><span class="n">is_stat</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">pvalue</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">pvalue</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_find_features_d</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">_find_features_d</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
         <span class="n">features</span> <span class="o">=</span> <span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_jobs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_jobs</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
@@ -361,7 +373,7 @@
 
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">d_</span><span class="p">))</span>
 
-    <span class="k">def</span> <span class="nf">_find_d</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">_find_d</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
         <span class="sd">"""</span>
 <span class="sd">        Carry out binary search of minimum order of fractional</span>
 <span class="sd">        differentiation to make the time-series stationary.</span>
@@ -375,7 +387,7 @@
 <span class="sd">        d : float</span>
 <span class="sd">        """</span>
 
-        <span class="k">def</span> <span class="nf">diff</span><span class="p">(</span><span class="n">d</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">diff</span><span class="p">(</span><span class="n">d</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">fdiff</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">window</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mode</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_stat</span><span class="p">(</span><span class="n">diff</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">upper</span><span class="p">)):</span>
