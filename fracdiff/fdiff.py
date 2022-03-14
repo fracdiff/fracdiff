@@ -1,8 +1,7 @@
 from functools import partial
 from typing import Optional
 
-# found module but no type hints or library stubs
-import numpy as np  # type: ignore
+import numpy as np
 
 # found module but no type hints or library stubs
 from scipy.special import binom  # type: ignore
