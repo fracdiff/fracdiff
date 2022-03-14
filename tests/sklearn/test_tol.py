@@ -8,7 +8,7 @@ from fracdiff.sklearn.tol import window_from_tol_memory
 
 class TestTol:
 
-    LARGE = 10 ** 6
+    LARGE = 10**6
 
     @pytest.mark.parametrize("d", [0.0, 0.1, 0.5, 1.0, 1.5])
     @pytest.mark.parametrize("tol", [0.1, 0.01])

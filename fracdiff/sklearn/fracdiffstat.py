@@ -119,6 +119,8 @@ class FracdiffStat(TransformerMixin, BaseEstimator):
         """
         check_array(X)
         self.d_ = self._find_features_d(np.asarray(X))
+        if np.isnan(self.d_).any():
+            raise RuntimeWarning("d_ has nan. You may want to increase `upper`.")
         return self
 
     def transform(self, X: np.ndarray, y: None = None) -> np.ndarray:
