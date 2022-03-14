@@ -40,7 +40,7 @@ def fdiff(
     append: Optional[Tensor] = None,
     window: int = 10,
     mode: str = "same",
-):
+) -> Tensor:
     """Computes the `n`-th differentiation along the given dimension.
 
     This is an extension of

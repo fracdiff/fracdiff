@@ -1,15 +1,19 @@
 from concurrent.futures import ProcessPoolExecutor
+from typing import Optional
+from typing import TypeVar
 
-import numpy as np  # type:ignore
-from sklearn.base import BaseEstimator  # type:ignore
-from sklearn.base import TransformerMixin  # type:ignore
-from sklearn.utils.validation import check_array  # type:ignore
-from sklearn.utils.validation import check_is_fitted  # type:ignore
+import numpy as np
+from sklearn.base import BaseEstimator  # type: ignore
+from sklearn.base import TransformerMixin  # type: ignore
+from sklearn.utils.validation import check_array  # type: ignore
+from sklearn.utils.validation import check_is_fitted  # type: ignore
 
 from fracdiff.fdiff import fdiff
 
 from .fracdiff import Fracdiff
 from .stat import StatTester
+
+T = TypeVar("T", bound="FracdiffStat")
 
 
 class FracdiffStat(TransformerMixin, BaseEstimator):
@@ -75,16 +79,16 @@ class FracdiffStat(TransformerMixin, BaseEstimator):
 
     def __init__(
         self,
-        window=10,
-        mode="same",
-        window_policy="fixed",
-        stattest="ADF",
-        pvalue=0.05,
-        precision=0.01,
-        upper=1.0,
-        lower=0.0,
-        n_jobs=None,
-    ):
+        window: int = 10,
+        mode: str = "same",
+        window_policy: str = "fixed",
+        stattest: str = "ADF",
+        pvalue: float = 0.05,
+        precision: float = 0.01,
+        upper: float = 1.0,
+        lower: float = 0.0,
+        n_jobs: Optional[int] = None,
+    ) -> None:
         self.window = window
         self.mode = mode
         self.window_policy = window_policy
@@ -95,7 +99,7 @@ class FracdiffStat(TransformerMixin, BaseEstimator):
         self.lower = lower
         self.n_jobs = n_jobs
 
-    def fit(self, X, y=None):
+    def fit(self: T, X: np.ndarray, y: None = None) -> T:
         """
         Fit the model with `X`.
 
@@ -117,7 +121,7 @@ class FracdiffStat(TransformerMixin, BaseEstimator):
         self.d_ = self._find_features_d(np.asarray(X))
         return self
 
-    def transform(self, X, y=None) -> np.ndarray:
+    def transform(self, X: np.ndarray, y: None = None) -> np.ndarray:
         """
         Return the fractional differentiation of `X`.
 
@@ -149,10 +153,10 @@ class FracdiffStat(TransformerMixin, BaseEstimator):
 
         return out
 
-    def _is_stat(self, x) -> bool:
+    def _is_stat(self, x: np.ndarray) -> bool:
         return StatTester(method=self.stattest).is_stat(x, pvalue=self.pvalue)
 
-    def _find_features_d(self, X) -> np.ndarray:
+    def _find_features_d(self, X: np.ndarray) -> np.ndarray:
         features = (X[:, i] for i in range(X.shape[1]))
 
         if self.n_jobs is not None and self.n_jobs != 1:
@@ -165,7 +169,7 @@ class FracdiffStat(TransformerMixin, BaseEstimator):
 
         return np.array(list(d_))
 
-    def _find_d(self, x) -> float:
+    def _find_d(self, x: np.ndarray) -> float:
         """
         Carry out binary search of minimum order of fractional
         differentiation to make the time-series stationary.
@@ -179,7 +183,7 @@ class FracdiffStat(TransformerMixin, BaseEstimator):
         d : float
         """
 
-        def diff(d):
+        def diff(d: float) -> np.ndarray:
             return fdiff(x, d, window=self.window, mode=self.mode)
 
         if not self._is_stat(diff(self.upper)):

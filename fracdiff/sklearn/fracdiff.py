@@ -1,10 +1,14 @@
-import numpy  # type: ignore
+from typing import TypeVar
+
+import numpy
 from sklearn.base import TransformerMixin  # type: ignore
 from sklearn.utils.validation import check_array  # type: ignore
 from sklearn.utils.validation import check_is_fitted  # type: ignore
 
 from fracdiff.fdiff import fdiff
 from fracdiff.fdiff import fdiff_coef
+
+T = TypeVar("T", bound="Fracdiff")
 
 
 class Fracdiff(TransformerMixin):
@@ -65,13 +69,19 @@ class Fracdiff(TransformerMixin):
            [-0.0625]])
     """
 
-    def __init__(self, d=1.0, window=10, mode="same", window_policy="fixed"):
+    def __init__(
+        self,
+        d: float = 1.0,
+        window: int = 10,
+        mode: str = "same",
+        window_policy: str = "fixed",
+    ) -> None:
         self.d = d
         self.window = window
         self.mode = mode
         self.window_policy = window_policy
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         """
         Examples
         --------
@@ -83,7 +93,7 @@ class Fracdiff(TransformerMixin):
         params = ", ".join("{}={}".format(attr, getattr(self, attr)) for attr in attrs)
         return "{}({})".format(name, params)
 
-    def fit(self, X, y=None):
+    def fit(self: T, X: numpy.ndarray, y: None = None) -> T:
         """
         Fit the model with `X`.
 
@@ -104,7 +114,7 @@ class Fracdiff(TransformerMixin):
         self.coef_ = fdiff_coef(self.d, self.window)
         return self
 
-    def transform(self, X, y=None) -> numpy.ndarray:
+    def transform(self, X: numpy.ndarray, y: None = None) -> numpy.ndarray:
         """
         Return the fractional differentiation of `X`.
 
