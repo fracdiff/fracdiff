@@ -1,6 +1,7 @@
 from typing import TypeVar
 
 import numpy
+import pandas as pd
 from sklearn.base import TransformerMixin  # type: ignore
 from sklearn.utils.validation import check_array  # type: ignore
 from sklearn.utils.validation import check_is_fitted  # type: ignore
@@ -111,6 +112,10 @@ class Fracdiff(TransformerMixin):
         self : object
             Returns the instance itself.
         """
+        if isinstance(X, pd.DataFrame):
+            self.column_names = list(X.columns)
+        else:
+            self.column_names = None
         self.coef_ = fdiff_coef(self.d, self.window)
         return self
 
@@ -134,3 +139,9 @@ class Fracdiff(TransformerMixin):
         check_is_fitted(self, ["coef_"])
         check_array(X, estimator=self)
         return fdiff(X, n=self.d, axis=0, window=self.window, mode=self.mode)
+
+    def get_feature_names_out(self, feature_names_in=None):
+        if self.column_names is None:
+            raise RuntimeWarning("No column feature names. X is not a pd.DataFrame")
+        else:
+            return self.column_names
