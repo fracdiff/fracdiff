@@ -6,6 +6,7 @@ import numpy as np
 import pandas as pd
 from sklearn.base import BaseEstimator  # type: ignore
 from sklearn.base import TransformerMixin  # type: ignore
+from sklearn.base import _OneToOneFeatureMixin  # type: ignore
 from sklearn.utils.validation import check_array  # type: ignore
 from sklearn.utils.validation import check_is_fitted  # type: ignore
 
@@ -17,7 +18,7 @@ from .stat import StatTester
 T = TypeVar("T", bound="FracdiffStat")
 
 
-class FracdiffStat(TransformerMixin, BaseEstimator):
+class FracdiffStat(_OneToOneFeatureMixin, TransformerMixin, BaseEstimator):
     """A scikit-learn transformer to compute fractional differentiation,
     where the order is chosen as the minumum order that makes fracdiff stationary.
 
@@ -120,9 +121,7 @@ class FracdiffStat(TransformerMixin, BaseEstimator):
         """
         check_array(X)
         if isinstance(X, pd.DataFrame):
-            self.column_names = list(X.columns)
-        else:
-            self.column_names = None
+            self.feature_names_in_ = X.columns.tolist()
         self.d_ = self._find_features_d(np.asarray(X))
         if np.isnan(self.d_).any():
             raise RuntimeWarning("d_ has nan. You may want to increase `upper`.")
@@ -160,12 +159,6 @@ class FracdiffStat(TransformerMixin, BaseEstimator):
             out = np.concatenate((out, d), 1)
 
         return out
-
-    def get_feature_names_out(self, feature_names_in=None):
-        if self.column_names is None:
-            raise RuntimeWarning("No column feature names. X is not a pd.DataFrame")
-        else:
-            return self.column_names
 
     def _is_stat(self, x: np.ndarray) -> bool:
         return StatTester(method=self.stattest).is_stat(x, pvalue=self.pvalue)
