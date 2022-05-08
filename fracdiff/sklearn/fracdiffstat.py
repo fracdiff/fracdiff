@@ -3,8 +3,10 @@ from typing import Optional
 from typing import TypeVar
 
 import numpy as np
+import pandas as pd
 from sklearn.base import BaseEstimator  # type: ignore
 from sklearn.base import TransformerMixin  # type: ignore
+from sklearn.base import _OneToOneFeatureMixin  # type: ignore
 from sklearn.utils.validation import check_array  # type: ignore
 from sklearn.utils.validation import check_is_fitted  # type: ignore
 
@@ -16,7 +18,7 @@ from .stat import StatTester
 T = TypeVar("T", bound="FracdiffStat")
 
 
-class FracdiffStat(TransformerMixin, BaseEstimator):
+class FracdiffStat(_OneToOneFeatureMixin, TransformerMixin, BaseEstimator):
     """A scikit-learn transformer to compute fractional differentiation,
     where the order is chosen as the minumum order that makes fracdiff stationary.
 
@@ -118,9 +120,12 @@ class FracdiffStat(TransformerMixin, BaseEstimator):
             Returns the instance itself.
         """
         check_array(X)
+        if isinstance(X, pd.DataFrame):
+            self.feature_names_in_ = X.columns.tolist()
         self.d_ = self._find_features_d(np.asarray(X))
         if np.isnan(self.d_).any():
             raise RuntimeWarning("d_ has nan. You may want to increase `upper`.")
+
         return self
 
     def transform(self, X: np.ndarray, y: None = None) -> np.ndarray:
