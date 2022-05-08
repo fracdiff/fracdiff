@@ -2,7 +2,9 @@ from typing import TypeVar
 
 import numpy
 import pandas as pd
+from sklearn.base import BaseEstimator  # type: ignore
 from sklearn.base import TransformerMixin  # type: ignore
+from sklearn.base import _OneToOneFeatureMixin  # type: ignore
 from sklearn.utils.validation import check_array  # type: ignore
 from sklearn.utils.validation import check_is_fitted  # type: ignore
 
@@ -12,7 +14,7 @@ from fracdiff.fdiff import fdiff_coef
 T = TypeVar("T", bound="Fracdiff")
 
 
-class Fracdiff(TransformerMixin):
+class Fracdiff(_OneToOneFeatureMixin, TransformerMixin):
     """A scikit-learn transformer to compute fractional differentiation.
 
     Parameters
@@ -113,9 +115,7 @@ class Fracdiff(TransformerMixin):
             Returns the instance itself.
         """
         if isinstance(X, pd.DataFrame):
-            self.column_names = list(X.columns)
-        else:
-            self.column_names = None
+            self.feature_names_in_ = X.columns.tolist()
         self.coef_ = fdiff_coef(self.d, self.window)
         return self
 
@@ -139,9 +139,3 @@ class Fracdiff(TransformerMixin):
         check_is_fitted(self, ["coef_"])
         check_array(X, estimator=self)
         return fdiff(X, n=self.d, axis=0, window=self.window, mode=self.mode)
-
-    def get_feature_names_out(self, feature_names_in=None):
-        if self.column_names is None:
-            raise RuntimeWarning("No column feature names. X is not a pd.DataFrame")
-        else:
-            return self.column_names
