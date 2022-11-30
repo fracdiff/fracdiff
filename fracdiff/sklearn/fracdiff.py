@@ -2,6 +2,7 @@ from typing import TypeVar
 
 import numpy
 from sklearn.base import TransformerMixin  # type: ignore
+from sklearn.base import BaseEstimator # type: ignore
 from sklearn.utils.validation import check_array  # type: ignore
 from sklearn.utils.validation import check_is_fitted  # type: ignore
 
@@ -11,7 +12,7 @@ from fracdiff.fdiff import fdiff_coef
 T = TypeVar("T", bound="Fracdiff")
 
 
-class Fracdiff(TransformerMixin):
+class Fracdiff(TransformerMixin, BaseEstimator):
     """A scikit-learn transformer to compute fractional differentiation.
 
     Parameters
