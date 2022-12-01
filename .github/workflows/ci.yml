@@ -1,8 +1,6 @@
 name: CI
-
 env:
   PROJECT_NAME: fracdiff
-
 on:
   push:
     branches:
@@ -15,108 +13,68 @@ on:
       - develop
       - release/*
   workflow_dispatch:
-
 jobs:
-
   test:
-
     name: Test
-
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         python-version: ['3.7', '3.8', '3.9']
-
     steps:
-
-    - uses: actions/checkout@v2
-
-    - uses: actions/setup-python@v2
-      with:
-        python-version: ${{ matrix.python-version }}
-
-    - run: pip install poetry
-
-    - run: poetry install --extras torch --extras scikit-learn
-
-    - name: Run doctest
-      run: make test
-      if: always()
-
-    - uses: codecov/codecov-action@v1
-      if: ${{ matrix.python-version == '3.9' }}
-
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: pip install poetry
+      - run: poetry install --extras torch --extras scikit-learn
+      - name: Run doctest
+        run: make test
+        if: always()
+      - uses: codecov/codecov-action@v1
+        if: ${{ matrix.python-version == '3.9' }}
   type:
-
     name: Type
-
     runs-on: ubuntu-latest
-
     steps:
-
-    - uses: actions/checkout@v2
-
-    - uses: actions/setup-python@v2
-      with:
-        python-version: '3.9'
-
-    - run: pip install poetry && poetry install --extras torch --extras scikit-learn
-
-    - run: make type
-
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+      - run: pip install poetry && poetry install --extras torch --extras scikit-learn
+      - run: make type
   lint:
-
     name: Lint
-
     runs-on: ubuntu-latest
-
     outputs:
       status: ${{ job.status }}
-
     steps:
-
-    - uses: actions/checkout@v2
-
-    - uses: actions/setup-python@v2
-
-    - uses: psf/black@stable
-      with:
-        options: --check --diff --skip-magic-trailing-comma
-
-    - uses: jamescurtin/isort-action@master
-      with:
-        configuration: --check-only --diff --force-single-line
-
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+      - uses: psf/black@stable
+        with:
+          options: --check --diff --skip-magic-trailing-comma
+      - uses: jamescurtin/isort-action@master
+        with:
+          configuration: --check-only --diff --force-single-line
   format:
-
     name: Format
-
     runs-on: ubuntu-latest
-
     needs: lint
-
     if: ${{ always() && needs.lint.outputs.status == 'failure' }}
-
     steps:
-
-    - uses: actions/checkout@v2
-
-    - uses: actions/setup-python@v2
-
-    - uses: psf/black@stable
-      with:
-        options: '--skip-magic-trailing-comma'
-
-    - uses: jamescurtin/isort-action@master
-      with:
-        configuration: --force-single-line
-
-    - name: Create Pull Request
-      uses: peter-evans/create-pull-request@v3
-      with:
-        author: GitHub Actions <action@github.com>
-        commit-message: format
-        delete-branch: true
-        branch-suffix: short-commit-hash
-        title: Automated Format
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+      - uses: psf/black@stable
+        with:
+          options: '--skip-magic-trailing-comma'
+      - uses: jamescurtin/isort-action@master
+        with:
+          configuration: --force-single-line
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          author: GitHub Actions <action@github.com>
+          commit-message: format
+          delete-branch: true
+          branch-suffix: short-commit-hash
+          title: Automated Format
