@@ -2,7 +2,7 @@ from typing import TypeVar
 
 import numpy
 from sklearn.base import TransformerMixin  # type: ignore
-from sklearn.base import BaseEstimator # type: ignore
+from sklearn.base import BaseEstimator  # type: ignore
 from sklearn.utils.validation import check_array  # type: ignore
 from sklearn.utils.validation import check_is_fitted  # type: ignore
 
