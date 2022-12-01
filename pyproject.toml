@@ -20,7 +20,7 @@ scikit-learn = ["scikit-learn"]
 
 [tool.poetry.dev-dependencies]
 pytest = "^7.0.1"
-pytest-cov = "^3.0.0"
+pytest-cov = "^4.0.0"
 codecov = "^2.1.11"
 black = "^22.1"
 isort = "^5.8.0"
