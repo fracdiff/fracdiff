@@ -1,15 +1,15 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Fracdiff" href="fracdiff.sklearn.Fracdiff.html" /><link rel="prev" title="Fracdiff Documentation" href="../index.html" />
 
-    <meta name="generator" content="sphinx-4.4.0, furo 2022.03.04"/>
+    <meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>fracdiff.fdiff - fracdiff documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=935aa2abcc5c1da4283d1dc201fb1f0add16d23a" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=25ceb02ed1c46dc30f2321ff83e92799f69dfdb9" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     
     
 
@@ -36,10 +36,12 @@
   }
 </style></head>
   <body>
+    
     <script>
       document.body.dataset.theme = localStorage.getItem("theme") || "auto";
     </script>
     
+
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
   <symbol id="svg-toc" viewBox="0 0 24 24">
     <title>Contents</title>
@@ -132,7 +134,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -186,7 +188,9 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -194,21 +198,21 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
           <section id="fracdiff-fdiff">
-<h1>fracdiff.fdiff<a class="headerlink" href="#fracdiff-fdiff" title="Permalink to this headline">#</a></h1>
+<h1>fracdiff.fdiff<a class="headerlink" href="#fracdiff-fdiff" title="Permalink to this heading">#</a></h1>
 <dl class="py function">
 <dt class="sig sig-object py" id="fracdiff.fdiff">
-<span class="sig-prename descclassname"><span class="pre">fracdiff.</span></span><span class="sig-name descname"><span class="pre">fdiff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prepend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">append</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'same'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/fracdiff/fdiff.html#fdiff"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fracdiff.fdiff" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">fracdiff.</span></span><span class="sig-name descname"><span class="pre">fdiff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prepend</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">append</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'same'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/fracdiff/fdiff.html#fdiff"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fracdiff.fdiff" title="Permalink to this definition">#</a></dt>
 <dd><p>Calculate the <cite>n</cite>-th differentiation along the given axis.</p>
 <p>Extention of <code class="docutils literal notranslate"><span class="pre">numpy.diff</span></code> to fractional differentiation.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>a</strong> (<em>array_like</em>) – The input array.</p></li>
 <li><p><strong>n</strong> (<em>float</em><em>, </em><em>default=1.0</em>) – The order of differentiation.
@@ -220,7 +224,7 @@ the shape of the input array in along all other axes.
 Otherwise the dimension and shape must match <code class="docutils literal notranslate"><span class="pre">a</span></code> except along axis.</p></li>
 <li><p><strong>append</strong> (<em>array_like</em><em>, </em><em>optional</em>) – Values to append.</p></li>
 <li><p><strong>window</strong> (<em>int</em><em>, </em><em>default=10</em>) – Number of observations to compute each element in the output.</p></li>
-<li><p><strong>mode</strong> (<em>{"same"</em><em>, </em><em>"valid"}</em><em>, </em><em>default="same"</em>) – <dl class="simple">
+<li><p><strong>mode</strong> (<em>{&quot;same&quot;</em><em>, </em><em>&quot;valid&quot;}</em><em>, </em><em>default=&quot;same&quot;</em>) – <dl class="simple">
 <dt>“same” (default) :</dt><dd><p>At the beginning of the time series,
 return elements where at least one coefficient of fracdiff is used.
 Output size along <code class="docutils literal notranslate"><span class="pre">axis</span></code> is <span class="math notranslate nohighlight">\(L_{\mathrm{in}}\)</span>
@@ -239,11 +243,11 @@ Boundary effects are not seen.</p>
 </p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>fdiff</strong> – The fractional differentiation.
 The shape of the output is the same as <code class="docutils literal notranslate"><span class="pre">a</span></code> except along <code class="docutils literal notranslate"><span class="pre">axis</span></code>.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>numpy.ndarray</p>
 </dd>
 </dl>
@@ -263,9 +267,9 @@ The shape of the output is the same as <code class="docutils literal notranslate
 </pre></div>
 </div>
 <p>Mode “valid” returns elements for which all coefficients are convoluted.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fdiff</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">"valid"</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fdiff</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;valid&quot;</span><span class="p">)</span>
 <span class="go">array([ 2.875,  4.75 , -4.   ])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fdiff</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">"valid"</span><span class="p">,</span> <span class="n">prepend</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fdiff</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;valid&quot;</span><span class="p">,</span> <span class="n">prepend</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 <span class="go">array([ 0.375,  1.375,  2.875,  4.75 , -4.   ])</span>
 </pre></div>
 </div>
@@ -281,6 +285,7 @@ The shape of the output is the same as <code class="docutils literal notranslate
 </pre></div>
 </div>
 </dd></dl>
+
 </section>
 
         </article>
@@ -295,10 +300,10 @@ The shape of the output is the same as <code class="docutils literal notranslate
                 </div>
                 <div class="title">Fracdiff</div>
               </div>
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
           <a class="prev-page" href="../index.html">
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
@@ -328,8 +333,27 @@ The shape of the output is the same as <code class="docutils literal notranslate
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">fracdiff.fdiff</a><ul>
+<li><a class="reference internal" href="#fracdiff.fdiff"><code class="docutils literal notranslate"><span class="pre">fdiff()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
@@ -337,7 +361,9 @@ The shape of the output is the same as <code class="docutils literal notranslate
 </div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/scripts/furo.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     </body>

@@ -1,14 +1,14 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
 
-    <meta name="generator" content="sphinx-4.4.0, furo 2022.03.04"/>
+    <meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>fracdiff.torch.functional - fracdiff documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=935aa2abcc5c1da4283d1dc201fb1f0add16d23a" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=25ceb02ed1c46dc30f2321ff83e92799f69dfdb9" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     
     
 
@@ -35,10 +35,12 @@
   }
 </style></head>
   <body>
+    
     <script>
       document.body.dataset.theme = localStorage.getItem("theme") || "auto";
     </script>
     
+
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
   <symbol id="svg-toc" viewBox="0 0 24 24">
     <title>Contents</title>
@@ -185,7 +187,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -209,7 +212,7 @@
 
 
 <span class="k">def</span> <span class="nf">fdiff_coef</span><span class="p">(</span><span class="n">d</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">window</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sd">"""Returns sequence of coefficients in fracdiff operator.</span>
+    <span class="sd">&quot;&quot;&quot;Returns sequence of coefficients in fracdiff operator.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        d (float): Order of differentiation.</span>
@@ -227,7 +230,7 @@
 <span class="sd">        tensor([ 1., -1.,  0., -0.], dtype=torch.float64)</span>
 <span class="sd">        &gt;&gt;&gt; fdiff_coef(1.5, 4)</span>
 <span class="sd">        tensor([ 1.0000, -1.5000,  0.3750,  0.0625], dtype=torch.float64)</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">as_tensor</span><span class="p">(</span><span class="n">fdiff_coef_numpy</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">window</span><span class="p">))</span>
 
 
@@ -238,9 +241,9 @@
     <span class="n">prepend</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">append</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">window</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
-    <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"same"</span><span class="p">,</span>
+    <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;same&quot;</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-    <span class="sa">r</span><span class="sd">"""Computes the ``n``-th differentiation along the given dimension.</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Computes the ``n``-th differentiation along the given dimension.</span>
 
 <span class="sd">    This is an extension of :func:`torch.diff` to fractional differentiation.</span>
 <span class="sd">    See :class:`fracdiff.torch.Fracdiff` for details.</span>
@@ -253,8 +256,8 @@
 <span class="sd">        - input: :math:`(N, *, L_{\mathrm{in}})`, where where :math:`*` means any</span>
 <span class="sd">          number of additional dimensions.</span>
 <span class="sd">        - output: :math:`(N, *, L_{\mathrm{out}})`, where :math:`L_{\mathrm{out}}`</span>
-<span class="sd">          is given by :math:`L_{\mathrm{in}}` if `mode="same"` and</span>
-<span class="sd">          :math:`L_{\mathrm{in}} - \mathrm{window} - 1` if `mode="valid"`.</span>
+<span class="sd">          is given by :math:`L_{\mathrm{in}}` if `mode=&quot;same&quot;` and</span>
+<span class="sd">          :math:`L_{\mathrm{in}} - \mathrm{window} - 1` if `mode=&quot;valid&quot;`.</span>
 <span class="sd">          If `prepend` and/or `append` are provided, then :math:`L_{\mathrm{out}}`</span>
 <span class="sd">          increases by the number of elements in each of these tensors.</span>
 
@@ -262,27 +265,27 @@
 <span class="sd">        &gt;&gt;&gt; from fracdiff.torch import fdiff</span>
 <span class="sd">        ...</span>
 <span class="sd">        &gt;&gt;&gt; input = torch.tensor([1, 2, 4, 7, 0])</span>
-<span class="sd">        &gt;&gt;&gt; fdiff(input, 0.5, mode="same", window=3)</span>
+<span class="sd">        &gt;&gt;&gt; fdiff(input, 0.5, mode=&quot;same&quot;, window=3)</span>
 <span class="sd">        tensor([ 1.0000,  1.5000,  2.8750,  4.7500, -4.0000])</span>
 
-<span class="sd">        &gt;&gt;&gt; fdiff(input, 0.5, mode="valid", window=3)</span>
+<span class="sd">        &gt;&gt;&gt; fdiff(input, 0.5, mode=&quot;valid&quot;, window=3)</span>
 <span class="sd">        tensor([ 2.8750,  4.7500, -4.0000])</span>
 
-<span class="sd">        &gt;&gt;&gt; fdiff(input, 0.5, mode="valid", window=3, prepend=[1, 1])</span>
+<span class="sd">        &gt;&gt;&gt; fdiff(input, 0.5, mode=&quot;valid&quot;, window=3, prepend=[1, 1])</span>
 <span class="sd">        tensor([ 0.3750,  1.3750,  2.8750,  4.7500, -4.0000])</span>
 
 <span class="sd">        &gt;&gt;&gt; input = torch.arange(10).reshape(2, 5)</span>
 <span class="sd">        &gt;&gt;&gt; fdiff(input, 0.5)</span>
 <span class="sd">        tensor([[0.0000, 1.0000, 1.5000, 1.8750, 2.1875],</span>
 <span class="sd">                [5.0000, 3.5000, 3.3750, 3.4375, 3.5547]])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># Calls torch.diff if n is an integer</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">or</span> <span class="n">n</span><span class="o">.</span><span class="n">is_integer</span><span class="p">():</span>
         <span class="k">return</span> <span class="nb">input</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">,</span> <span class="n">prepend</span><span class="o">=</span><span class="n">prepend</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="n">append</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">dim</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
         <span class="c1"># TODO(simaki): Implement dim != -1. PR welcomed!</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Only supports dim == -1."</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Only supports dim == -1.&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">input</span><span class="o">.</span><span class="n">is_floating_point</span><span class="p">():</span>
         <span class="nb">input</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">get_default_dtype</span><span class="p">())</span>
@@ -318,12 +321,12 @@
 
     <span class="n">output</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">conv1d</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">"same"</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;same&quot;</span><span class="p">:</span>
         <span class="n">size_lastdim</span> <span class="o">=</span> <span class="n">input_size</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-    <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">"valid"</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;valid&quot;</span><span class="p">:</span>
         <span class="n">size_lastdim</span> <span class="o">=</span> <span class="n">input_size</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">window</span> <span class="o">+</span> <span class="mi">1</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Invalid mode: "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">mode</span><span class="p">))</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid mode: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">mode</span><span class="p">))</span>
 
     <span class="n">output_size</span> <span class="o">=</span> <span class="n">input_size</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">size_lastdim</span><span class="p">,)</span>
     <span class="n">output</span> <span class="o">=</span> <span class="n">output</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="o">-</span><span class="n">size_lastdim</span><span class="p">:]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">output_size</span><span class="p">)</span>
@@ -368,7 +371,9 @@
 </div><script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
     <script src="../../../_static/scripts/furo.js"></script>
     </body>
 </html>

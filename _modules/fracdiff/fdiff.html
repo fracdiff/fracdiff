@@ -1,14 +1,14 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" />
 
-    <meta name="generator" content="sphinx-4.4.0, furo 2022.03.04"/>
+    <meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>fracdiff.fdiff - fracdiff documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=935aa2abcc5c1da4283d1dc201fb1f0add16d23a" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?digest=25ceb02ed1c46dc30f2321ff83e92799f69dfdb9" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     
     
 
@@ -35,10 +35,12 @@
   }
 </style></head>
   <body>
+    
     <script>
       document.body.dataset.theme = localStorage.getItem("theme") || "auto";
     </script>
     
+
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
   <symbol id="svg-toc" viewBox="0 0 24 24">
     <title>Contents</title>
@@ -185,7 +187,8 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -210,7 +213,7 @@
 
 
 <span class="k">def</span> <span class="nf">fdiff_coef</span><span class="p">(</span><span class="n">d</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">window</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-    <span class="sd">"""Returns sequence of coefficients in fracdiff operator.</span>
+    <span class="sd">&quot;&quot;&quot;Returns sequence of coefficients in fracdiff operator.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -232,7 +235,7 @@
 <span class="sd">    array([ 1., -1.,  0., -0.])</span>
 <span class="sd">    &gt;&gt;&gt; fdiff_coef(1.5, 4)</span>
 <span class="sd">    array([ 1.    , -1.5   ,  0.375 ,  0.0625])</span>
-<span class="sd">    """</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">**</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">window</span><span class="p">)</span> <span class="o">*</span> <span class="n">binom</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">window</span><span class="p">))</span>
 
 
@@ -243,9 +246,9 @@
     <span class="n">prepend</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">append</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">window</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
-    <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">"same"</span><span class="p">,</span>
+    <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;same&quot;</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-    <span class="sd">"""Calculate the `n`-th differentiation along the given axis.</span>
+    <span class="sd">&quot;&quot;&quot;Calculate the `n`-th differentiation along the given axis.</span>
 
 <span class="sd">    Extention of ``numpy.diff`` to fractional differentiation.</span>
 
@@ -267,15 +270,15 @@
 <span class="sd">        Values to append.</span>
 <span class="sd">    window : int, default=10</span>
 <span class="sd">        Number of observations to compute each element in the output.</span>
-<span class="sd">    mode : {"same", "valid"}, default="same"</span>
-<span class="sd">        "same" (default) :</span>
+<span class="sd">    mode : {&quot;same&quot;, &quot;valid&quot;}, default=&quot;same&quot;</span>
+<span class="sd">        &quot;same&quot; (default) :</span>
 <span class="sd">            At the beginning of the time series,</span>
 <span class="sd">            return elements where at least one coefficient of fracdiff is used.</span>
 <span class="sd">            Output size along ``axis`` is :math:`L_{\\mathrm{in}}`</span>
 <span class="sd">            where :math:`L_{\\mathrm{in}}` is the length of ``a`` along ``axis``</span>
 <span class="sd">            (plus the lengths of ``append`` and ``prepend``).</span>
 <span class="sd">            Boundary effects may be seen at the at the beginning of a time-series.</span>
-<span class="sd">        "valid" :</span>
+<span class="sd">        &quot;valid&quot; :</span>
 <span class="sd">            Return elements where all coefficients of fracdiff are used.</span>
 <span class="sd">            Output size along ``axis`` is</span>
 <span class="sd">            :math:`L_{\\mathrm{in}} - \\mathrm{window} + 1` where</span>
@@ -305,11 +308,11 @@
 <span class="sd">    &gt;&gt;&gt; fdiff(a, 0.5, window=3)</span>
 <span class="sd">    array([ 1.   ,  1.5  ,  2.875,  4.75 , -4.   ])</span>
 
-<span class="sd">    Mode "valid" returns elements for which all coefficients are convoluted.</span>
+<span class="sd">    Mode &quot;valid&quot; returns elements for which all coefficients are convoluted.</span>
 
-<span class="sd">    &gt;&gt;&gt; fdiff(a, 0.5, window=3, mode="valid")</span>
+<span class="sd">    &gt;&gt;&gt; fdiff(a, 0.5, window=3, mode=&quot;valid&quot;)</span>
 <span class="sd">    array([ 2.875,  4.75 , -4.   ])</span>
-<span class="sd">    &gt;&gt;&gt; fdiff(a, 0.5, window=3, mode="valid", prepend=[1, 1])</span>
+<span class="sd">    &gt;&gt;&gt; fdiff(a, 0.5, window=3, mode=&quot;valid&quot;, prepend=[1, 1])</span>
 <span class="sd">    array([ 0.375,  1.375,  2.875,  4.75 , -4.   ])</span>
 
 <span class="sd">    Differentiation along desired axis.</span>
@@ -322,10 +325,10 @@
 <span class="sd">    &gt;&gt;&gt; fdiff(a, 0.5, window=3, axis=0)</span>
 <span class="sd">    array([[ 1. ,  3. ,  6. , 10. , 15. ],</span>
 <span class="sd">           [-0.5,  3.5,  3. ,  3. ,  3.5]])</span>
-<span class="sd">    """</span>
-    <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">"full"</span><span class="p">:</span>
-        <span class="n">mode</span> <span class="o">=</span> <span class="s2">"same"</span>
-        <span class="k">raise</span> <span class="ne">DeprecationWarning</span><span class="p">(</span><span class="s2">"mode 'full' was renamed to 'same'."</span><span class="p">)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;full&quot;</span><span class="p">:</span>
+        <span class="n">mode</span> <span class="o">=</span> <span class="s2">&quot;same&quot;</span>
+        <span class="k">raise</span> <span class="ne">DeprecationWarning</span><span class="p">(</span><span class="s2">&quot;mode &#39;full&#39; was renamed to &#39;same&#39;.&quot;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">or</span> <span class="n">n</span><span class="o">.</span><span class="n">is_integer</span><span class="p">():</span>
         <span class="n">prepend</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">_NoValue</span> <span class="k">if</span> <span class="n">prepend</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">prepend</span>  <span class="c1"># type: ignore</span>
@@ -333,11 +336,11 @@
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">,</span> <span class="n">prepend</span><span class="o">=</span><span class="n">prepend</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="n">append</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">a</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"diff requires input that is at least one dimensional"</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;diff requires input that is at least one dimensional&quot;</span><span class="p">)</span>
 
     <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asanyarray</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
     <span class="c1"># Mypy complains:</span>
-    <span class="c1"># fracdiff/fdiff.py:135: error: Module has no attribute "normalize_axis_index"</span>
+    <span class="c1"># fracdiff/fdiff.py:135: error: Module has no attribute &quot;normalize_axis_index&quot;</span>
     <span class="n">axis</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">multiarray</span><span class="o">.</span><span class="n">normalize_axis_index</span><span class="p">(</span><span class="n">axis</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">ndim</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
     <span class="n">dtype</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">dtype</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">issubdtype</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">floating</span><span class="p">)</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span>
 
@@ -363,19 +366,19 @@
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">combined</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
         <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">combined</span><span class="p">,</span> <span class="n">axis</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">"valid"</span><span class="p">:</span>
-        <span class="n">D</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">convolve</span><span class="p">,</span> <span class="n">fdiff_coef</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">window</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">dtype</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s2">"valid"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;valid&quot;</span><span class="p">:</span>
+        <span class="n">D</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">convolve</span><span class="p">,</span> <span class="n">fdiff_coef</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">window</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">dtype</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;valid&quot;</span><span class="p">)</span>
         <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">apply_along_axis</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">"same"</span><span class="p">:</span>
-        <span class="c1"># Convolve with the mode 'full' and cut last</span>
-        <span class="n">D</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">convolve</span><span class="p">,</span> <span class="n">fdiff_coef</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">window</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">dtype</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s2">"full"</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;same&quot;</span><span class="p">:</span>
+        <span class="c1"># Convolve with the mode &#39;full&#39; and cut last</span>
+        <span class="n">D</span> <span class="o">=</span> <span class="n">partial</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">convolve</span><span class="p">,</span> <span class="n">fdiff_coef</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">window</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">dtype</span><span class="p">),</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;full&quot;</span><span class="p">)</span>
         <span class="n">s</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span>
             <span class="nb">slice</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="n">axis</span><span class="p">])</span> <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="n">axis</span> <span class="k">else</span> <span class="nb">slice</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">ndim</span><span class="p">)</span>
         <span class="p">)</span>
         <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">apply_along_axis</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
         <span class="n">a</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">s</span><span class="p">]</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"Invalid mode: </span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mode</span><span class="p">))</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid mode: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">mode</span><span class="p">))</span>
 
     <span class="k">return</span> <span class="n">a</span></div>
 </pre></div>
@@ -415,7 +418,9 @@
 </div><script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/scripts/furo.js"></script>
     </body>
 </html>

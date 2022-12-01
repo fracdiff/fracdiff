@@ -1,15 +1,15 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="FracdiffStat" href="fracdiff.sklearn.FracdiffStat.html" /><link rel="prev" title="fracdiff.fdiff" href="fracdiff.fdiff.html" />
 
-    <meta name="generator" content="sphinx-4.4.0, furo 2022.03.04"/>
+    <meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
         <title>Fracdiff - fracdiff documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=935aa2abcc5c1da4283d1dc201fb1f0add16d23a" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=25ceb02ed1c46dc30f2321ff83e92799f69dfdb9" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     
     
 
@@ -36,10 +36,12 @@
   }
 </style></head>
   <body>
+    
     <script>
       document.body.dataset.theme = localStorage.getItem("theme") || "auto";
     </script>
     
+
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
   <symbol id="svg-toc" viewBox="0 0 24 24">
     <title>Contents</title>
@@ -132,7 +134,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -186,7 +188,9 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -194,25 +198,25 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
           <section id="fracdiff">
-<h1>Fracdiff<a class="headerlink" href="#fracdiff" title="Permalink to this headline">#</a></h1>
+<h1>Fracdiff<a class="headerlink" href="#fracdiff" title="Permalink to this heading">#</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="fracdiff.sklearn.Fracdiff">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">fracdiff.sklearn.</span></span><span class="sig-name descname"><span class="pre">Fracdiff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'same'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_policy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'fixed'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/fracdiff/sklearn/fracdiff.html#Fracdiff"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fracdiff.sklearn.Fracdiff" title="Permalink to this definition">#</a></dt>
 <dd><p>A scikit-learn transformer to compute fractional differentiation.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>d</strong> (<em>float</em><em>, </em><em>default 1.0</em>) – The order of differentiation.</p></li>
 <li><p><strong>window</strong> (<em>int &gt; 0</em><em> or </em><em>None</em><em>, </em><em>default 10</em>) – Number of observations to compute each element in the output.</p></li>
-<li><p><strong>mode</strong> (<em>{"same"</em><em>, </em><em>"valid"}</em><em>, </em><em>default "same"</em>) – See <a class="reference internal" href="fracdiff.fdiff.html#fracdiff.fdiff" title="fracdiff.fdiff"><code class="xref py py-func docutils literal notranslate"><span class="pre">fracdiff.fdiff()</span></code></a> for details.</p></li>
-<li><p><strong>window_policy</strong> (<em>{"fixed"}</em><em>, </em><em>default "fixed"</em>) – <dl class="simple">
+<li><p><strong>mode</strong> (<em>{&quot;same&quot;</em><em>, </em><em>&quot;valid&quot;}</em><em>, </em><em>default &quot;same&quot;</em>) – See <a class="reference internal" href="fracdiff.fdiff.html#fracdiff.fdiff" title="fracdiff.fdiff"><code class="xref py py-func docutils literal notranslate"><span class="pre">fracdiff.fdiff()</span></code></a> for details.</p></li>
+<li><p><strong>window_policy</strong> (<em>{&quot;fixed&quot;}</em><em>, </em><em>default &quot;fixed&quot;</em>) – <dl class="simple">
 <dt>“fixed” (default) :</dt><dd><p>Fixed window method.
 Every term in the output is evaluated using <cite>window</cite> observations.
 In other words, a fracdiff operator, which is a polynominal of a backshift
@@ -234,11 +238,12 @@ The beginning <cite>window - 1</cite> elements in output are filled with <cite>n
 <span class="sig-name descname"><span class="pre">coef_</span></span><a class="headerlink" href="#fracdiff.sklearn.Fracdiff.coef_" title="Permalink to this definition">#</a></dt>
 <dd><p>Sequence of coefficients in the fracdiff operator.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>numpy.array, shape (window,)</p>
 </dd>
 </dl>
 </dd></dl>
+
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">fracdiff.sklearn</span> <span class="kn">import</span> <span class="n">Fracdiff</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
@@ -253,7 +258,7 @@ The beginning <cite>window - 1</cite> elements in output are filled with <cite>n
 <span class="go">array([ 1.   , -0.5  , -0.125])</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fracdiff</span> <span class="o">=</span> <span class="n">Fracdiff</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">"valid"</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fracdiff</span> <span class="o">=</span> <span class="n">Fracdiff</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;valid&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fracdiff</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 <span class="go">array([[3.   , 3.375],</span>
 <span class="go">       [3.75 , 4.125],</span>
@@ -274,7 +279,7 @@ The beginning <cite>window - 1</cite> elements in output are filled with <cite>n
 <span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/fracdiff/sklearn/fracdiff.html#Fracdiff.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fracdiff.sklearn.Fracdiff.fit" title="Permalink to this definition">#</a></dt>
 <dd><p>Fit the model with <cite>X</cite>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>X</strong> (<em>array_like</em><em>, </em><em>shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_features</em><em>)</em>) – Time-series to perform fractional differentiation.
 Here <cite>n_samples</cite> is the number of samples and <cite>n_features</cite> is the number of
@@ -282,35 +287,38 @@ features.</p></li>
 <li><p><strong>y</strong> (<em>array_like</em><em>, </em><em>optional</em>) – Ignored.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>self</strong> – Returns the instance itself.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>object</p>
 </dd>
 </dl>
 </dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="fracdiff.sklearn.Fracdiff.transform">
 <span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/fracdiff/sklearn/fracdiff.html#Fracdiff.transform"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#fracdiff.sklearn.Fracdiff.transform" title="Permalink to this definition">#</a></dt>
 <dd><p>Return the fractional differentiation of <cite>X</cite>.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>X</strong> (<em>array_like</em><em>, </em><em>shape</em><em> (</em><em>n_samples</em><em>, </em><em>n_series</em><em>)</em>) – Time-series to perform fractional differentiation.
 Raises ValueError if <cite>n_samples &lt; self.window</cite>.</p></li>
 <li><p><strong>y</strong> (<em>array_like</em><em>, </em><em>optional</em>) – Ignored.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>fdiff</strong> – The fractional differentiation of <cite>X</cite>.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">numpy.array</span></code>, shape (n_samples, n_series)</p>
 </dd>
 </dl>
 </dd></dl>
+
 </dd></dl>
+
 </section>
 
         </article>
@@ -325,10 +333,10 @@ Raises ValueError if <cite>n_samples &lt; self.window</cite>.</p></li>
                 </div>
                 <div class="title">FracdiffStat</div>
               </div>
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
           <a class="prev-page" href="fracdiff.fdiff.html">
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
@@ -358,8 +366,32 @@ Raises ValueError if <cite>n_samples &lt; self.window</cite>.</p></li>
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Fracdiff</a><ul>
+<li><a class="reference internal" href="#fracdiff.sklearn.Fracdiff"><code class="docutils literal notranslate"><span class="pre">Fracdiff</span></code></a><ul>
+<li><a class="reference internal" href="#fracdiff.sklearn.Fracdiff.coef_"><code class="docutils literal notranslate"><span class="pre">Fracdiff.coef_</span></code></a></li>
+<li><a class="reference internal" href="#fracdiff.sklearn.Fracdiff.fit"><code class="docutils literal notranslate"><span class="pre">Fracdiff.fit()</span></code></a></li>
+<li><a class="reference internal" href="#fracdiff.sklearn.Fracdiff.transform"><code class="docutils literal notranslate"><span class="pre">Fracdiff.transform()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
@@ -367,7 +399,9 @@ Raises ValueError if <cite>n_samples &lt; self.window</cite>.</p></li>
 </div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/scripts/furo.js"></script>
     </body>
 </html>
