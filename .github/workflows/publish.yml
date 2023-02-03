@@ -1,27 +1,20 @@
 name: Publish
-
 env:
   PYPI_USER_NAME: simaki
-
 on:
   release:
     types:
       - created
   workflow_dispatch:
-
 jobs:
   publish:
     name: Publish
-
     runs-on: ubuntu-latest
-
     steps:
-
-    - uses: actions/checkout@v2
-
-    - uses: actions/setup-python@v2
-
-    - run: pip install poetry
-
-    - name: Publish
-      run: poetry publish --build --username ${PYPI_USER_NAME} --password ${{ secrets.PYPI_PASSWORD }}
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+      - run: pip install poetry
+      - name: Publish
+        run: poetry publish --build --username ${PYPI_USER_NAME} --password ${{ secrets.PYPI_PASSWORD }}
