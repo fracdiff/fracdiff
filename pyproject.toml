@@ -10,7 +10,7 @@ repository = "https://github.com/fracdiff/fracdiff"
 python = ">=3.8,<3.12"
 numpy = "^1.24.1"
 scipy = "^1.10.0"
-statsmodel = {git = "https://github.com/statsmodels/statsmodels.git", rev = "main"} # https://github.com/statsmodels/statsmodels/issues/8543
+statsmodel = {git = "https://github.com/statsmodels/statsmodels.git"} # https://github.com/statsmodels/statsmodels/issues/8543
 scikit-learn = {version = "^1.2.1", optional = true}
 torch = {version = "^1.13.1", optional = true}
 
